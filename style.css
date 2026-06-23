@@ -1,0 +1,227 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #f9f8f5;
+  --text: #111;
+  --muted: #666;
+  --accent: #111;
+  --max-width: 680px;
+  --font: "Georgia", serif;
+  --font-mono: "Courier New", monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.7;
+  padding: 0 1.5rem;
+}
+
+/* ── Layout ── */
+
+header, main, footer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+header {
+  padding: 3rem 0 4rem;
+  border-bottom: 1px solid #ddd;
+}
+
+main {
+  padding: 3rem 0;
+}
+
+footer {
+  padding: 2rem 0 3rem;
+  border-top: 1px solid #ddd;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* ── Nav ── */
+
+nav {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+nav a {
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+}
+
+nav a:hover {
+  color: var(--text);
+}
+
+/* ── Hero ── */
+
+.hero h1 {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: normal;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.tagline {
+  margin-top: 0.5rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* ── Sections ── */
+
+section {
+  margin-bottom: 3.5rem;
+}
+
+section h2 {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: normal;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+}
+
+section p {
+  max-width: 56ch;
+}
+
+/* ── Projects ── */
+
+.project {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid #e8e8e5;
+}
+
+.project:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.project-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.2rem;
+}
+
+.project-title {
+  font-style: italic;
+  font-size: 1.05rem;
+  text-decoration: none;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 1px;
+}
+
+.project-title:hover {
+  color: var(--muted);
+  border-color: var(--muted);
+}
+
+.project-date {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.project-tags {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+/* ── Experience entries ── */
+
+.entry {
+  margin-bottom: 2rem;
+}
+
+.entry-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.entry-title {
+  font-weight: bold;
+}
+
+.entry-place {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.entry p {
+  color: #333;
+  font-size: 0.95rem;
+}
+
+/* ── Links ── */
+
+a {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--muted);
+}
+
+.links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  margin-top: 0.75rem;
+}
+
+.links a {
+  text-decoration: none;
+  color: var(--text);
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 1px;
+}
+
+.links a:hover {
+  border-color: var(--text);
+}
+
+/* ── Mobile ── */
+
+@media (max-width: 480px) {
+  nav {
+    gap: 1rem;
+  }
+
+  .entry-meta {
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+}
