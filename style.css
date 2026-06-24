@@ -105,6 +105,31 @@ section p {
   max-width: 56ch;
 }
 
+/* ── Gallery ── */
+
+#gallery {
+  margin-bottom: 3.5rem;
+}
+
+.gallery {
+  columns: 2;
+  column-gap: 0.5rem;
+  max-width: var(--max-width);
+}
+
+.gallery img {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  break-inside: avoid;
+}
+
+@media (max-width: 480px) {
+  .gallery {
+    columns: 1;
+  }
+}
+
 /* ── Projects ── */
 
 .project {
@@ -180,6 +205,26 @@ section p {
   font-size: 0.95rem;
 }
 
+.entry-bullets {
+  list-style: none;
+  padding: 0;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.entry-bullets li {
+  padding-left: 1rem;
+  position: relative;
+  margin-bottom: 0.2rem;
+}
+
+.entry-bullets li::before {
+  content: "–";
+  position: absolute;
+  left: 0;
+  color: var(--muted);
+}
+
 /* ── Links ── */
 
 a {
@@ -211,6 +256,58 @@ a:hover {
 
 .links a:hover {
   border-color: var(--text);
+}
+
+/* ── Project pages ── */
+
+.project-writeup p + p {
+  margin-top: 1rem;
+}
+
+.project-writeup {
+  margin-bottom: 2.5rem;
+}
+
+.project-info {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: 0.6rem 0;
+  font-size: 0.9rem;
+  border-top: 1px solid #e8e8e5;
+  padding-top: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.project-info dt {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding-top: 0.15rem;
+}
+
+.project-info dd {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.project-gallery-section {
+  border-top: 1px solid #ddd;
+  padding-top: 2rem;
+  margin-top: 1rem;
+}
+
+.gallery--3col {
+  columns: 3;
+  column-gap: 0.4rem;
+}
+
+.gallery--3col img {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.4rem;
+  break-inside: avoid;
 }
 
 /* ── Mobile ── */

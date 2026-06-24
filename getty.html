@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cameo glass surface reconstruction — lorie's corner</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="work.html">← work</a>
+    </nav>
+    <div class="hero">
+      <h1>a week exploring the Getty collection</h1>
+      <p class="tagline">computational photography &middot; cultural heritage &middot; 2025&ndash;2026</p>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="project-writeup">
+      <p>
+        Cameo gems are carved in shallow relief from layered stone — usually onyx or sardonyx —
+        with the figure raised against a contrasting background. They're small, translucent,
+        and optically complex, and the Getty Villa has hundreds of them. I went there to find out
+        whether confocal stereo could extract their 3D surface geometry without contact.
+      </p>
+      <p>
+        Confocal stereo reconstructs depth by varying aperture and focus across a bracket of
+        images, analyzing how pixel intensity scales with aperture — a property that holds for
+        diffuse surfaces. The technique requires no special equipment beyond what a well-equipped
+        imaging studio already has: the idea was that if it worked, any institution could run it.
+      </p>
+      <p>
+        It mostly didn't work on the gems. Translucent sardonyx violates the diffuse surface
+        assumption badly enough to produce noisy depth maps. But the failure was informative.
+        Stone altars with relief carving — more diffuse, more opaque — emerged as a much better
+        candidate. The 3D prints shown here were fabricated from successful reconstructions as
+        physical proof-of-concept, materializing the reconstruction error directly.
+      </p>
+    </section>
+
+    <dl class="project-info">
+      <dt>advised by</dt>
+      <dd>Golan Levin, Ioannis Gkioulekas</dd>
+      <dt>in collaboration with</dt>
+      <dd>Getty Villa Imaging Studios</dd>
+      <dt>links</dt>
+      <dd>
+        <a href="https://lovvipop.substack.com/p/a-week-exploring-the-getty-collection" target="_blank" rel="noopener">substack writeup →</a>
+      </dd>
+    </dl>
+
+    <section class="project-gallery-section">
+      <div class="gallery gallery--3col">
+        <img src="images/graphics/getty/IMG_7469.JPG" alt="" loading="lazy" />
+        <img src="images/graphics/getty/IMG_7515.JPG" alt="" loading="lazy" />
+        <img src="images/graphics/getty/IMG_7590.JPG" alt="" loading="lazy" />
+        <img src="images/graphics/getty/IMG_7609.JPG" alt="" loading="lazy" />
+        <img src="images/graphics/getty/IMG_7616.JPG" alt="" loading="lazy" />
+        <img src="images/graphics/getty/Z_vis_masked.png" alt="" loading="lazy" />
+        <img src="images/graphics/3dgs_fabrication/DSC08730.JPG" alt="" loading="lazy" />
+        <img src="images/graphics/3dgs_fabrication/IMG_9543.JPG" alt="" loading="lazy" />
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Lorie Chen</p>
+  </footer>
+
+</body>
+</html>

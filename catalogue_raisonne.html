@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>catalogue raisonné — lorie's corner</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="work.html">← work</a>
+    </nav>
+    <div class="hero">
+      <h1>catalogue raisonné</h1>
+      <p class="tagline">3D Gaussian Splatting &middot; web &middot; 2025&ndash;2026</p>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="project-writeup">
+      <p>
+        Over two years my studio and bedroom at CMU accumulated a specific kind of density —
+        things placed, moved, replaced, forgotten. The arrangement of the space was an ongoing
+        record of how institutional life reshapes daily habits. At the end, before I left, I
+        scanned it.
+      </p>
+      <p>
+        Capture used Scaniverse on an iPhone (LiDAR + visual SLAM), with 3D Gaussian Splatting
+        trained from the resulting point cloud. The harder problem was making the result
+        navigable and legible. I wanted each object to be queryable — not labeled by hand,
+        but surfaced through the geometry of the space itself.
+      </p>
+      <p>
+        The segmentation pipeline weighs surface normals at 2.5&times; position features to
+        identify object boundaries in a densely-packed scene, then applies HDBSCAN clustering,
+        CLIP for non-taxonomic semantic queries, and SAM for 2D instance masks. Visibility
+        scoring prunes floater Gaussians in free space. The interface avoids gallery conventions:
+        it's a command-line-style filesystem with typewriter reveals and first-person navigation.
+        Objects appear as evidence, not displays.
+      </p>
+      <p>
+        Conceptually the work sits with Tracey Emin's <em>My Bed</em> and Gala Porras-Kim's
+        archival practice — the idea that a room, documented thoroughly enough, becomes a
+        primary source.
+      </p>
+    </section>
+
+    <dl class="project-info">
+      <dt>advised by</dt>
+      <dd>Ioannis Gkioulekas</dd>
+      <dt>built with</dt>
+      <dd>spark.js (World Labs), Three.js, HDBSCAN, CLIP, SAM</dd>
+      <dt>part of</dt>
+      <dd>BXA Capstone program, Carnegie Mellon University</dd>
+      <dt>links</dt>
+      <dd>
+        <a href="https://room.loriechen.com" target="_blank" rel="noopener">live experience →</a><br />
+        <a href="https://lovvipop.substack.com/p/a-room" target="_blank" rel="noopener">substack writeup →</a>
+      </dd>
+    </dl>
+
+    <section class="project-gallery-section">
+      <div class="gallery gallery--3col">
+        <img src="images/artsy_fartsy/IMG_2604.JPG" alt="" loading="lazy" />
+        <img src="images/artsy_fartsy/IMG_9165.JPG" alt="" loading="lazy" />
+        <img src="images/artsy_fartsy/IMG_9105.JPG" alt="" loading="lazy" />
+        <img src="images/artsy_fartsy/IMG_9024.JPG" alt="" loading="lazy" />
+        <img src="images/artsy_fartsy/IMG_9691.JPG" alt="" loading="lazy" />
+        <img src="images/artsy_fartsy/7026E0F6-D198-40EA-B8E7-68CFD37A5E90.jpg" alt="" loading="lazy" />
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Lorie Chen</p>
+  </footer>
+
+</body>
+</html>

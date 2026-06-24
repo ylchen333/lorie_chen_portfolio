@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>lorie's corner</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 </head>
 <body>
 
   <header>
     <nav>
       <a href="#about">about</a>
-      <a href="#work">work</a>
+      <a href="work.html">work</a>
       <a href="#experience">experience</a>
       <a href="#contact">contact</a>
     </nav>
@@ -26,85 +27,25 @@
     <section id="about">
       <h2>about</h2>
       <p>
-        Hi, I'm Lorie Chen — a rising senior at Carnegie Mellon University studying Computer Science and Fine Art.
+        Hi, I'm Lorie Chen — freshly graduated from Carnegie Mellon University with a Bachelor's in Computer Science and Fine Arts.
         Based in Pittsburgh. Interested in shiny things and radiance fields.
         I wander around the city, take pictures, and occasionally make plotters do things.
       </p>
     </section>
 
-    <section id="work">
-      <h2>work</h2>
-
-      <div class="project">
-        <div class="project-header">
-          <a href="https://lovvipop.substack.com/p/a-room" target="_blank" rel="noopener" class="project-title">a room</a>
-          <span class="project-date">May 2026</span>
-        </div>
-        <p class="project-tags">3D Gaussian Splatting &middot; HDBSCAN &middot; CLIP &middot; SAM &middot; WebGL</p>
-        <p>
-          An interactive archive of my CMU studio and bedroom, captured via 3D Gaussian splatting.
-          A segmentation pipeline using surface normals, CLIP queries, and SAM masks makes each object
-          searchable as evidence of how institutional life reshapes a space. Rendered in the browser
-          with a command-line-style interface.
-        </p>
+    <section id="gallery" aria-label="artwork">
+      <div class="gallery">
+        <img src="images/artsy_fartsy/IMG_8281.jpeg" alt="" loading="lazy" />
+        <img src="images/artsy_fartsy/DSC09946.JPG" alt="" loading="lazy" />
+        <img src="images/artsy_fartsy/IMG_8283.jpeg" alt="" loading="lazy" />
+        <img src="images/artsy_fartsy/IMG_9105.JPG" alt="" loading="lazy" />
+        <img src="images/artsy_fartsy/DSC09951.JPG" alt="" loading="lazy" />
+        <img src="images/artsy_fartsy/IMG_6858.JPG" alt="" loading="lazy" />
+        <img src="images/artsy_fartsy/IMG_3826.JPG" alt="" loading="lazy" />
+        <img src="images/artsy_fartsy/IMG_9691.JPG" alt="" loading="lazy" />
+        <img src="images/artsy_fartsy/IMG_9024.JPG" alt="" loading="lazy" />
+        <img src="images/artsy_fartsy/IMG_6920.JPG" alt="" loading="lazy" />
       </div>
-
-      <div class="project">
-        <div class="project-header">
-          <a href="https://lovvipop.substack.com/p/a-week-exploring-the-getty-collection" target="_blank" rel="noopener" class="project-title">a week exploring the Getty collection</a>
-          <span class="project-date">Apr 2026</span>
-        </div>
-        <p class="project-tags">Confocal Stereo &middot; Computational Photography &middot; Cultural Heritage</p>
-        <p>
-          A week at the Getty Villa photographing cameo gems to test confocal stereo &mdash; a
-          focus-stacking technique for non-invasive 3D shape extraction &mdash; using the institution's
-          existing Phase One equipment. Translucent gemstones violated diffuse surface assumptions;
-          relief-carved stone altars emerged as the more promising subject.
-        </p>
-      </div>
-
-      <div class="project">
-        <div class="project-header">
-          <a href="https://lovvipop.substack.com/p/capstonefinal-undergraduate-program" target="_blank" rel="noopener" class="project-title">dead things in jars</a>
-          <span class="project-date">Mar 2026</span>
-        </div>
-        <p class="project-tags">3D Gaussian Splatting &middot; Polycam &middot; Natural History</p>
-        <p>
-          3D Gaussian splatting of wet specimens at the Carnegie Museum of Natural History and
-          the Center for PostNatural History. 3DGS turns out to be unusually well-suited to
-          shiny, transparent, and complicated scenes &mdash; which is exactly what a jar of preserved
-          biology is.
-        </p>
-      </div>
-
-      <div class="project">
-        <div class="project-header">
-          <a href="https://lovvipop.substack.com/p/dashcam-explorations" target="_blank" rel="noopener" class="project-title">dashcam explorations</a>
-          <span class="project-date">Feb 2026</span>
-        </div>
-        <p class="project-tags">SAM2 &middot; OpenCV &middot; Novel View Synthesis &middot; Spark.js</p>
-        <p>
-          Algorithmic analysis of dashcam footage from Midwest and Pittsburgh drives. Text-prompted
-          segmentation with SAM3, lens distortion correction via OpenCV chessboard calibration,
-          and 3D Gaussian splat reconstruction from vehicle motion. Snow patterns (sneckdowns)
-          as traces of human presence.
-        </p>
-      </div>
-
-      <div class="project">
-        <div class="project-header">
-          <a href="https://lovvipop.substack.com/p/a-dash-cam-is-worth-a-1000000-words" target="_blank" rel="noopener" class="project-title">a dash cam is worth a 1,000,000 words</a>
-          <span class="project-date">Jan 2026</span>
-        </div>
-        <p class="project-tags">Python &middot; SAM &middot; vsketch &middot; vpype &middot; HP Draftmaster Plotter</p>
-        <p>
-          Final project for Golan Levin's Drawing with Machines studio at CMU. Slit scans of
-          dashcam footage from ten 10-hour road trips &mdash; swerves, towing incidents, snowstorms &mdash;
-          processed through SAM segmentation and rendered as plotter drawings on Yupo paper with
-          watercolor pens.
-        </p>
-      </div>
-
     </section>
 
     <section id="experience">
@@ -112,23 +53,46 @@
 
       <div class="entry">
         <div class="entry-meta">
-          <span class="entry-title">Research Engineer Intern</span>
-          <span class="entry-place">Adobe Research</span>
+          <span class="entry-title">Research Assistant</span>
+          <span class="entry-place">Studio for Creative Inquiry, The School of Art at CMU &mdash; Nov 2024&ndash;Present</span>
         </div>
-        <p>
-          Research internship under Oscar Dadfar and John Nelson.
-        </p>
+        <ul class="entry-bullets">
+          <li>Building interactive agentic interfaces in JavaScript/p5.js for real-time interaction with Gemini and ComfyUI-based generative AI models.</li>
+          <li>Extending ComfyUI pipelines to integrate state-of-the-art generative AI models for new research and creative workflows.</li>
+          <li>Developing real-time robot arm control workflows and 3D Gaussian Splatting guidelines for student onboarding.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-meta">
+          <span class="entry-title">Teaching Assistant</span>
+          <span class="entry-place">The School of Art at CMU &mdash; Aug&ndash;Dec 2025</span>
+        </div>
+        <ul class="entry-bullets">
+          <li>Designed and built 5+ interactive web interfaces for real-time user interaction with AI models including Gemini, ComfyUI pipelines, and vocal ML systems.</li>
+          <li>Extended open-source p5.js ComfyUI libraries to support cloud-based RunComfy instances.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-meta">
+          <span class="entry-title">Research Engineer Intern</span>
+          <span class="entry-place">Adobe Research &mdash; May&ndash;Aug 2025</span>
+        </div>
+        <ul class="entry-bullets">
+          <li>Developed novel AI video and 3D processing workflows for After Effects in C++, contributing to unannounced research features.</li>
+        </ul>
       </div>
 
       <div class="entry">
         <div class="entry-meta">
           <span class="entry-title">Research Assistant</span>
-          <span class="entry-place">The Robotics Institute, Carnegie Mellon University &mdash; Jan 2024&ndash;Present</span>
+          <span class="entry-place">The Robotics Institute at CMU &mdash; Feb&ndash;Dec 2024</span>
         </div>
-        <p>
-          Working on the <a href="https://github.com/cmubig/Frida" target="_blank" rel="noopener">Frida</a> project, mentored by Peter Schaldenbrand.
-          Research at the intersection of robotics and visual art.
-        </p>
+        <ul class="entry-bullets">
+          <li>Enhanced user experience and robot perception for the CoFRIDA robotic painting system using OnShape and 3D printing.</li>
+          <li>Demonstrated new capabilities at IEEE RO-MAN 2024 to an audience of 50+ and presented to a panel of expert judges.</li>
+        </ul>
       </div>
 
       <div class="entry">
