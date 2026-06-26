@@ -1,0 +1,11 @@
+.history/
+*.mp4
+*.MP4
+*.MOV
+*.mov
+*.DS_Store
+
+# Worker
+worker/node_modules/
+worker/.wrangler/
+worker/.dev.vars

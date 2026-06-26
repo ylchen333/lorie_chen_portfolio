@@ -1,0 +1,17 @@
+name             = "spotify-now-playing"
+main             = "src/index.js"
+compatibility_date = "2024-09-23"
+
+# After deploying, the Worker URL will be:
+#   https://spotify-now-playing.<your-account>.workers.dev
+#
+# 1. Set that URL + "/callback" as the redirect URI in your Spotify app dashboard
+# 2. Update SPOTIFY_REDIRECT_URI below to match exactly
+
+[vars]
+SPOTIFY_REDIRECT_URI = "https://spotify-now-playing.loriechen333.workers.dev/callback"
+
+# Secrets — set these via CLI (never commit values):
+#   npx wrangler secret put SPOTIFY_CLIENT_ID
+#   npx wrangler secret put SPOTIFY_CLIENT_SECRET
+#   npx wrangler secret put SPOTIFY_REFRESH_TOKEN   ← added after /auth flow

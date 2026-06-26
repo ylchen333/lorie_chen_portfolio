@@ -7,14 +7,14 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.ico" />
 </head>
-<body>
+<body class="wide">
 
   <header>
     <nav>
       <a href="index.html">home</a>
       <a href="work.html">work</a>
-      <a href="index.html#experience">experience</a>
-      <a href="index.html#contact">contact</a>
+      <a href="about.html">about</a>
+      <a href="playlab.html">playlab</a>
     </nav>
     <div class="hero">
       <h1>a dash cam is worth a 1,000,000 words</h1>
@@ -24,54 +24,72 @@
 
   <main>
 
-    <section class="project-writeup">
-      <p>
-        This semester I made ten 10-hour road trips: Pittsburgh to Michigan, Michigan to Chicago,
-        back again. A dashcam ran the whole time. I left it on through a towing incident, two
-        snowstorms, a swerve on I-76. The footage accumulated.
-      </p>
-      <p>
-        For Golan Levin's Drawing with Machines studio I wanted to make a record of that driving —
-        not documentary, not navigation data, but the physical fact of it. I extracted slit scans
-        from the footage using ffmpeg (one column per frame, concatenated across time), applied
-        SAM segmentation to isolate moving elements, and generated SVG files with halftone
-        hatching via vsketch and vpype. The SVGs were then plotted on an HP Draftmaster and a
-        USCutter MH871 using watercolor pens, Posca markers, and Micron pens.
-      </p>
-      <p>
-        Yupo paper with watercolor proved most effective: the synthetic surface takes pigment
-        differently than paper, and the plotter's consistent pressure produces a quality of mark
-        I couldn't replicate by hand. The images look like damaged signal or compressed
-        memory — which is approximately what they are.
-      </p>
-    </section>
+    <div class="project-layout">
 
-    <dl class="project-info">
-      <dt>course</dt>
-      <dd>Drawing with Machines, Prof. Golan Levin, Carnegie Mellon University</dd>
-      <dt>tools</dt>
-      <dd>Python, SAM, ffmpeg, vsketch, vpype, HP Draftmaster, USCutter MH871-MK2</dd>
-      <dt>materials</dt>
-      <dd>Watercolor pens, Posca markers, Micron pens &middot; Yupo paper, primed canvas</dd>
-      <dt>related work</dt>
-      <dd><a href="dashcam-explorations.html">dashcam explorations</a></dd>
-      <dt>links</dt>
-      <dd>
-        <a href="https://lovvipop.substack.com/p/a-dash-cam-is-worth-a-1000000-words" target="_blank" rel="noopener">substack writeup →</a>
-      </dd>
-    </dl>
+      <aside class="project-sidebar">
+        <dl class="project-info">
+          <dt>course</dt>
+          <dd>Drawing with Machines, Prof. Golan Levin, Carnegie Mellon University</dd>
+          <dt>tools</dt>
+          <dd>Python, SAM, ffmpeg, vsketch, vpype, HP Draftmaster, USCutter MH871-MK2</dd>
+          <dt>materials</dt>
+          <dd>Watercolor pens, Posca markers, Micron pens &middot; Yupo paper, primed canvas</dd>
+          <dt>related work</dt>
+          <dd><a href="dashcam-explorations.html">dashcam explorations</a></dd>
+          <dt>links</dt>
+          <dd>
+            <a href="https://lovvipop.substack.com/p/a-dash-cam-is-worth-a-1000000-words" target="_blank" rel="noopener">substack writeup →</a>
+          </dd>
+        </dl>
+      </aside>
 
-    <section class="project-gallery-section">
-      <div class="gallery gallery--3col">
-        <img src="images/plotting_art/dashcam/DSCF2414.JPG" alt="" loading="lazy" />
-        <img src="images/plotting_art/dashcam/DSCF2425.JPG" alt="" loading="lazy" />
-        <img src="images/plotting_art/dashcam/DSCF2454.JPG" alt="" loading="lazy" />
-        <img src="images/plotting_art/dashcam/DSCF2473.JPG" alt="" loading="lazy" />
-        <img src="images/plotting_art/dashcam/DSCF2746.JPG" alt="" loading="lazy" />
-        <img src="images/plotting_art/dashcam/DSCF2751.JPG" alt="" loading="lazy" />
-        <img src="images/plotting_art/dashcam/DSCF2771.JPG" alt="" loading="lazy" />
+      <div class="project-content">
+        <section class="project-writeup">
+          <p>
+            This semester I made ten 10-hour road trips: Pittsburgh to Michigan, Michigan to
+            Chicago, back again. A dashcam ran the whole time. I left it on through a towing
+            incident, two snowstorms, a swerve on I-76. The footage accumulated.
+          </p>
+          <img class="inline-img right" src="images/plotting_art/dashcam/DSCF2414.JPG" alt="" loading="lazy" />
+          <p>
+            For Golan Levin's Drawing with Machines studio I wanted to make a record of that
+            driving &mdash; not documentary, not navigation data, but the physical fact of it.
+            I extracted slit scans from the footage using ffmpeg (one column per frame,
+            concatenated across time), applied SAM segmentation to isolate moving elements, and
+            generated SVG files with halftone hatching via vsketch and vpype. The SVGs were
+            then plotted on an HP Draftmaster and a USCutter MH871 using watercolor pens,
+            Posca markers, and Micron pens.
+          </p>
+          <img class="inline-img right" src="images/plotting_art/dashcam/DSCF2746.JPG" alt="" loading="lazy" />
+          <p>
+            Yupo paper with watercolor proved most effective: the synthetic surface takes pigment
+            differently than paper, and the plotter's consistent pressure produces a quality of
+            mark I couldn't replicate by hand. The images look like damaged signal or compressed
+            memory &mdash; which is approximately what they are.
+          </p>
+        </section>
       </div>
-    </section>
+
+    </div>
+
+    <div class="carousel-wrap">
+      <h2>documentation</h2>
+      <div class="carousel">
+        <div class="carousel-track">
+          <img src="images/plotting_art/dashcam/DSCF2414.JPG" alt="" loading="lazy" />
+          <img src="images/plotting_art/dashcam/DSCF2425.JPG" alt="" loading="lazy" />
+          <img src="images/plotting_art/dashcam/DSCF2454.JPG" alt="" loading="lazy" />
+          <img src="images/plotting_art/dashcam/DSCF2473.JPG" alt="" loading="lazy" />
+          <img src="images/plotting_art/dashcam/DSCF2746.JPG" alt="" loading="lazy" />
+          <img src="images/plotting_art/dashcam/DSCF2751.JPG" alt="" loading="lazy" />
+          <img src="images/plotting_art/dashcam/DSCF2771.JPG" alt="" loading="lazy" />
+        </div>
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-prev" aria-label="previous">&larr;</button>
+        <button class="carousel-next" aria-label="next">&rarr;</button>
+      </div>
+    </div>
 
   </main>
 
@@ -79,5 +97,6 @@
     <p>&copy; 2026 Lorie Chen</p>
   </footer>
 
+  <script src="main.js"></script>
 </body>
 </html>

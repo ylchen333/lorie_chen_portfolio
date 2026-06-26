@@ -7,14 +7,14 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.ico" />
 </head>
-<body>
+<body class="wide">
 
   <header>
     <nav>
       <a href="index.html">home</a>
       <a href="work.html">work</a>
-      <a href="index.html#experience">experience</a>
-      <a href="index.html#contact">contact</a>
+      <a href="about.html">about</a>
+      <a href="playlab.html">playlab</a>
     </nav>
     <div class="hero">
       <h1>dead things in jars</h1>
@@ -24,54 +24,71 @@
 
   <main>
 
-    <section class="project-writeup">
-      <p>
-        Traditional photogrammetry fails on glass and liquid. The reflective and translucent
-        surfaces that make wet specimens so visually compelling produce garbage point clouds —
-        scattered geometry, missing detail, surfaces that aren't there. I started this project
-        to figure out what it would actually take to digitally preserve natural history collections
-        housed in ethanol.
-      </p>
-      <p>
-        The answer turned out to be 3D Gaussian Splatting. Unlike NeRFs, which bake scene
-        appearance into a neural network, 3DGS represents a scene as oriented Gaussian "blobs,"
-        each with its own opacity and color. It's unusually good at shiny, transparent,
-        complicated scenes — exactly the conditions inside a specimen jar.
-      </p>
-      <p>
-        I worked with collections at the Carnegie Museum of Natural History and the Center for
-        PostNatural History, capturing specimens with Polycam and processing them through both
-        commercial (Postshot) and open-source (nerfstudio, COLMAP) pipelines. The project is
-        ongoing: the goal is a workflow robust enough to hand off to collection stewards who
-        don't want to think about Gaussians.
-      </p>
-    </section>
+    <div class="project-layout">
 
-    <dl class="project-info">
-      <dt>with</dt>
-      <dd>Golan Levin, Nica Ross, Rich Pell, Mariana Marques, Leo Lin, Oscar Dadfar, Jose Gomes</dd>
-      <dt>partners</dt>
-      <dd>Center for PostNatural History, Carnegie Museum of Natural History</dd>
-      <dt>supported by</dt>
-      <dd>FRFF Microgrant, BXA Small Grants</dd>
-      <dt>links</dt>
-      <dd>
-        <a href="https://lovvipop.substack.com/p/capstonefinal-undergraduate-program" target="_blank" rel="noopener">substack writeup →</a>
-      </dd>
-    </dl>
+      <aside class="project-sidebar">
+        <dl class="project-info">
+          <dt>with</dt>
+          <dd>Golan Levin, Nica Ross, Rich Pell, Mariana Marques, Leo Lin, Oscar Dadfar, Jose Gomes</dd>
+          <dt>partners</dt>
+          <dd>Center for PostNatural History, Carnegie Museum of Natural History</dd>
+          <dt>supported by</dt>
+          <dd>FRFF Microgrant, BXA Small Grants</dd>
+          <dt>links</dt>
+          <dd>
+            <a href="https://lovvipop.substack.com/p/capstonefinal-undergraduate-program" target="_blank" rel="noopener">substack writeup →</a>
+          </dd>
+        </dl>
+      </aside>
 
-    <section class="project-gallery-section">
-      <div class="gallery gallery--3col">
-        <img src="images/graphics/dead_things_in_jars/DSC06310.JPG" alt="" loading="lazy" />
-        <img src="images/graphics/dead_things_in_jars/IMG_6552.JPG" alt="" loading="lazy" />
-        <img src="images/graphics/dead_things_in_jars/IMG_5985.JPG" alt="" loading="lazy" />
-        <img src="images/graphics/dead_things_in_jars/frog_0003.jpg" alt="" loading="lazy" />
-        <img src="images/graphics/dead_things_in_jars/many_frog_snapshot0001.jpg" alt="" loading="lazy" />
-        <img src="images/graphics/dead_things_in_jars/IMG_6757.JPG" alt="" loading="lazy" />
-        <img src="images/graphics/dead_things_in_jars/unnamed-5.png" alt="" loading="lazy" />
-        <img src="images/graphics/dead_things_in_jars/IMG_6094.JPG" alt="" loading="lazy" />
+      <div class="project-content">
+        <section class="project-writeup">
+          <p>
+            Traditional photogrammetry fails on glass and liquid. The reflective and translucent
+            surfaces that make wet specimens so visually compelling produce garbage point clouds —
+            scattered geometry, missing detail, surfaces that aren't there. I started this project
+            to figure out what it would actually take to digitally preserve natural history
+            collections housed in ethanol.
+          </p>
+          <img class="inline-img right" src="images/graphics/dead_things_in_jars/DSC06310.JPG" alt="" loading="lazy" />
+          <p>
+            The answer turned out to be 3D Gaussian Splatting. Unlike NeRFs, which bake scene
+            appearance into a neural network, 3DGS represents a scene as oriented Gaussian
+            "blobs," each with its own opacity and color. It's unusually good at shiny,
+            transparent, complicated scenes — exactly the conditions inside a specimen jar.
+          </p>
+          <img class="inline-img right" src="images/graphics/dead_things_in_jars/frog_0003.jpg" alt="" loading="lazy" />
+          <p>
+            I worked with collections at the Carnegie Museum of Natural History and the Center
+            for PostNatural History, capturing specimens with Polycam and processing them through
+            both commercial (Postshot) and open-source (nerfstudio, COLMAP) pipelines. The
+            project is ongoing: the goal is a workflow robust enough to hand off to collection
+            stewards who don't want to think about Gaussians.
+          </p>
+        </section>
       </div>
-    </section>
+
+    </div>
+
+    <div class="carousel-wrap">
+      <h2>documentation</h2>
+      <div class="carousel">
+        <div class="carousel-track">
+          <img src="images/graphics/dead_things_in_jars/DSC06310.JPG" alt="" loading="lazy" />
+          <img src="images/graphics/dead_things_in_jars/IMG_6552.JPG" alt="" loading="lazy" />
+          <img src="images/graphics/dead_things_in_jars/IMG_5985.JPG" alt="" loading="lazy" />
+          <img src="images/graphics/dead_things_in_jars/frog_0003.jpg" alt="" loading="lazy" />
+          <img src="images/graphics/dead_things_in_jars/many_frog_snapshot0001.jpg" alt="" loading="lazy" />
+          <img src="images/graphics/dead_things_in_jars/IMG_6757.JPG" alt="" loading="lazy" />
+          <img src="images/graphics/dead_things_in_jars/unnamed-5.png" alt="" loading="lazy" />
+          <img src="images/graphics/dead_things_in_jars/IMG_6094.JPG" alt="" loading="lazy" />
+        </div>
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-prev" aria-label="previous">&larr;</button>
+        <button class="carousel-next" aria-label="next">&rarr;</button>
+      </div>
+    </div>
 
   </main>
 
@@ -79,5 +96,6 @@
     <p>&copy; 2026 Lorie Chen</p>
   </footer>
 
+  <script src="main.js"></script>
 </body>
 </html>

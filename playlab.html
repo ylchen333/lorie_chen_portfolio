@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>playlab — lorie's corner</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" />
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="index.html">home</a>
+      <a href="work.html">work</a>
+      <a href="about.html">about</a>
+      <a href="playlab.html">playlab</a>
+    </nav>
+    <div class="hero">
+      <h1>playlab</h1>
+      <p class="tagline">one-off experiments in p5.js, comfyui, and plotting</p>
+    </div>
+  </header>
+
+  <main>
+
+    <div class="playlab-filters">
+      <button class="filter-btn active" data-filter="all">all</button>
+      <button class="filter-btn" data-filter="plotting">plotting</button>
+      <button class="filter-btn" data-filter="p5.js">p5.js</button>
+      <button class="filter-btn" data-filter="comfyui">comfyui</button>
+    </div>
+
+    <div class="playlab-grid">
+
+      <div class="experiment" data-title="reaction diffusion contours" data-tag="plotting">
+        <img class="exp-thumb" src="images/plotting_art/reaction_diffusion_contours/AK2A6369.JPG" alt="" loading="lazy" />
+        <div class="exp-label">
+          <span class="exp-name">reaction diffusion contours</span>
+          <span class="exp-tag">plotting</span>
+        </div>
+        <div class="exp-gallery">
+          <img src="images/plotting_art/reaction_diffusion_contours/AK2A6369.JPG" alt="" />
+          <img src="images/plotting_art/reaction_diffusion_contours/AK2A6372.JPG" alt="" />
+          <img src="images/plotting_art/reaction_diffusion_contours/AK2A6380.JPG" alt="" />
+          <img src="images/plotting_art/reaction_diffusion_contours/AK2A6395.JPG" alt="" />
+          <img src="images/plotting_art/reaction_diffusion_contours/AK2A6413.JPG" alt="" />
+          <img src="images/plotting_art/reaction_diffusion_contours/AK2A6419.JPG" alt="" />
+          <img src="images/plotting_art/reaction_diffusion_contours/AK2A6423.JPG" alt="" />
+          <img src="images/plotting_art/reaction_diffusion_contours/AK2A6424.JPG" alt="" />
+          <img src="images/plotting_art/reaction_diffusion_contours/AK2A6425.JPG" alt="" />
+          <img src="images/plotting_art/reaction_diffusion_contours/AK2A6427.JPG" alt="" />
+          <img src="images/plotting_art/reaction_diffusion_contours/AK2A6430.JPG" alt="" />
+          <img src="images/plotting_art/reaction_diffusion_contours/AK2A6434.JPG" alt="" />
+        </div>
+      </div>
+
+      <div class="experiment" data-title="plotter typography" data-tag="plotting">
+        <img class="exp-thumb" src="images/artsy_fartsy/7026E0F6-D198-40EA-B8E7-68CFD37A5E90.jpg" alt="" loading="lazy" />
+        <div class="exp-label">
+          <span class="exp-name">plotter typography</span>
+          <span class="exp-tag">plotting</span>
+        </div>
+        <div class="exp-gallery">
+          <img src="images/artsy_fartsy/7026E0F6-D198-40EA-B8E7-68CFD37A5E90.jpg" alt="" />
+          <img src="images/artsy_fartsy/IMG_6858.JPG" alt="" />
+          <img src="images/artsy_fartsy/IMG_6859.JPG" alt="" />
+          <img src="images/artsy_fartsy/IMG_6860.JPG" alt="" />
+          <img src="images/artsy_fartsy/IMG_6861.JPG" alt="" />
+          <img src="images/artsy_fartsy/IMG_6862.JPG" alt="" />
+          <img src="images/artsy_fartsy/IMG_6863.JPG" alt="" />
+          <img src="images/artsy_fartsy/IMG_6864.JPG" alt="" />
+        </div>
+      </div>
+
+      <div class="experiment" data-title="dash cam slit scans" data-tag="plotting">
+        <img class="exp-thumb" src="images/plotting_art/dashcam/clean_slitscan.jpg" alt="" loading="lazy" />
+        <div class="exp-label">
+          <span class="exp-name">dash cam slit scans</span>
+          <span class="exp-tag">plotting</span>
+        </div>
+        <div class="exp-gallery">
+          <img src="images/plotting_art/dashcam/clean_slitscan.jpg" alt="" />
+          <img src="images/plotting_art/dashcam/highway_to_ny_color.jpg" alt="" />
+          <img src="images/plotting_art/dashcam/slitscan_left_wide.jpg" alt="" />
+          <img src="images/plotting_art/dashcam/drive_back_home_1_color.jpg" alt="" />
+        </div>
+      </div>
+
+      <!-- Add more experiments below as documentation is uploaded.
+           Copy the block structure above: data-title, data-tag (plotting / p5.js / comfyui),
+           exp-thumb, exp-label, and exp-gallery with all result images. -->
+
+    </div>
+
+  </main>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox">
+    <div class="lb-header">
+      <span class="lb-title"></span>
+      <span class="lb-tag"></span>
+      <button class="lb-close" aria-label="close">&times;</button>
+    </div>
+    <div class="lb-main">
+      <img class="lb-main-img" src="" alt="" />
+    </div>
+    <div class="lb-thumbs"></div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Lorie Chen</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -7,14 +7,14 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.ico" />
 </head>
-<body>
+<body class="wide">
 
   <header>
     <nav>
       <a href="index.html">home</a>
       <a href="work.html">work</a>
-      <a href="index.html#experience">experience</a>
-      <a href="index.html#contact">contact</a>
+      <a href="about.html">about</a>
+      <a href="playlab.html">playlab</a>
     </nav>
     <div class="hero">
       <h1>catalogue raisonné</h1>
@@ -24,58 +24,75 @@
 
   <main>
 
-    <section class="project-writeup">
-      <p>
-        Over two years my studio and bedroom at CMU accumulated a specific kind of density —
-        things placed, moved, replaced, forgotten. The arrangement of the space was an ongoing
-        record of how institutional life reshapes daily habits. At the end, before I left, I
-        scanned it.
-      </p>
-      <p>
-        Capture used Scaniverse on an iPhone (LiDAR + visual SLAM), with 3D Gaussian Splatting
-        trained from the resulting point cloud. The harder problem was making the result
-        navigable and legible. I wanted each object to be queryable — not labeled by hand,
-        but surfaced through the geometry of the space itself.
-      </p>
-      <p>
-        The segmentation pipeline weighs surface normals at 2.5&times; position features to
-        identify object boundaries in a densely-packed scene, then applies HDBSCAN clustering,
-        CLIP for non-taxonomic semantic queries, and SAM for 2D instance masks. Visibility
-        scoring prunes floater Gaussians in free space. The interface avoids gallery conventions:
-        it's a command-line-style filesystem with typewriter reveals and first-person navigation.
-        Objects appear as evidence, not displays.
-      </p>
-      <p>
-        Conceptually the work sits with Tracey Emin's <em>My Bed</em> and Gala Porras-Kim's
-        archival practice — the idea that a room, documented thoroughly enough, becomes a
-        primary source.
-      </p>
-    </section>
+    <div class="project-layout">
 
-    <dl class="project-info">
-      <dt>advised by</dt>
-      <dd>Ioannis Gkioulekas</dd>
-      <dt>built with</dt>
-      <dd>spark.js (World Labs), Three.js, HDBSCAN, CLIP, SAM</dd>
-      <dt>part of</dt>
-      <dd>BXA Capstone program, Carnegie Mellon University</dd>
-      <dt>links</dt>
-      <dd>
-        <a href="https://room.loriechen.com" target="_blank" rel="noopener">live experience →</a><br />
-        <a href="https://lovvipop.substack.com/p/a-room" target="_blank" rel="noopener">substack writeup →</a>
-      </dd>
-    </dl>
+      <aside class="project-sidebar">
+        <dl class="project-info">
+          <dt>advised by</dt>
+          <dd>Ioannis Gkioulekas</dd>
+          <dt>built with</dt>
+          <dd>spark.js (World Labs), Three.js, HDBSCAN, CLIP, SAM</dd>
+          <dt>part of</dt>
+          <dd>BXA Capstone, Carnegie Mellon University</dd>
+          <dt>links</dt>
+          <dd>
+            <a href="https://room.loriechen.com" target="_blank" rel="noopener">live experience →</a><br />
+            <a href="https://lovvipop.substack.com/p/a-room" target="_blank" rel="noopener">substack writeup →</a>
+          </dd>
+        </dl>
+      </aside>
 
-    <section class="project-gallery-section">
-      <div class="gallery gallery--3col">
-        <img src="images/artsy_fartsy/IMG_2604.JPG" alt="" loading="lazy" />
-        <img src="images/artsy_fartsy/IMG_9165.JPG" alt="" loading="lazy" />
-        <img src="images/artsy_fartsy/IMG_9105.JPG" alt="" loading="lazy" />
-        <img src="images/artsy_fartsy/IMG_9024.JPG" alt="" loading="lazy" />
-        <img src="images/artsy_fartsy/IMG_9691.JPG" alt="" loading="lazy" />
-        <img src="images/artsy_fartsy/7026E0F6-D198-40EA-B8E7-68CFD37A5E90.jpg" alt="" loading="lazy" />
+      <div class="project-content">
+        <section class="project-writeup">
+          <p>
+            Over two years my studio and bedroom at CMU accumulated a specific kind of density —
+            things placed, moved, replaced, forgotten. The arrangement of the space was an ongoing
+            record of how institutional life reshapes daily habits. At the end, before I left, I
+            scanned it.
+          </p>
+          <img class="inline-img right" src="images/artsy_fartsy/IMG_2604.JPG" alt="" loading="lazy" />
+          <p>
+            Capture used Scaniverse on an iPhone (LiDAR + visual SLAM), with 3D Gaussian Splatting
+            trained from the resulting point cloud. The harder problem was making the result
+            navigable and legible. I wanted each object to be queryable — not labeled by hand,
+            but surfaced through the geometry of the space itself.
+          </p>
+          <p>
+            The segmentation pipeline weighs surface normals at 2.5&times; position features to
+            identify object boundaries in a densely-packed scene, then applies HDBSCAN clustering,
+            CLIP for non-taxonomic semantic queries, and SAM for 2D instance masks. Visibility
+            scoring prunes floater Gaussians in free space.
+          </p>
+          <img class="inline-img right" src="images/artsy_fartsy/IMG_9165.JPG" alt="" loading="lazy" />
+          <p>
+            The interface avoids gallery conventions: it's a command-line-style filesystem with
+            typewriter reveals and first-person navigation. Objects appear as evidence, not
+            displays. Conceptually the work sits with Tracey Emin's <em>My Bed</em> and Gala
+            Porras-Kim's archival practice &mdash; the idea that a room, documented thoroughly
+            enough, becomes a primary source.
+          </p>
+        </section>
       </div>
-    </section>
+
+    </div>
+
+    <div class="carousel-wrap">
+      <h2>documentation</h2>
+      <div class="carousel">
+        <div class="carousel-track">
+          <img src="images/artsy_fartsy/IMG_2604.JPG" alt="" loading="lazy" />
+          <img src="images/artsy_fartsy/IMG_9165.JPG" alt="" loading="lazy" />
+          <img src="images/artsy_fartsy/IMG_9105.JPG" alt="" loading="lazy" />
+          <img src="images/artsy_fartsy/IMG_9024.JPG" alt="" loading="lazy" />
+          <img src="images/artsy_fartsy/IMG_9691.JPG" alt="" loading="lazy" />
+          <img src="images/artsy_fartsy/7026E0F6-D198-40EA-B8E7-68CFD37A5E90.jpg" alt="" loading="lazy" />
+        </div>
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-prev" aria-label="previous">&larr;</button>
+        <button class="carousel-next" aria-label="next">&rarr;</button>
+      </div>
+    </div>
 
   </main>
 
@@ -83,5 +100,6 @@
     <p>&copy; 2026 Lorie Chen</p>
   </footer>
 
+  <script src="main.js"></script>
 </body>
 </html>

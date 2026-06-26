@@ -310,9 +310,430 @@ a:hover {
   break-inside: avoid;
 }
 
+/* ── Wide layout (project pages) ── */
+
+body.wide header,
+body.wide main,
+body.wide footer {
+  max-width: 940px;
+}
+
+/* ── Home linked gallery ── */
+
+.home-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.4rem;
+  margin-bottom: 3.5rem;
+}
+
+.home-gallery a {
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 1;
+}
+
+.home-gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.2s;
+}
+
+.home-gallery a:hover img {
+  opacity: 0.8;
+}
+
+/* ── Project page two-column layout ── */
+
+.project-layout {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 3.5rem;
+}
+
+.project-sidebar {
+  position: sticky;
+  top: 2rem;
+  align-self: start;
+}
+
+.project-sidebar .project-info {
+  border-top: none;
+  padding-top: 0;
+  margin-bottom: 0;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+.project-sidebar .project-info dt {
+  margin-top: 1.25rem;
+  font-size: 0.7rem;
+}
+
+.project-sidebar .project-info dt:first-child {
+  margin-top: 0;
+}
+
+.project-sidebar .project-info dd {
+  font-size: 0.88rem;
+}
+
+.project-content .project-writeup {
+  margin-bottom: 0;
+}
+
+/* Inline floated images within writeup */
+
+.inline-img {
+  display: block;
+  margin: 1.25rem 0;
+  width: 100%;
+}
+
+.inline-img.right {
+  float: right;
+  width: 44%;
+  margin: 0.15rem 0 1rem 1.5rem;
+}
+
+.inline-img.left {
+  float: left;
+  width: 44%;
+  margin: 0.15rem 1.5rem 1rem 0;
+}
+
+.project-content::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* ── Carousel ── */
+
+.carousel-wrap {
+  border-top: 1px solid #ddd;
+  padding-top: 2rem;
+  margin-top: 3rem;
+  clear: both;
+}
+
+.carousel-wrap h2 {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: normal;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.carousel {
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 0.4rem;
+  transition: transform 0.35s ease;
+  will-change: transform;
+}
+
+.carousel-track img {
+  flex-shrink: 0;
+  width: calc(33.333% - 0.27rem);
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel-controls {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  margin-top: 0.75rem;
+}
+
+.carousel-controls button {
+  background: none;
+  border: 1px solid #ccc;
+  padding: 0.2rem 0.75rem;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text);
+}
+
+.carousel-controls button:hover {
+  border-color: var(--text);
+}
+
+/* ── Playlab ── */
+
+.playlab-filters {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.filter-btn {
+  background: none;
+  border: 1px solid #ccc;
+  padding: 0.2rem 0.75rem;
+  cursor: pointer;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  border-color: var(--text);
+  color: var(--text);
+}
+
+.playlab-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.4rem;
+}
+
+.experiment {
+  cursor: pointer;
+}
+
+.experiment img.exp-thumb {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  transition: opacity 0.2s;
+}
+
+.experiment:hover img.exp-thumb {
+  opacity: 0.78;
+}
+
+.exp-label {
+  padding: 0.4rem 0 1rem;
+}
+
+.exp-name {
+  display: block;
+  font-size: 0.88rem;
+  line-height: 1.3;
+}
+
+.exp-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+.experiment.hidden {
+  display: none;
+}
+
+.exp-gallery {
+  display: none;
+}
+
+/* ── Lightbox ── */
+
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 14, 18, 0.96);
+  z-index: 1000;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.lightbox.open {
+  display: flex;
+}
+
+.lb-header {
+  width: 100%;
+  max-width: 880px;
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 1rem;
+  color: #f2e3d0;
+  gap: 0.75rem;
+}
+
+.lb-title {
+  font-style: italic;
+  font-size: 1rem;
+  flex: 1;
+}
+
+.lb-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: #7a90a4;
+}
+
+.lb-close {
+  background: none;
+  border: none;
+  color: #7a90a4;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  padding: 0;
+  line-height: 1;
+}
+
+.lb-close:hover {
+  color: #f2e3d0;
+}
+
+.lb-main {
+  max-width: 880px;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+}
+
+.lb-main-img {
+  max-height: 64vh;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.lb-thumbs {
+  display: flex;
+  gap: 0.35rem;
+  margin-top: 1rem;
+  max-width: 880px;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+}
+
+.lb-thumbs img {
+  height: 54px;
+  width: 54px;
+  flex-shrink: 0;
+  object-fit: cover;
+  cursor: pointer;
+  opacity: 0.4;
+  transition: opacity 0.15s;
+}
+
+.lb-thumbs img.active,
+.lb-thumbs img:hover {
+  opacity: 1;
+}
+
+/* ── About page ── */
+
+.track-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid #e8e8e5;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.track-row:last-child {
+  border-bottom: none;
+}
+
+.track-row:hover .track-name {
+  color: var(--muted);
+}
+
+.track-thumb {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  object-fit: cover;
+  display: block;
+}
+
+.track-thumb--empty {
+  background: #e8e8e5;
+}
+
+.track-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.track-name {
+  font-size: 0.85rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track-artist {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.about-body p + p {
+  margin-top: 1rem;
+}
+
+.about-body {
+  margin-bottom: 2.5rem;
+}
+
+.embed-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+}
+
+.embed-block h3 {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+
+.embed-placeholder {
+  background: #f0ede8;
+  border: 1px dashed #d0cdc8;
+  padding: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+  text-align: center;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.6;
+}
+
 /* ── Mobile ── */
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   nav {
     gap: 1rem;
   }
@@ -320,5 +741,47 @@ a:hover {
   .entry-meta {
     flex-direction: column;
     gap: 0.1rem;
+  }
+
+  body.wide header,
+  body.wide main,
+  body.wide footer {
+    max-width: 100%;
+  }
+
+  .project-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .project-sidebar {
+    position: static;
+  }
+
+  .project-sidebar .project-info {
+    grid-template-columns: 7rem 1fr;
+    gap: 0.4rem 0;
+  }
+
+  .inline-img.right,
+  .inline-img.left {
+    float: none;
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .carousel-track img {
+    width: calc(80% - 0.2rem);
+  }
+
+  .playlab-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .home-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .embed-row {
+    grid-template-columns: 1fr;
   }
 }

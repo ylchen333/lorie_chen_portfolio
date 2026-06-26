@@ -7,14 +7,14 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.ico" />
 </head>
-<body>
+<body class="wide">
 
   <header>
     <nav>
       <a href="index.html">home</a>
       <a href="work.html">work</a>
-      <a href="index.html#experience">experience</a>
-      <a href="index.html#contact">contact</a>
+      <a href="about.html">about</a>
+      <a href="playlab.html">playlab</a>
     </nav>
     <div class="hero">
       <h1>dashcam explorations</h1>
@@ -24,51 +24,68 @@
 
   <main>
 
-    <section class="project-writeup">
-      <p>
-        I drive a lot. This year I drove from Pittsburgh to the Midwest several times and left
-        a dashcam running the whole way. The footage is hours of highway and weather and road
-        texture — everything a car processes automatically and nobody watches.
-      </p>
-      <p>
-        The project is an ongoing series of experiments with what you can extract computationally.
-        Slit scans collapse each frame to a single column and concatenate across time, turning
-        three hours of interstate into a single image — weather, road surface, and motion
-        compressed into a horizontal band. Text-prompted segmentation with SAM3 let me isolate
-        "snow" after a February storm. Lens distortion correction via OpenCV chessboard
-        calibration enabled 3D Gaussian splat reconstruction from the corrected frames using
-        novel view synthesis.
-      </p>
-      <p>
-        The snow segmentation produced something unexpected: sneckdowns — the informal pedestrian
-        desire paths visible in snow that show how people actually move through intersections,
-        as opposed to how the street is designed. Ghosts of human existence in footage that
-        wasn't looking for them.
-      </p>
-    </section>
+    <div class="project-layout">
 
-    <dl class="project-info">
-      <dt>tools</dt>
-      <dd>SAM2, SAM3, OpenCV, ffmpeg, Spark.js, On-the-Fly Novel View Synthesis (Inria)</dd>
-      <dt>related work</dt>
-      <dd><a href="dash-cam-words.html">a dash cam is worth a 1,000,000 words</a></dd>
-      <dt>links</dt>
-      <dd>
-        <a href="https://lovvipop.substack.com/p/dashcam-explorations" target="_blank" rel="noopener">substack writeup →</a>
-      </dd>
-    </dl>
+      <aside class="project-sidebar">
+        <dl class="project-info">
+          <dt>tools</dt>
+          <dd>SAM2, SAM3, OpenCV, ffmpeg, Spark.js, On-the-Fly Novel View Synthesis (Inria)</dd>
+          <dt>related work</dt>
+          <dd><a href="dash-cam-words.html">a dash cam is worth a 1,000,000 words</a></dd>
+          <dt>links</dt>
+          <dd>
+            <a href="https://lovvipop.substack.com/p/dashcam-explorations" target="_blank" rel="noopener">substack writeup →</a>
+          </dd>
+        </dl>
+      </aside>
 
-    <section class="project-gallery-section">
-      <div class="gallery gallery--3col">
-        <img src="images/plotting_art/dashcam/clean_slitscan.jpg" alt="" loading="lazy" />
-        <img src="images/plotting_art/dashcam/highway_to_ny_color.jpg" alt="" loading="lazy" />
-        <img src="images/plotting_art/dashcam/slitscan_left_wide.jpg" alt="" loading="lazy" />
-        <img src="images/plotting_art/dashcam/drive_back_home_1_color.jpg" alt="" loading="lazy" />
-        <img src="images/plotting_art/dashcam/all_masks_overlay.png" alt="" loading="lazy" />
-        <img src="images/plotting_art/dashcam/cachedImage.png" alt="" loading="lazy" />
-        <img src="images/plotting_art/dashcam/frame_00019.jpg" alt="" loading="lazy" />
+      <div class="project-content">
+        <section class="project-writeup">
+          <p>
+            I drive a lot. This year I drove from Pittsburgh to the Midwest several times and
+            left a dashcam running the whole way. The footage is hours of highway and weather
+            and road texture &mdash; everything a car processes automatically and nobody watches.
+          </p>
+          <img class="inline-img right" src="images/plotting_art/dashcam/clean_slitscan.jpg" alt="" loading="lazy" />
+          <p>
+            The project is an ongoing series of experiments with what you can extract
+            computationally. Slit scans collapse each frame to a single column and concatenate
+            across time, turning three hours of interstate into a single image &mdash; weather,
+            road surface, and motion compressed into a horizontal band. Text-prompted segmentation
+            with SAM3 let me isolate "snow" after a February storm. Lens distortion correction
+            via OpenCV chessboard calibration enabled 3D Gaussian splat reconstruction from the
+            corrected frames using novel view synthesis.
+          </p>
+          <img class="inline-img right" src="images/plotting_art/dashcam/all_masks_overlay.png" alt="" loading="lazy" />
+          <p>
+            The snow segmentation produced something unexpected: sneckdowns &mdash; the informal
+            pedestrian desire paths visible in snow that show how people actually move through
+            intersections, as opposed to how the street is designed. Ghosts of human existence
+            in footage that wasn't looking for them.
+          </p>
+        </section>
       </div>
-    </section>
+
+    </div>
+
+    <div class="carousel-wrap">
+      <h2>documentation</h2>
+      <div class="carousel">
+        <div class="carousel-track">
+          <img src="images/plotting_art/dashcam/clean_slitscan.jpg" alt="" loading="lazy" />
+          <img src="images/plotting_art/dashcam/highway_to_ny_color.jpg" alt="" loading="lazy" />
+          <img src="images/plotting_art/dashcam/slitscan_left_wide.jpg" alt="" loading="lazy" />
+          <img src="images/plotting_art/dashcam/drive_back_home_1_color.jpg" alt="" loading="lazy" />
+          <img src="images/plotting_art/dashcam/all_masks_overlay.png" alt="" loading="lazy" />
+          <img src="images/plotting_art/dashcam/cachedImage.png" alt="" loading="lazy" />
+          <img src="images/plotting_art/dashcam/frame_00019.jpg" alt="" loading="lazy" />
+        </div>
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-prev" aria-label="previous">&larr;</button>
+        <button class="carousel-next" aria-label="next">&rarr;</button>
+      </div>
+    </div>
 
   </main>
 
@@ -76,5 +93,6 @@
     <p>&copy; 2026 Lorie Chen</p>
   </footer>
 
+  <script src="main.js"></script>
 </body>
 </html>
