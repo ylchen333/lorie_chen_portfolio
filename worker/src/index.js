@@ -1,12 +1,12 @@
-const SPOTIFY_TOKEN_URL = 'https://accounts.spotify.com/api/token';
-const SPOTIFY_API      = 'https://api.spotify.com/v1';
+const SPOTIFY_TOKEN_URL  = 'https://accounts.spotify.com/api/token';
+const SPOTIFY_API        = 'https://api.spotify.com/v1';
+const PLAYLIST_NAME      = "recently played · lorie's corner";
 
 export default {
   async fetch(request, env) {
     const url    = new URL(request.url);
     const origin = request.headers.get('Origin') ?? '';
 
-    // Allow the portfolio domain and any Cloudflare Pages preview URLs
     const allowedOrigin =
       origin.includes('loriechen.com') || origin.includes('.pages.dev')
         ? origin
@@ -21,26 +21,32 @@ export default {
     if (request.method === 'OPTIONS') return new Response(null, { headers: cors });
 
     switch (url.pathname) {
-      case '/auth':            return handleAuth(env);
-      case '/callback':        return handleCallback(url, env);
-      case '/recent-tracks':   return handleRecentTracks(env, cors);
-      default:                 return new Response('Not found', { status: 404 });
+      case '/auth':     return handleAuth(env);
+      case '/callback': return handleCallback(url, env);
+      case '/playlist': return handlePlaylist(env, cors);
+      case '/debug':    return handleDebug(env, cors); // remove before shipping
+      default:          return new Response('Not found', { status: 404 });
     }
   },
 };
 
-// ── Step 1: redirect user to Spotify authorization ─────────────────────────
+// ── Step 1: redirect to Spotify authorization ──────────────────────────────
 function handleAuth(env) {
   const params = new URLSearchParams({
     client_id:     env.SPOTIFY_CLIENT_ID,
     response_type: 'code',
     redirect_uri:  env.SPOTIFY_REDIRECT_URI,
-    scope:         'user-read-currently-playing user-read-recently-played',
+    scope: [
+      'user-read-recently-played',
+      'playlist-read-private',
+      'playlist-modify-private',
+    ].join(' '),
+    show_dialog:   'true',
   });
   return Response.redirect(`https://accounts.spotify.com/authorize?${params}`, 302);
 }
 
-// ── Step 2: exchange authorization code for refresh token ──────────────────
+// ── Step 2: exchange code for refresh token ────────────────────────────────
 async function handleCallback(url, env) {
   const code = url.searchParams.get('code');
   if (!code) return new Response('Missing ?code parameter', { status: 400 });
@@ -53,7 +59,7 @@ async function handleCallback(url, env) {
   const data = await res.json();
 
   if (!data.refresh_token) {
-    return new Response(`Spotify returned an error: ${JSON.stringify(data)}`, { status: 500 });
+    return new Response(`Spotify error: ${JSON.stringify(data)}`, { status: 500 });
   }
 
   return new Response(`<!DOCTYPE html>
@@ -63,59 +69,112 @@ async function handleCallback(url, env) {
   <h2>Authorization successful</h2>
   <p>Run the command below, then paste the token when prompted:</p>
   <pre style="background:#f0ede8;padding:1rem">npx wrangler secret put SPOTIFY_REFRESH_TOKEN</pre>
-  <p><strong>Your refresh token (one-time — save it now):</strong></p>
+  <p><strong>Your refresh token:</strong></p>
   <textarea readonly style="width:100%;height:90px;font-family:monospace;font-size:0.75rem">${data.refresh_token}</textarea>
   <p style="color:#666;font-size:0.85rem;margin-top:2rem">
-    After saving the secret, redeploy the Worker:<br>
-    <code>npx wrangler deploy</code>
+    After saving the secret:<br><code>npx wrangler deploy</code>
   </p>
 </body>
 </html>`, { headers: { 'Content-Type': 'text/html' } });
 }
 
-// ── Step 3: fetch 50 recent tracks, dedupe, shuffle, return 10 ────────────
-async function handleRecentTracks(env, cors) {
+// ── Step 3: build/update a playlist from recent tracks, return its ID ──────
+async function handlePlaylist(env, cors) {
   if (!env.SPOTIFY_REFRESH_TOKEN) {
     return json({ error: 'not_configured' }, cors, 503);
   }
 
   try {
     const token = await getAccessToken(env);
-    const res   = await fetch(
-      `${SPOTIFY_API}/me/player/recently-played?limit=50`,
-      { headers: { Authorization: `Bearer ${token}` } }
-    );
-    const data  = await res.json();
+    const h     = {
+      Authorization:  `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    };
 
-    if (!data?.items?.length) {
+    // Fetch up to 50 recent tracks and deduplicate
+    const recentRes  = await fetch(`${SPOTIFY_API}/me/player/recently-played?limit=50`, { headers: h });
+    const recentData = await recentRes.json();
+
+    if (!recentData?.items?.length) {
       return json({ error: 'no_recent_tracks' }, cors, 404);
     }
 
-    // Deduplicate by track id, then shuffle, then take 10
-    const seen   = new Set();
-    const unique = data.items
+    const seen      = new Set();
+    const trackUris = recentData.items
       .filter(({ track }) => {
         if (seen.has(track.id)) return false;
         seen.add(track.id);
         return true;
       })
-      .map(({ track }) => ({
-        id:     track.id,
-        name:   track.name,
-        artist: track.artists.map(a => a.name).join(', '),
-        thumb:  track.album.images.at(-1)?.url ?? null, // smallest thumbnail
-      }));
+      .slice(0, 20)
+      .map(({ track }) => `spotify:track:${track.id}`);
 
-    // Fisher-Yates shuffle
-    for (let i = unique.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [unique[i], unique[j]] = [unique[j], unique[i]];
+    // Find the managed playlist in the user's library (first 50 playlists)
+    const plRes  = await fetch(`${SPOTIFY_API}/me/playlists?limit=50`, { headers: h });
+    const plData = await plRes.json();
+    if (!plRes.ok) throw new Error(`playlists_error: ${JSON.stringify(plData)}`);
+    let playlistId = plData.items?.find(p => p.name === PLAYLIST_NAME)?.id ?? null;
+
+    if (!playlistId) {
+      // Create it once
+      const meRes       = await fetch(`${SPOTIFY_API}/me`, { headers: h });
+      const me          = await meRes.json();
+      if (!me.id) throw new Error(`me_error: ${JSON.stringify(me)}`);
+      const createRes   = await fetch(`${SPOTIFY_API}/me/playlists`, {
+        method: 'POST',
+        headers: h,
+        body: JSON.stringify({
+          name:        PLAYLIST_NAME,
+          description: 'Auto-updated from loriechen.com',
+          public:      false,
+        }),
+      });
+      const created = await createRes.json();
+      if (!created.id) throw new Error(`create_error: ${JSON.stringify(created)}`);
+      playlistId = created.id;
     }
 
-    return json({ tracks: unique.slice(0, 10) }, cors);
+    // Replace playlist tracks with deduplicated recent tracks
+    await fetch(`${SPOTIFY_API}/playlists/${playlistId}/tracks`, {
+      method:  'PUT',
+      headers: h,
+      body:    JSON.stringify({ uris: trackUris }),
+    });
+
+    return json({ playlistId }, cors);
 
   } catch (err) {
     return json({ error: 'server_error', detail: err.message }, cors, 500);
+  }
+}
+
+// ── Debug: show token scopes ───────────────────────────────────────────────
+async function handleDebug(env, cors) {
+  try {
+    const token = await getAccessToken(env);
+    const h = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' };
+
+    const meRes  = await fetch(`${SPOTIFY_API}/me`, { headers: h });
+    const me     = await meRes.json();
+
+    const plRes  = await fetch(`${SPOTIFY_API}/me/playlists?limit=5`, { headers: h });
+    const plData = await plRes.json();
+
+    const createRes = await fetch(`${SPOTIFY_API}/me/playlists`, {
+      method: 'POST', headers: h,
+      body: JSON.stringify({ name: 'debug-test', public: false }),
+    });
+    const createData = await createRes.json();
+
+    return json({
+      user_id:        me.id,
+      playlists_ok:   plRes.ok,
+      playlists_err:  plData.error ?? null,
+      create_status:  createRes.status,
+      create_result:  createData,
+    }, cors);
+  } catch (err) {
+    return json({ error: err.message }, cors, 500);
   }
 }
 
@@ -126,6 +185,7 @@ async function getAccessToken(env) {
     refresh_token: env.SPOTIFY_REFRESH_TOKEN,
   });
   const data = await res.json();
+  if (!data.access_token) throw new Error(`token_error: ${JSON.stringify(data)}`);
   return data.access_token;
 }
 
@@ -134,8 +194,8 @@ function tokenRequest(env, body) {
   return fetch(SPOTIFY_TOKEN_URL, {
     method:  'POST',
     headers: {
-      'Authorization':  `Basic ${credentials}`,
-      'Content-Type':   'application/x-www-form-urlencoded',
+      'Authorization': `Basic ${credentials}`,
+      'Content-Type':  'application/x-www-form-urlencoded',
     },
     body: new URLSearchParams(body),
   });
