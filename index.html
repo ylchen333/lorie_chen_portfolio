@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.ico" />
 </head>
-<body>
+<body class="room-page">
 
   <header>
     <nav>
@@ -16,103 +16,20 @@
       <a href="about.html">about</a>
       <a href="playlab.html">playlab</a>
     </nav>
-    <div class="hero">
-      <h1>lorie's corner</h1>
-      <p class="tagline">artist and coder of silly things</p>
-    </div>
   </header>
 
-  <main>
-
-    <section id="about">
-      <p>
-        Hi, I'm Lorie Chen — freshly graduated from Carnegie Mellon University with a Bachelor's
-        in Computer Science and Fine Art. Interested in shiny things, radiance fields, and making
-        plotters do embarrassing amounts of work for small aesthetic payoffs.
-      </p>
-    </section>
-
-    <!-- <section id="gallery" aria-label="artwork">
-      <div class="home-gallery">
-        <a href="about.html"><img src="images/artsy_fartsy/IMG_8281.jpeg" alt="" loading="lazy" /></a>
-        <a href="work.html"><img src="images/artsy_fartsy/DSC09946.JPG" alt="" loading="lazy" /></a>
-        <a href="playlab.html"><img src="images/artsy_fartsy/IMG_3826.JPG" alt="" loading="lazy" /></a>
-        <a href="about.html"><img src="images/artsy_fartsy/IMG_9105.JPG" alt="" loading="lazy" /></a>
-        <a href="playlab.html"><img src="images/artsy_fartsy/DSC09951.JPG" alt="" loading="lazy" /></a>
-        <a href="playlab.html"><img src="images/artsy_fartsy/IMG_6858.JPG" alt="" loading="lazy" /></a>
-        <a href="about.html"><img src="images/artsy_fartsy/IMG_9024.JPG" alt="" loading="lazy" /></a>
-        <a href="work.html"><img src="images/artsy_fartsy/IMG_6920.JPG" alt="" loading="lazy" /></a>
-        <a href="playlab.html"><img src="images/artsy_fartsy/7026E0F6-D198-40EA-B8E7-68CFD37A5E90.jpg" alt="" loading="lazy" /></a>
-      </div>
-    </section> -->
-
-    <section id="experience">
-      <h2>experience</h2>
-
-      <div class="entry">
-        <div class="entry-meta">
-          <span class="entry-title">Research Assistant</span>
-          <span class="entry-place">Studio for Creative Inquiry, The School of Art at CMU &mdash; Nov 2024&ndash;Present</span>
-        </div>
-        <ul class="entry-bullets">
-          <li>Building interactive agentic interfaces in JavaScript/p5.js for real-time interaction with Gemini and ComfyUI-based generative AI models.</li>
-          <li>Extending ComfyUI pipelines to integrate state-of-the-art generative AI models for new research and creative workflows.</li>
-          <li>Developing real-time robot arm control workflows and 3D Gaussian Splatting guidelines for student onboarding.</li>
-        </ul>
-        <ul class="links" style="margin-top: 0.5rem;">
-          <li><a href="https://github.com/CreativeInquiry/ComfyCV/tree/main/lorie" target="_blank" rel="noopener">github: ComfyCV →</a></li>
-        </ul>
-      </div>
-
-      <div class="entry">
-        <div class="entry-meta">
-          <span class="entry-title">Teaching Assistant</span>
-          <span class="entry-place">The School of Art at CMU &mdash; Aug&ndash;Dec 2025</span>
-        </div>
-        <ul class="entry-bullets">
-          <li>Designed and built 5+ interactive web interfaces for real-time user interaction with AI models including Gemini, ComfyUI pipelines, and vocal ML systems.</li>
-          <li>Extended open-source p5.js ComfyUI libraries to support cloud-based RunComfy instances.</li>
-        </ul>
-      </div>
-
-      <div class="entry">
-        <div class="entry-meta">
-          <span class="entry-title">Research Engineer Intern</span>
-          <span class="entry-place">Adobe Research &mdash; May&ndash;Aug 2025</span>
-        </div>
-        <ul class="entry-bullets">
-          <li>Developed novel AI video and 3D processing workflows for After Effects in C++, contributing to unannounced research features.</li>
-        </ul>
-      </div>
-
-      <div class="entry">
-        <div class="entry-meta">
-          <span class="entry-title">Research Assistant</span>
-          <span class="entry-place">The Robotics Institute at CMU &mdash; Feb&ndash;Dec 2024</span>
-        </div>
-        <ul class="entry-bullets">
-          <li>Enhanced user experience and robot perception for the CoFRIDA robotic painting system using OnShape and 3D printing.</li>
-          <li>Demonstrated new capabilities at IEEE RO-MAN 2024 to an audience of 50+ and presented to a panel of expert judges.</li>
-        </ul>
-        <!-- <ul class="links" style="margin-top: 0.5rem;">
-          <li><a href="https://github.com/cmubig/Frida" target="_blank" rel="noopener">github: CoFRIDA →</a></li>
-        </ul> -->
-      </div>
-
-      <div class="entry">
-        <div class="entry-meta">
-          <span class="entry-title">User Experience Designer</span>
-          <span class="entry-place">Human-Computer Interaction Institute at CMU &mdash; Jan&ndash;May 2023</span>
-        </div>
-      </div>
-
-    </section>
-
+  <main class="room-main" aria-label="interactive portfolio room">
+    <div id="room-scene"></div>
+    <div class="room-help">WASD to move. Press and drag to look.</div>
+    <noscript>
+      <section class="room-fallback">
+        <h1>lorie's corner</h1>
+        <p>artist and coder of silly things</p>
+        <p>Hi, I'm Lorie Chen — freshly graduated from Carnegie Mellon University with a Bachelor's in Computer Science and Fine Art.</p>
+      </section>
+    </noscript>
   </main>
 
-  <footer>
-    <p>&copy; 2026 Lorie Chen</p>
-  </footer>
-
+  <script type="module" src="room.js"></script>
 </body>
 </html>

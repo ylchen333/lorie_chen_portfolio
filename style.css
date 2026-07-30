@@ -11,13 +11,14 @@ img {
 }
 
 :root {
-  --bg: #f9f8f5;
+  --bg: #d6d5d0;
   --text: #111;
   --muted: #666;
   --accent: #111;
   --max-width: 680px;
   --font: "Georgia", serif;
   --font-mono: "Courier New", monospace;
+  --nav-height: 3.25rem;
 }
 
 html {
@@ -30,7 +31,7 @@ body {
   font-family: var(--font);
   font-size: 1rem;
   line-height: 1.7;
-  padding: 0 1.5rem;
+  padding: var(--nav-height) 1.5rem 0;
 }
 
 /* ── Layout ── */
@@ -59,9 +60,18 @@ footer {
 /* ── Nav ── */
 
 nav {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 20;
   display: flex;
+  justify-content: center;
   gap: 1.5rem;
-  margin-bottom: 3rem;
+  min-height: var(--nav-height);
+  margin-bottom: 0;
+  padding: 0.85rem 1.5rem 0.75rem;
+  background: rgba(214, 213, 208, 0.9);
+  border-bottom: 1px solid rgba(40, 40, 38, 0.16);
+  backdrop-filter: blur(12px);
   font-family: var(--font-mono);
   font-size: 0.85rem;
 }
@@ -74,6 +84,70 @@ nav a {
 
 nav a:hover {
   color: var(--text);
+}
+
+/* ── Three.js room home ── */
+
+body.room-page {
+  min-height: 100vh;
+  overflow: hidden;
+  padding: var(--nav-height) 0 0;
+  background: #9f9e98;
+}
+
+body.room-page header,
+body.room-page main,
+body.room-page footer {
+  max-width: none;
+}
+
+body.room-page header {
+  padding: 0;
+  border-bottom: none;
+}
+
+.room-main {
+  position: relative;
+  height: calc(100vh - var(--nav-height));
+  padding: 0;
+}
+
+#room-scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #9f9e98;
+}
+
+#room-scene canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+
+#room-scene canvas:active {
+  cursor: grabbing;
+}
+
+.room-help {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 10;
+  max-width: min(18rem, calc(100vw - 2rem));
+  padding: 0.45rem 0.7rem;
+  border: 1px solid rgba(32, 32, 30, 0.25);
+  background: rgba(214, 213, 208, 0.78);
+  color: #222;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.4;
+}
+
+.room-fallback {
+  max-width: 42rem;
+  padding: 2rem;
 }
 
 /* ── Hero ── */
@@ -388,6 +462,21 @@ body.wide footer {
 
 .project-content .project-writeup {
   margin-bottom: 0;
+}
+
+.video-embed {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  background: #bcbcb6;
+  border: 1px solid #c8c8c2;
+}
+
+.video-embed iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
 }
 
 /* Inline floated images within writeup */

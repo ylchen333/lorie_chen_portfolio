@@ -93,11 +93,10 @@ async function handlePlaylist(env, cors) {
 
     // Fetch up to 50 recent tracks and deduplicate
     const recentRes  = await fetch(`${SPOTIFY_API}/me/player/recently-played?limit=50`, { headers: h });
-    const recentData = await recentRes.json();
+    if (!recentRes.ok) throw new Error(`recent_error: ${recentRes.status} ${await recentRes.text()}`);
 
-    if (!recentData?.items?.length) {
-      return json({ error: 'no_recent_tracks' }, cors, 404);
-    }
+    const recentData = await recentRes.json();
+    if (!recentData?.items?.length) return json({ error: 'no_recent_tracks' }, cors, 404);
 
     const seen      = new Set();
     const trackUris = recentData.items
@@ -108,6 +107,8 @@ async function handlePlaylist(env, cors) {
       })
       .slice(0, 20)
       .map(({ track }) => `spotify:track:${track.id}`);
+
+    if (!trackUris.length) return json({ error: 'no_track_uris' }, cors, 404);
 
     // Find the managed playlist in the user's library (first 50 playlists)
     const plRes  = await fetch(`${SPOTIFY_API}/me/playlists?limit=50`, { headers: h });
@@ -135,13 +136,14 @@ async function handlePlaylist(env, cors) {
     }
 
     // Replace playlist tracks with deduplicated recent tracks
-    await fetch(`${SPOTIFY_API}/playlists/${playlistId}/tracks`, {
+    const putRes = await fetch(`${SPOTIFY_API}/playlists/${playlistId}/items`, {
       method:  'PUT',
       headers: h,
       body:    JSON.stringify({ uris: trackUris }),
     });
+    if (!putRes.ok) throw new Error(`tracks_put_error: ${putRes.status} ${await putRes.text()}`);
 
-    return json({ playlistId }, cors);
+    return json({ playlistId, tracks_added: trackUris.length }, cors);
 
   } catch (err) {
     return json({ error: 'server_error', detail: err.message }, cors, 500);
