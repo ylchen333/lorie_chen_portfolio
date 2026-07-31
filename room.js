@@ -19,8 +19,8 @@ if (mount) {
   const room = new THREE.Group();
   scene.add(room);
 
-  const wallMat = new THREE.MeshStandardMaterial({ color: 0x8f8e89, roughness: 0.82 });
-  const floorMat = new THREE.MeshStandardMaterial({ color: 0xb8b7b1, roughness: 0.65, metalness: 0.03 });
+  const wallMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.82 });
+  const floorMat = new THREE.MeshStandardMaterial({ color: 0x8f8e89, roughness: 0.65, metalness: 0.03 });
   const frameMat = new THREE.MeshStandardMaterial({ color: 0x20201e, roughness: 0.45 });
 
   function box(size, position, material, castShadow = false, receiveShadow = true) {
@@ -40,6 +40,82 @@ if (mount) {
   box([0.08, 2.1, 1.15], [5.01, 1.05, 2.15], wallMat);
   box([0.12, 2.35, 1.35], [5.13, 1.18, 2.15], frameMat);
   box([0.13, 1.95, 1.02], [5.2, 0.98, 2.15], new THREE.MeshStandardMaterial({ color: 0x777671, roughness: 0.9 }));
+
+  // Canvas storage wall — built-in cubbies of edge-on stored panels, left wall near the entrance
+  {
+    const shelfMat     = new THREE.MeshStandardMaterial({ color: 0xf4f3ee, roughness: 0.7 });
+    const canvasColors = [0xf6f3ec, 0xe8dcc4, 0xcbb08a, 0x9c7a52, 0x5a4530, 0x2a2016];
+
+    const shelfX      = -5.0;
+    const shelfDepth  = 0.55;
+    const shelfZStart = 1.7;
+    const shelfZEnd   = 7.2;
+    const shelfYStart = 0.85;
+    const shelfYEnd   = 3.45;
+    const cols        = 14;
+    const rows        = 2;
+    const cellW        = (shelfZEnd - shelfZStart) / cols;
+    const cellH        = (shelfYEnd - shelfYStart) / rows;
+    const divThickness = 0.03;
+
+    const shelfGroup = new THREE.Group();
+    room.add(shelfGroup);
+
+    const backing = new THREE.Mesh(
+      new THREE.BoxGeometry(0.04, shelfYEnd - shelfYStart, shelfZEnd - shelfZStart),
+      shelfMat
+    );
+    backing.position.set(shelfX + 0.02, (shelfYStart + shelfYEnd) / 2, (shelfZStart + shelfZEnd) / 2);
+    backing.receiveShadow = true;
+    shelfGroup.add(backing);
+
+    for (let r = 0; r <= rows; r++) {
+      const y = shelfYStart + r * cellH;
+      const div = new THREE.Mesh(new THREE.BoxGeometry(shelfDepth, divThickness, shelfZEnd - shelfZStart), shelfMat);
+      div.position.set(shelfX + shelfDepth / 2, y, (shelfZStart + shelfZEnd) / 2);
+      div.castShadow = true;
+      div.receiveShadow = true;
+      shelfGroup.add(div);
+    }
+
+    for (let c = 0; c <= cols; c++) {
+      const z = shelfZStart + c * cellW;
+      const div = new THREE.Mesh(new THREE.BoxGeometry(shelfDepth, shelfYEnd - shelfYStart, divThickness), shelfMat);
+      div.position.set(shelfX + shelfDepth / 2, (shelfYStart + shelfYEnd) / 2, z);
+      div.castShadow = true;
+      div.receiveShadow = true;
+      shelfGroup.add(div);
+    }
+
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        const cellZStart = shelfZStart + c * cellW;
+        const cellYBase  = shelfYStart + r * cellH;
+        const count       = 4 + Math.floor(Math.random() * 4);
+        const usableWidth = cellW - divThickness * 2;
+        const slatWidth   = usableWidth / count;
+        let zCursor       = cellZStart + divThickness;
+
+        for (let i = 0; i < count; i++) {
+          const color    = canvasColors[Math.floor(Math.random() * canvasColors.length)];
+          const material = new THREE.MeshStandardMaterial({ color, roughness: 0.85 });
+          const h         = cellH * (0.8 + Math.random() * 0.55);
+          const thickness = Math.max(0.012, slatWidth * (0.5 + Math.random() * 0.3));
+          const depth     = shelfDepth * (0.7 + Math.random() * 0.25);
+
+          const slat = new THREE.Mesh(new THREE.BoxGeometry(depth, h, thickness), material);
+          slat.position.set(shelfX + depth / 2 + 0.02, cellYBase + h / 2 - 0.02, zCursor + slatWidth / 2);
+          slat.rotation.z = (Math.random() - 0.5) * 0.1;
+          slat.rotation.x = (Math.random() - 0.5) * 0.05;
+          slat.castShadow = true;
+          slat.receiveShadow = true;
+          shelfGroup.add(slat);
+
+          zCursor += slatWidth;
+        }
+      }
+    }
+  }
 
   const sunLight = new THREE.DirectionalLight(0xfff3d9, 4.2);
   sunLight.position.set(0, 20, -0.9);
