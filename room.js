@@ -41,20 +41,20 @@ if (mount) {
   box([0.12, 2.35, 1.35], [5.13, 1.18, 2.15], frameMat);
   box([0.13, 1.95, 1.02], [5.2, 0.98, 2.15], new THREE.MeshStandardMaterial({ color: 0x777671, roughness: 0.9 }));
 
-  // Canvas storage wall — built-in cubbies of edge-on stored panels, left wall near the entrance
+  // Canvas storage wall — built-in cubbies of edge-on stored panels, its own dedicated back wall
   {
     const shelfMat     = new THREE.MeshStandardMaterial({ color: 0xf4f3ee, roughness: 0.7 });
     const canvasColors = [0xf6f3ec, 0xe8dcc4, 0xcbb08a, 0x9c7a52, 0x5a4530, 0x2a2016];
 
-    const shelfX      = -5.0;
+    const shelfZ      = -7.4;
     const shelfDepth  = 0.55;
-    const shelfZStart = 1.7;
-    const shelfZEnd   = 7.2;
-    const shelfYStart = 0.85;
-    const shelfYEnd   = 3.45;
-    const cols        = 14;
+    const shelfXStart = -4.5;
+    const shelfXEnd   = 4.5;
+    const shelfYStart = 0.9;
+    const shelfYEnd   = 3.6;
+    const cols        = 18;
     const rows        = 2;
-    const cellW        = (shelfZEnd - shelfZStart) / cols;
+    const cellW        = (shelfXEnd - shelfXStart) / cols;
     const cellH        = (shelfYEnd - shelfYStart) / rows;
     const divThickness = 0.03;
 
@@ -62,26 +62,26 @@ if (mount) {
     room.add(shelfGroup);
 
     const backing = new THREE.Mesh(
-      new THREE.BoxGeometry(0.04, shelfYEnd - shelfYStart, shelfZEnd - shelfZStart),
+      new THREE.BoxGeometry(shelfXEnd - shelfXStart, shelfYEnd - shelfYStart, 0.04),
       shelfMat
     );
-    backing.position.set(shelfX + 0.02, (shelfYStart + shelfYEnd) / 2, (shelfZStart + shelfZEnd) / 2);
+    backing.position.set((shelfXStart + shelfXEnd) / 2, (shelfYStart + shelfYEnd) / 2, shelfZ + 0.02);
     backing.receiveShadow = true;
     shelfGroup.add(backing);
 
     for (let r = 0; r <= rows; r++) {
       const y = shelfYStart + r * cellH;
-      const div = new THREE.Mesh(new THREE.BoxGeometry(shelfDepth, divThickness, shelfZEnd - shelfZStart), shelfMat);
-      div.position.set(shelfX + shelfDepth / 2, y, (shelfZStart + shelfZEnd) / 2);
+      const div = new THREE.Mesh(new THREE.BoxGeometry(shelfXEnd - shelfXStart, divThickness, shelfDepth), shelfMat);
+      div.position.set((shelfXStart + shelfXEnd) / 2, y, shelfZ + shelfDepth / 2);
       div.castShadow = true;
       div.receiveShadow = true;
       shelfGroup.add(div);
     }
 
     for (let c = 0; c <= cols; c++) {
-      const z = shelfZStart + c * cellW;
-      const div = new THREE.Mesh(new THREE.BoxGeometry(shelfDepth, shelfYEnd - shelfYStart, divThickness), shelfMat);
-      div.position.set(shelfX + shelfDepth / 2, (shelfYStart + shelfYEnd) / 2, z);
+      const x = shelfXStart + c * cellW;
+      const div = new THREE.Mesh(new THREE.BoxGeometry(divThickness, shelfYEnd - shelfYStart, shelfDepth), shelfMat);
+      div.position.set(x, (shelfYStart + shelfYEnd) / 2, shelfZ + shelfDepth / 2);
       div.castShadow = true;
       div.receiveShadow = true;
       shelfGroup.add(div);
@@ -89,12 +89,12 @@ if (mount) {
 
     for (let r = 0; r < rows; r++) {
       for (let c = 0; c < cols; c++) {
-        const cellZStart = shelfZStart + c * cellW;
+        const cellXStart = shelfXStart + c * cellW;
         const cellYBase  = shelfYStart + r * cellH;
         const count       = 4 + Math.floor(Math.random() * 4);
         const usableWidth = cellW - divThickness * 2;
         const slatWidth   = usableWidth / count;
-        let zCursor       = cellZStart + divThickness;
+        let xCursor       = cellXStart + divThickness;
 
         for (let i = 0; i < count; i++) {
           const color    = canvasColors[Math.floor(Math.random() * canvasColors.length)];
@@ -103,15 +103,15 @@ if (mount) {
           const thickness = Math.max(0.012, slatWidth * (0.5 + Math.random() * 0.3));
           const depth     = shelfDepth * (0.7 + Math.random() * 0.25);
 
-          const slat = new THREE.Mesh(new THREE.BoxGeometry(depth, h, thickness), material);
-          slat.position.set(shelfX + depth / 2 + 0.02, cellYBase + h / 2 - 0.02, zCursor + slatWidth / 2);
-          slat.rotation.z = (Math.random() - 0.5) * 0.1;
-          slat.rotation.x = (Math.random() - 0.5) * 0.05;
+          const slat = new THREE.Mesh(new THREE.BoxGeometry(thickness, h, depth), material);
+          slat.position.set(xCursor + slatWidth / 2, cellYBase + h / 2 - 0.02, shelfZ + depth / 2 + 0.02);
+          slat.rotation.x = (Math.random() - 0.5) * 0.1;
+          slat.rotation.z = (Math.random() - 0.5) * 0.05;
           slat.castShadow = true;
           slat.receiveShadow = true;
           shelfGroup.add(slat);
 
-          zCursor += slatWidth;
+          xCursor += slatWidth;
         }
       }
     }
@@ -171,9 +171,9 @@ if (mount) {
     {
       title: "work / about / playlab",
       body: "Use the sticky navigation above to leave the room. Project pages remain normal scroll pages on the same grey background.",
-      position: [0, 1.78, -7.36],
-      rotation: [0, 0, 0],
-      size: [2.3, 1.25]
+      position: [4.93, 1.78, 5.2],
+      rotation: [0, -Math.PI / 2, 0],
+      size: [2.0, 1.15]
     }
   ];
 

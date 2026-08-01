@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>a week exploring the Getty collection — lorie's corner</title>
+  <title>Gem Stacking — lorie's corner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.ico" />
 </head>
@@ -11,13 +14,17 @@
 
   <header>
     <nav>
-      <a href="index.html">home</a>
-      <a href="work.html">work</a>
-      <a href="about.html">about</a>
-      <a href="playlab.html">playlab</a>
+      <a href="index.html" class="wordmark">Lorie Chen</a>
+      <div class="nav-links">
+        <a href="index.html">home</a>
+        <a href="work.html" class="active">work</a>
+        <a href="about.html">about</a>
+        <a href="playlab.html">playlab</a>
+      </div>
     </nav>
     <div class="hero">
-      <h1>a week exploring the Getty collection</h1>
+      <a href="work.html" class="back-link">&larr; work</a>
+      <h1>Gem Stacking</h1>
       <p class="tagline">computational photography &middot; cultural heritage &middot; 2025&ndash;2026</p>
     </div>
   </header>
@@ -94,6 +101,7 @@
 
   <footer>
     <p>&copy; 2026 Lorie Chen</p>
+    <p>Pittsburgh, PA</p>
   </footer>
 
   <script src="main.js"></script>

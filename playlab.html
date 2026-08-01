@@ -4,21 +4,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>playlab — lorie's corner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.ico" />
 </head>
-<body>
+<body class="playlab-page">
 
   <header>
     <nav>
-      <a href="index.html">home</a>
-      <a href="work.html">work</a>
-      <a href="about.html">about</a>
-      <a href="playlab.html">playlab</a>
+      <a href="index.html" class="wordmark">Lorie Chen</a>
+      <div class="nav-links">
+        <a href="index.html">home</a>
+        <a href="work.html">work</a>
+        <a href="about.html">about</a>
+        <a href="playlab.html" class="active">playlab</a>
+      </div>
     </nav>
-    <div class="hero">
-      <h1>playlab</h1>
-      <p class="tagline">one-off experiments in p5.js, comfyui, and plotting</p>
+    <div class="hero playlab-hero">
+      <span class="hero-kicker">playlab</span>
+      <div class="playlab-hero-row">
+        <h1>playlab</h1>
+        <p class="tagline">one-off experiments in p5.js, ComfyUI, and plotting &mdash; the sketchbook next to the archive.</p>
+      </div>
     </div>
   </header>
 
@@ -55,24 +64,6 @@
         </div>
       </div>
 
-      <div class="experiment" data-title="plotter typography" data-tag="plotting">
-        <img class="exp-thumb" src="images/artsy_fartsy/7026E0F6-D198-40EA-B8E7-68CFD37A5E90.jpg" alt="" loading="lazy" />
-        <div class="exp-label">
-          <span class="exp-name">plotter typography</span>
-          <span class="exp-tag">plotting</span>
-        </div>
-        <div class="exp-gallery">
-          <img src="images/artsy_fartsy/7026E0F6-D198-40EA-B8E7-68CFD37A5E90.jpg" alt="" />
-          <img src="images/artsy_fartsy/IMG_6858.JPG" alt="" />
-          <img src="images/artsy_fartsy/IMG_6859.JPG" alt="" />
-          <img src="images/artsy_fartsy/IMG_6860.JPG" alt="" />
-          <img src="images/artsy_fartsy/IMG_6861.JPG" alt="" />
-          <img src="images/artsy_fartsy/IMG_6862.JPG" alt="" />
-          <img src="images/artsy_fartsy/IMG_6863.JPG" alt="" />
-          <img src="images/artsy_fartsy/IMG_6864.JPG" alt="" />
-        </div>
-      </div>
-
       <div class="experiment" data-title="dash cam slit scans" data-tag="plotting">
         <img class="exp-thumb" src="images/plotting_art/dashcam/clean_slitscan.jpg" alt="" loading="lazy" />
         <div class="exp-label">
@@ -87,11 +78,98 @@
         </div>
       </div>
 
-      <!-- Add more experiments below as documentation is uploaded.
-           Copy the block structure above: data-title, data-tag (plotting / p5.js / comfyui),
-           exp-thumb, exp-label, and exp-gallery with all result images. -->
+      <div class="experiment" data-title="reaction diffusion" data-tag="p5.js">
+        <img class="exp-thumb" src="images/playlab/rdc.gif" alt="reaction diffusion simulation" loading="lazy" />
+        <div class="exp-label">
+          <span class="exp-name">reaction diffusion</span>
+          <span class="exp-tag">p5.js</span>
+        </div>
+        <div class="exp-gallery">
+          <img src="images/playlab/rdc.gif" alt="" />
+          <img src="images/playlab/weird_rdc.gif" alt="" />
+          <img src="images/playlab/rdc_test1.gif" alt="" />
+          <img src="images/playlab/rdc_test2.gif" alt="" />
+        </div>
+      </div>
 
+      <div class="experiment" data-title="plotter typography" data-tag="plotting">
+        <img class="exp-thumb" src="images/artsy_fartsy/IMG_6858.JPG" alt="plotter typography experiment" loading="lazy" />
+        <div class="exp-label">
+          <span class="exp-name">plotter typography</span>
+          <span class="exp-tag">plotting</span>
+        </div>
+        <div class="exp-gallery">
+          <img src="images/artsy_fartsy/IMG_6858.JPG" alt="" />
+          <img src="images/artsy_fartsy/IMG_6859.JPG" alt="" />
+          <img src="images/artsy_fartsy/IMG_6860.JPG" alt="" />
+          <img src="images/artsy_fartsy/IMG_6861.JPG" alt="" />
+          <img src="images/artsy_fartsy/IMG_6862.JPG" alt="" />
+          <img src="images/artsy_fartsy/IMG_6863.JPG" alt="" />
+          <img src="images/artsy_fartsy/IMG_6864.JPG" alt="" />
+        </div>
+      </div>
+
+      <div class="experiment" data-title="USCutter MH871-MK2 instructions" data-tag="plotting">
+        <img class="exp-thumb" src="images/plotting_art/tooling_documentation/uscutter/IMG_8408.jpeg" alt="Multicolor USCutter plot on canvas" loading="lazy" />
+        <div class="exp-label">
+          <a class="exp-name exp-link" href="https://github.com/ylchen333/USCutter_MH871-MK2_Instructions" target="_blank" rel="noopener">USCutter MH871-MK2 instructions &nearr;</a>
+          <span class="exp-tag">plotting &middot; tooling documentation</span>
+        </div>
+        <div class="exp-gallery">
+          <img src="images/plotting_art/tooling_documentation/uscutter/IMG_8408.jpeg" alt="" />
+          <img src="images/plotting_art/tooling_documentation/uscutter/IMG_8298.JPG" alt="" />
+          <img src="images/plotting_art/tooling_documentation/uscutter/IMG_8329.jpeg" alt="" />
+          <img src="images/plotting_art/tooling_documentation/uscutter/IMG_8330.jpeg" alt="" />
+          <img src="images/plotting_art/tooling_documentation/uscutter/IMG_8331.jpeg" alt="" />
+          <img src="images/plotting_art/tooling_documentation/uscutter/IMG_8332.jpeg" alt="" />
+          <img src="images/plotting_art/tooling_documentation/uscutter/IMG_8364.jpeg" alt="" />
+          <img src="images/plotting_art/tooling_documentation/uscutter/IMG_8443.jpeg" alt="" />
+          <img src="images/plotting_art/tooling_documentation/uscutter/5E77C898-CAEA-4FDF-98DF-18F60EEFD05E.jpeg" alt="" />
+          <img src="images/plotting_art/tooling_documentation/uscutter/9FA2AEB9-9770-4EE1-810D-D92BA7F6B496.jpeg" alt="" />
+          <img src="images/plotting_art/tooling_documentation/uscutter/EFE27048-87EE-4FCD-83E9-D91B75D2508E.jpeg" alt="" />
+          <img src="images/plotting_art/tooling_documentation/uscutter/F5D7DCFA-D6BA-4B12-B2A9-4E1F246C6180.jpeg" alt="" />
+        </div>
+      </div>
+
+      <div class="experiment" data-title="welcome to school!" data-tag="bitsy">
+        <img class="exp-thumb" src="images/playlab/bitsy_game_demo.gif" alt="pixel art game experiment" loading="lazy" />
+        <div class="exp-label">
+          <span class="exp-name">welcome to school!</span>
+          <span class="exp-tag">bitsy</span>
+        </div>
+        <div class="exp-gallery">
+          <img src="images/playlab/bitsy_game_demo.gif" alt="" />
+        </div>
+      </div>
+
+      <div class="experiment" data-title="on-the-fly Pittsburgh" data-tag="comfyui">
+        <img class="exp-thumb" src="images/playlab/onthefly_pitts_exploration.gif" alt="Pittsburgh Gaussian splatting experiment" loading="lazy" />
+        <div class="exp-label">
+          <span class="exp-name">on-the-fly Pittsburgh</span>
+          <span class="exp-tag">3D Gaussian Splatting</span>
+        </div>
+        <div class="exp-gallery">
+          <img src="images/playlab/onthefly_pitts_exploration.gif" alt="" />
+          <img src="images/playlab/fun_render.gif" alt="" />
+        </div>
+      </div>
     </div>
+
+    <section id="gallery" aria-label="artwork">
+      <h2>artsy fartsy</h2>
+      <div class="gallery">
+        <img src="images/artsy_fartsy/IMG_9691.JPG" alt="" loading="lazy" />
+        <img src="images/artsy_fartsy/IMG_8283.jpeg" alt="" loading="lazy" />
+        <img src="images/artsy_fartsy/DSC09957.JPG" alt="" loading="lazy" />
+        <img src="images/artsy_fartsy/IMG_2604.JPG" alt="" loading="lazy" />
+        <img src="images/artsy_fartsy/DSC09958.JPG" alt="" loading="lazy" />
+        <img src="images/artsy_fartsy/IMG_6859.JPG" alt="" loading="lazy" />
+        <img src="images/artsy_fartsy/DSC09972.JPG" alt="" loading="lazy" />
+        <img src="images/artsy_fartsy/IMG_6860.JPG" alt="" loading="lazy" />
+        <img src="images/artsy_fartsy/IMG_9165.JPG" alt="" loading="lazy" />
+        <img src="images/artsy_fartsy/IMG_6861.JPG" alt="" loading="lazy" />
+      </div>
+    </section>
 
   </main>
 
@@ -110,6 +188,7 @@
 
   <footer>
     <p>&copy; 2026 Lorie Chen</p>
+    <p>Pittsburgh, PA</p>
   </footer>
 
   <script src="main.js"></script>

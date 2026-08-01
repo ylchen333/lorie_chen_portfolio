@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>work — lorie's corner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.ico" />
 </head>
@@ -11,10 +14,13 @@
 
   <header>
     <nav>
-      <a href="index.html">home</a>
-      <a href="work.html">work</a>
-      <a href="about.html">about</a>
-      <a href="playlab.html">playlab</a>
+      <a href="index.html" class="wordmark">Lorie Chen</a>
+      <div class="nav-links">
+        <a href="index.html">home</a>
+        <a href="work.html" class="active">work</a>
+        <a href="about.html">about</a>
+        <a href="playlab.html">playlab</a>
+      </div>
     </nav>
     <div class="hero">
       <h1>work</h1>
@@ -24,83 +30,119 @@
   <main>
 
     <section id="work">
+      <div class="work-list">
 
-      <div class="project">
-        <div class="project-header">
-          <a href="catalogue_raisonne.html" class="project-title">catalogue raisonné</a>
-          <span class="project-date">May 2026</span>
-        </div>
-        <p class="project-tags">3D Gaussian Splatting &middot; HDBSCAN &middot; CLIP &middot; SAM &middot; WebGL</p>
-        <p>
-          An interactive archive of my CMU studio and bedroom, captured via 3D Gaussian splatting.
-          A segmentation pipeline using surface normals, CLIP queries, and SAM masks makes each object
-          searchable as evidence of how institutional life reshapes a space. Rendered in the browser
-          with a command-line-style interface.
-        </p>
+        <article class="work-row">
+          <div class="work-text">
+            <p class="work-eyebrow">01 &mdash; Jul 2026</p>
+            <h2 class="work-title"><a href="https://clay.loriechen.com" target="_blank" rel="noopener">Clay Mesh</a></h2>
+            <p class="work-tags">Three.js &middot; MediaPipe &middot; Hand Tracking &middot; Digital Fabrication</p>
+            <p class="work-desc">
+              A browser-based gesture ceramic studio for sculpting watertight 3D forms. Push and
+              pull clay with a mouse or use two-hand tracking to shape, rotate, and translate the
+              mesh, then export the result as an STL or GLB file for fabrication.
+            </p>
+          </div>
+          <a class="work-media clay-work-preview" href="https://clay.loriechen.com" target="_blank" rel="noopener" aria-label="Open Clay Mesh">
+            <span class="clay-preview-label">CLAY MESH</span>
+            <span class="clay-form" aria-hidden="true"></span>
+            <span class="clay-preview-status">LIVE FORM &middot; SCULPT WITH YOUR HANDS</span>
+          </a>
+        </article>
+
+        <article class="work-row reverse">
+          <div class="work-text">
+            <p class="work-eyebrow">02 &mdash; Jul 2026</p>
+            <h2 class="work-title"><a href="synth-splat.html">synth splat</a></h2>
+            <p class="work-tags">3D Gaussian Splatting &middot; Audio-Reactive</p>
+            <p class="work-desc">
+              Synth Splat is an audio-reactive 3D Gaussian Splatting project, built with a team.
+              Sound drives the splat scene in real time, turning music into a live, navigable
+              radiance field.
+            </p>
+          </div>
+          <a class="work-media" href="synth-splat.html">
+            <img src="https://img.youtube.com/vi/E-ccZaLr0Ao/hqdefault.jpg" alt="" loading="lazy" />
+          </a>
+        </article>
+
+        <article class="work-row">
+          <div class="work-text">
+            <p class="work-eyebrow">03 &mdash; May 2026</p>
+            <h2 class="work-title"><a href="catalogue_raisonne.html">catalogue raisonné</a></h2>
+            <p class="work-tags">3D Gaussian Splatting &middot; HDBSCAN &middot; CLIP &middot; SAM &middot; WebGL</p>
+            <p class="work-desc">
+              An interactive archive of my CMU studio and bedroom, captured via 3D Gaussian splatting.
+              A segmentation pipeline using surface normals, CLIP queries, and SAM masks makes each object
+              searchable as evidence of how institutional life reshapes a space. Rendered in the browser
+              with a command-line-style interface.
+            </p>
+          </div>
+          <a class="work-media" href="catalogue_raisonne.html">
+            <img src="images/graphics/catalogue_raisonne/Screenshot 2026-07-16 at 1.33.41 PM.png" alt="" loading="lazy" />
+          </a>
+        </article>
+
+        <article class="work-row reverse">
+          <div class="work-text">
+            <p class="work-eyebrow">04 &mdash; Apr 2026</p>
+            <h2 class="work-title"><a href="gem-stacking.html">Gem Stacking</a></h2>
+            <p class="work-tags">Confocal Stereo &middot; Computational Photography &middot; Cultural Heritage</p>
+            <p class="work-desc">
+              A week at the Getty Villa photographing cameo gems to test confocal stereo &mdash; a
+              focus-stacking technique for non-invasive 3D shape extraction &mdash; using the institution's
+              existing Phase One equipment. Translucent gemstones violated diffuse surface assumptions;
+              relief-carved stone altars emerged as the more promising subject.
+            </p>
+          </div>
+          <a class="work-media" href="gem-stacking.html">
+            <img src="images/graphics/getty/IMG_7515.JPG" alt="" loading="lazy" />
+          </a>
+        </article>
+
+        <article class="work-row">
+          <div class="work-text">
+            <p class="work-eyebrow">05 &mdash; Mar 2026</p>
+            <h2 class="work-title"><a href="dead-things-in-jars.html">dead things in jars</a></h2>
+            <p class="work-tags">3D Gaussian Splatting &middot; Polycam &middot; Natural History</p>
+            <p class="work-desc">
+              3D Gaussian splatting of wet specimens at the Carnegie Museum of Natural History and
+              the Center for PostNatural History. 3DGS turns out to be unusually well-suited to
+              shiny, transparent, and complicated scenes &mdash; which is exactly what a jar of preserved
+              biology is.
+            </p>
+          </div>
+          <a class="work-media" href="dead-things-in-jars.html">
+            <img src="images/graphics/dead_things_in_jars/DSC06310.JPG" alt="" loading="lazy" />
+          </a>
+        </article>
+
+        <article class="work-row reverse">
+          <div class="work-text">
+            <p class="work-eyebrow">06 &mdash; Jan&ndash;Feb 2026</p>
+            <h2 class="work-title"><a href="the-long-way-home.html">The Long Way Home</a></h2>
+            <p class="work-tags">SAM &middot; OpenCV &middot; vsketch &middot; vpype &middot; HP Draftmaster Plotter</p>
+            <p class="work-desc">
+              A body of work built from ten 10-hour dashcam road trips between Pittsburgh and the
+              Midwest. Slit scans compress each drive into a single image; SAM-based segmentation
+              isolates weather, snow, and motion; lens-corrected reconstructions rebuild the drives
+              in 3D. The same material was rendered physically for Golan Levin's Drawing with Machines
+              studio at CMU &mdash; plotted on Yupo paper with watercolor pens via an HP Draftmaster.
+            </p>
+          </div>
+          <a class="work-media" href="the-long-way-home.html">
+            <img src="images/plotting_art/dashcam/clean_slitscan.jpg" alt="" loading="lazy" />
+          </a>
+        </article>
+
       </div>
-
-      <div class="project">
-        <div class="project-header">
-          <a href="getty.html" class="project-title">a week exploring the Getty collection</a>
-          <span class="project-date">Apr 2026</span>
-        </div>
-        <p class="project-tags">Confocal Stereo &middot; Computational Photography &middot; Cultural Heritage</p>
-        <p>
-          A week at the Getty Villa photographing cameo gems to test confocal stereo &mdash; a
-          focus-stacking technique for non-invasive 3D shape extraction &mdash; using the institution's
-          existing Phase One equipment. Translucent gemstones violated diffuse surface assumptions;
-          relief-carved stone altars emerged as the more promising subject.
-        </p>
-      </div>
-
-      <div class="project">
-        <div class="project-header">
-          <a href="dead-things-in-jars.html" class="project-title">dead things in jars</a>
-          <span class="project-date">Mar 2026</span>
-        </div>
-        <p class="project-tags">3D Gaussian Splatting &middot; Polycam &middot; Natural History</p>
-        <p>
-          3D Gaussian splatting of wet specimens at the Carnegie Museum of Natural History and
-          the Center for PostNatural History. 3DGS turns out to be unusually well-suited to
-          shiny, transparent, and complicated scenes &mdash; which is exactly what a jar of preserved
-          biology is.
-        </p>
-      </div>
-
-      <div class="project">
-        <div class="project-header">
-          <a href="dashcam-explorations.html" class="project-title">dashcam explorations</a>
-          <span class="project-date">Feb 2026</span>
-        </div>
-        <p class="project-tags">SAM2 &middot; OpenCV &middot; Novel View Synthesis &middot; Spark.js</p>
-        <p>
-          Algorithmic analysis of dashcam footage from Midwest and Pittsburgh drives. Text-prompted
-          segmentation with SAM3, lens distortion correction via OpenCV chessboard calibration,
-          and 3D Gaussian splat reconstruction from vehicle motion. Snow patterns (sneckdowns)
-          as traces of human presence.
-        </p>
-      </div>
-
-      <div class="project">
-        <div class="project-header">
-          <a href="dash-cam-words.html" class="project-title">a dash cam is worth a 1,000,000 words</a>
-          <span class="project-date">Jan 2026</span>
-        </div>
-        <p class="project-tags">Python &middot; SAM &middot; vsketch &middot; vpype &middot; HP Draftmaster Plotter</p>
-        <p>
-          Final project for Golan Levin's Drawing with Machines studio at CMU. Slit scans of
-          dashcam footage from ten 10-hour road trips &mdash; swerves, towing incidents, snowstorms &mdash;
-          processed through SAM segmentation and rendered as plotter drawings on Yupo paper with
-          watercolor pens.
-        </p>
-      </div>
-
     </section>
 
   </main>
 
   <footer>
     <p>&copy; 2026 Lorie Chen</p>
+    <p>Pittsburgh, PA</p>
   </footer>
 
 </body>

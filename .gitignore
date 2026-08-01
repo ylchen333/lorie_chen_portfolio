@@ -19,3 +19,5 @@ worker/.dev.vars
 
 
 local/
+
+.claude/
