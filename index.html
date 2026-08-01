@@ -12,7 +12,7 @@
 </head>
 <body class="home-page">
 
-  <header>
+  <header class="home-rd-header" id="hello">
     <nav>
       <a href="index.html" class="wordmark">Lorie Chen</a>
       <div class="nav-links">
@@ -22,29 +22,24 @@
         <a href="playlab.html">playlab</a>
       </div>
     </nav>
-    <div class="hero">
+    <canvas id="reaction-diffusion" aria-hidden="true"></canvas>
+    <div class="hero home-rd-content">
+      <p class="home-rd-kicker">creative technologist &middot; artist &middot; recent graduate</p>
       <h1>lorie's corner</h1>
-      <p class="tagline">artist and coder of silly things</p>
+      <p class="home-rd-intro">
+        Hey there! I'm Lorie Chen &mdash; freshly graduated from Carnegie Mellon University with a
+        Bachelor's in Computer Science and Fine Art. I make tools for creatives.
+      </p>
+      <div class="home-rd-links">
+        <a href="work.html">see the work &rarr;</a>
+        <a href="about.html">more about me &rarr;</a>
+      </div>
+      <p class="home-rd-instruction">press + drag to grow the field</p>
+      <a class="home-scroll-cue" href="#featured-work-title">scroll to explore <span aria-hidden="true">&darr;</span></a>
     </div>
   </header>
 
   <main>
-    <section class="home-intro">
-      <div class="about-body">
-        <p>
-          Hey there! I'm Lorie Chen — freshly graduated from Carnegie Mellon University with a
-          Bachelor's in Computer Science and Fine Art. I make things that live in the gap
-          between algorithm and material: 3D captures, plotter drawings, and command-line
-          interfaces for spaces that don't usually get one.
-        </p>
-      </div>
-
-      <ul class="links">
-        <li><a href="work.html">see the work &rarr;</a></li>
-        <li><a href="about.html">more about me &rarr;</a></li>
-      </ul>
-    </section>
-
     <section class="featured-work" aria-labelledby="featured-work-title">
       <div class="section-heading-row">
         <h2 id="featured-work-title">featured work</h2>
@@ -87,6 +82,31 @@
       </div>
     </section>
 
+    <section class="work-experience" aria-labelledby="work-experience-title">
+      <div class="section-heading-row">
+        <h2 id="work-experience-title">work experience</h2>
+        <a href="resume_lorie_chen.pdf" class="section-link" target="_blank" rel="noopener">full r&eacute;sum&eacute; &rarr;</a>
+      </div>
+
+      <div class="experience-list">
+        <div class="experience-row">
+          <time>2025&ndash;2026</time>
+          <p>Research Assistant</p>
+          <p>Studio for Creative Inquiry, Carnegie Mellon University</p>
+        </div>
+        <div class="experience-row">
+          <time datetime="2025">2025</time>
+          <p>Research Engineer Intern</p>
+          <p>Adobe Research</p>
+        </div>
+        <div class="experience-row">
+          <time datetime="2024">2024</time>
+          <p>Research Assistant</p>
+          <p>Carnegie Mellon University Robotics Institute</p>
+        </div>
+      </div>
+    </section>
+
     <section class="open-to-work" aria-labelledby="open-to-work-title">
       <span class="availability-status"><i aria-hidden="true"></i> available for work</span>
       <div class="open-to-work-copy">
@@ -94,7 +114,7 @@
         <p>I&rsquo;m looking for opportunities where creative technology, software engineering, computer graphics, and art overlap.</p>
       </div>
       <div class="open-to-work-links">
-        <a href="mailto:loriechen333@gmail.com">get in touch &rarr;</a>
+        <a href="mailto:lorichendd@gmail.com">get in touch &rarr;</a>
         <a href="resume_lorie_chen.pdf" target="_blank" rel="noopener">view r&eacute;sum&eacute; &rarr;</a>
       </div>
     </section>
@@ -105,5 +125,6 @@
     <p>Pittsburgh, PA</p>
   </footer>
 
+  <script src="reaction-diffusion.js"></script>
 </body>
 </html>
