@@ -804,7 +804,8 @@ body.home-page {
   font: inherit;
 }
 
-.desk-reticle {
+.desk-reticle,
+.desk-fake-reticle {
   position: absolute;
   z-index: 4;
   top: 50%;
@@ -820,7 +821,8 @@ body.home-page {
   transition: opacity 160ms ease, transform 160ms ease, border-color 160ms ease, background 160ms ease;
 }
 
-.desk-reticle::after {
+.desk-reticle::after,
+.desk-fake-reticle::after {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -848,6 +850,11 @@ body.home-page {
   background: rgba(255, 138, 0, 0.2);
   border-color: #ff8a00;
   box-shadow: 0 0 0 1px #000, 0 0 14px rgba(255, 138, 0, 0.8);
+}
+
+.desk-home.is-exploring:not(.is-debugging) .desk-fake-reticle {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .desk-debug {
@@ -2025,6 +2032,16 @@ body.home-page {
     width: auto;
     padding: var(--spacing-4);
     transform: none;
+    max-height: calc(100% - (2 * var(--spacing-3)));
+    overflow-y: auto;
+  }
+
+  .desk-card-link,
+  .desk-card-back {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: var(--spacing-2) 0;
   }
 
   .desk-controls-help {

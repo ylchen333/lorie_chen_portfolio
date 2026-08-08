@@ -24,7 +24,12 @@ const RETICLE_PICK_RADIUS_PX = 10;
 const RETICLE_MIN_SPLAT_OPACITY = 0.6;
 const RETICLE_MIN_SPLAT_SUPPORT = 4;
 const INVISIBLE_SELECTION_OFFSET_PX = new THREE.Vector2(-253, 128);
+const TOUCH_SELECTION_ANCHOR_NDC = new THREE.Vector2(-0.264, -0.237);
 const SELECTION_ANCHOR_NDC = new THREE.Vector2(0, 0);
+const HAS_TOUCH_INPUT = window.matchMedia('(pointer: coarse)').matches
+  || navigator.maxTouchPoints > 0;
+const TOUCH_LOOK_SENSITIVITY = 0.003;
+const TOUCH_TAP_THRESHOLD_PX = 10;
 const DEFAULT_SPLAT_TRANSFORM = {
   position: new THREE.Vector3(-3.6, -1.4, 6.5),
   scale: new THREE.Vector3(1, 1, 1),
@@ -251,6 +256,7 @@ async function initDeskScene() {
   });
 
   renderer.domElement.addEventListener('click', () => {
+    if (HAS_TOUCH_INPUT) return;
     if (isolatedSplatTestRunning) return;
     if (cameraTransition || interactionState === INTERACTION_STATE.FOCUSED) return;
     if (!pointerControls.isLocked) {
@@ -260,6 +266,75 @@ async function initDeskScene() {
     const targetedSegment = resolveCenterTarget(true);
     if (targetedSegment) selectDestination(targetedSegment);
   });
+
+  const touchLookEuler = new THREE.Euler(0, 0, 0, 'YXZ');
+  const touchGesture = {
+    pointerId: null,
+    startX: 0,
+    startY: 0,
+    lastX: 0,
+    lastY: 0,
+    dragged: false,
+  };
+
+  renderer.domElement.addEventListener('pointerdown', (event) => {
+    if (!HAS_TOUCH_INPUT || event.pointerType !== 'touch') return;
+    if (cameraTransition || interactionState === INTERACTION_STATE.FOCUSED) return;
+    event.preventDefault();
+    touchGesture.pointerId = event.pointerId;
+    touchGesture.startX = event.clientX;
+    touchGesture.startY = event.clientY;
+    touchGesture.lastX = event.clientX;
+    touchGesture.lastY = event.clientY;
+    touchGesture.dragged = false;
+    renderer.domElement.setPointerCapture(event.pointerId);
+  });
+
+  renderer.domElement.addEventListener('pointermove', (event) => {
+    if (event.pointerId !== touchGesture.pointerId) return;
+    event.preventDefault();
+    const deltaX = event.clientX - touchGesture.lastX;
+    const deltaY = event.clientY - touchGesture.lastY;
+    const distanceFromStart = Math.hypot(
+      event.clientX - touchGesture.startX,
+      event.clientY - touchGesture.startY,
+    );
+    if (distanceFromStart > TOUCH_TAP_THRESHOLD_PX) touchGesture.dragged = true;
+
+    touchLookEuler.setFromQuaternion(camera.quaternion);
+    touchLookEuler.y -= deltaX * TOUCH_LOOK_SENSITIVITY;
+    touchLookEuler.x -= deltaY * TOUCH_LOOK_SENSITIVITY;
+    touchLookEuler.x = THREE.MathUtils.clamp(
+      touchLookEuler.x,
+      -Math.PI / 2 + 0.12,
+      Math.PI / 2 - 0.12,
+    );
+    camera.quaternion.setFromEuler(touchLookEuler);
+    touchGesture.lastX = event.clientX;
+    touchGesture.lastY = event.clientY;
+  });
+
+  const finishTouchGesture = (event, cancelled = false) => {
+    if (event.pointerId !== touchGesture.pointerId) return;
+    event.preventDefault();
+    const wasTap = !cancelled && !touchGesture.dragged;
+    if (renderer.domElement.hasPointerCapture(event.pointerId)) {
+      renderer.domElement.releasePointerCapture(event.pointerId);
+    }
+    touchGesture.pointerId = null;
+    if (
+      wasTap
+      && !cameraTransition
+      && interactionState === INTERACTION_STATE.EXPLORE
+      && hero.classList.contains('scene-ready')
+    ) {
+      const targetedSegment = resolveCenterTarget(true);
+      if (targetedSegment) selectDestination(targetedSegment);
+    }
+  };
+
+  renderer.domElement.addEventListener('pointerup', event => finishTouchGesture(event));
+  renderer.domElement.addEventListener('pointercancel', event => finishTouchGesture(event, true));
 
   deskCardBack?.addEventListener('click', () => {
     if (!isolatedSplatTestRunning) returnToOverview();
@@ -725,7 +800,9 @@ async function initDeskScene() {
 
     if (controlsMode) {
       controlsMode.textContent = nextState === INTERACTION_STATE.EXPLORE
-        ? 'explore · look around to highlight · click to select · Esc releases mouse'
+        ? HAS_TOUCH_INPUT
+          ? 'explore · drag to look · tap to select'
+          : 'explore · look around to highlight · click to select · Esc releases mouse'
         : 'focused · choose a link or return to the desk';
     }
     if (nextState !== INTERACTION_STATE.EXPLORE) {
@@ -830,7 +907,7 @@ async function initDeskScene() {
       deskFakeReticle.style.left = `${bounds.left - heroBounds.left + bounds.width * 0.5}px`;
       deskFakeReticle.style.top = `${bounds.top - heroBounds.top + bounds.height * 0.5}px`;
     }
-    const pixelRatioCap = window.innerWidth < 760 ? 1.25 : 1.6;
+    const pixelRatioCap = HAS_TOUCH_INPUT ? 1 : window.innerWidth < 760 ? 1.25 : 1.6;
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, pixelRatioCap));
     renderer.setSize(width, height, false);
     camera.aspect = width / height;
@@ -1562,6 +1639,7 @@ function findProjectedProxyHit(proxy, camera, canvas, selectionNdc) {
 }
 
 function getSelectionAnchorNdc(canvas) {
+  if (HAS_TOUCH_INPUT) return SELECTION_ANCHOR_NDC.copy(TOUCH_SELECTION_ANCHOR_NDC);
   SELECTION_ANCHOR_NDC.set(
     INVISIBLE_SELECTION_OFFSET_PX.x * 2 / Math.max(1, canvas.clientWidth),
     -INVISIBLE_SELECTION_OFFSET_PX.y * 2 / Math.max(1, canvas.clientHeight),
