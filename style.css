@@ -1436,14 +1436,16 @@ body.home-page {
 }
 
 .carousel {
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: var(--spacing-2);
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-inline: contain;
 }
 
 .carousel-track {
   display: flex;
   gap: var(--spacing-2);
-  transition: transform 0.35s ease;
-  will-change: transform;
 }
 
 .carousel-track img {
@@ -1452,6 +1454,8 @@ body.home-page {
   aspect-ratio: 4/3;
   object-fit: cover;
   display: block;
+  scroll-snap-align: start;
+  cursor: zoom-in;
 }
 
 .carousel-controls {
@@ -1639,6 +1643,7 @@ body.home-page {
   height: 220px;
   margin: 0;
   object-fit: cover;
+  cursor: zoom-in;
 }
 
 .playlab-page footer {
@@ -1687,7 +1692,7 @@ body.home-page {
   display: flex;
   align-items: baseline;
   margin-bottom: var(--spacing-3);
-  color: var(--color-bone);
+  color: var(--color-ink);
   gap: var(--spacing-3);
 }
 
@@ -1718,7 +1723,7 @@ body.home-page {
 }
 
 .lb-close:hover {
-  color: var(--color-bone);
+  color: var(--color-ink);
 }
 
 .lb-main {
@@ -1878,6 +1883,10 @@ body.home-page {
   text-transform: uppercase;
   color: var(--color-slate);
   margin-bottom: var(--spacing-3);
+}
+
+.instagram-media {
+  background: var(--color-bone) !important;
 }
 
 .embed-placeholder {

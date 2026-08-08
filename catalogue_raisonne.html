@@ -63,6 +63,7 @@
               referrerpolicy="strict-origin-when-cross-origin"
               allowfullscreen>
             </iframe>
+            <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/I6ol_K3D7nk?si=NkQnXNMa5e4EMD08" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
           </div>
           <p>
             Over two years my studio and bedroom at CMU accumulated a specific kind of density —
@@ -73,15 +74,17 @@
           <img class="inline-img right" src="images/graphics/catalogue_raisonne/Screenshot 2026-07-16 at 1.33.41 PM.png" alt="" loading="lazy" />
           <p>
             Capture used Scaniverse on an iPhone (LiDAR + visual SLAM), with 3D Gaussian Splatting
-            trained from the resulting point cloud. The harder problem was making the result
-            navigable and legible. I wanted each object to be queryable — not labeled by hand,
+            trained from the resulting point cloud. Alternative capture processes also used include capturing raw images of the studio
+            and bedroom with a Fujifilm X-T5 and training a 3D Gaussian Splatting model, then converting to a splat representation.
+            The harder problem was making the result navigable and legible. I wanted each object to be queryable — not labeled by hand,
             but surfaced through the geometry of the space itself.
           </p>
           <p>
             The segmentation pipeline weighs surface normals at 2.5&times; position features to
             identify object boundaries in a densely-packed scene, then applies HDBSCAN clustering,
             CLIP for non-taxonomic semantic queries, and SAM for 2D instance masks. Visibility
-            scoring prunes floater Gaussians in free space.
+            scoring prunes floater Gaussians in free space. Hand segmentation (drawing bounding boxes) was also employed to refine the object boundaries. 
+            The result is a 3D archive of the space, where each object can be queried and explored in a browser.
           </p>
           <img class="inline-img right" src="images/graphics/catalogue_raisonne/Screenshot 2026-07-16 at 1.33.48 PM.png" alt="" loading="lazy" />
           <p>
@@ -115,7 +118,7 @@
 
   <footer>
     <p>&copy; 2026 Lorie Chen</p>
-    <p>Pittsburgh, PA</p>
+    <p>Detroit, MI</p>
   </footer>
 
   <script src="main.js"></script>
