@@ -55,14 +55,14 @@ const DESK_DESTINATIONS = [
       { title: 'catalogue raisonné', meta: 'interactive spatial archive · 2025–2026', href: 'catalogue_raisonne.html' },
       { title: 'The Long Way Home', meta: 'computer vision and plotting · 2026', href: 'the-long-way-home.html' },
     ],
-    segmentUrl: `${ASSET_BASE}/targets/target-region-0.ply`,
+    segmentUrl: `${ASSET_BASE}/regions/region-0/segment-preview.ply`,
     center: [0.829, -1.310, 2.884], size: [4.5, 2.5, 2.6], pickRadius: 105,
   },
   {
     id: 'notebook', label: 'sketches & experiments', title: 'PLAYLAB', eyebrow: 'notebook',
     copy: 'one off experiments in various media',
     href: 'playlab.html', linkLabel: 'open playlab →',
-    segmentUrl: `${ASSET_BASE}/targets/target-region-2.ply`,
+    segmentUrl: `${ASSET_BASE}/regions/region-2/segment-preview.ply`,
     center: [3.334, 1.240, 2.149], size: [2.2, 0.9, 1.9], pickRadius: 110,
   },
   {
@@ -72,12 +72,12 @@ const DESK_DESTINATIONS = [
     projects: [
       { title: 'synth splat', meta: 'audio-reactive Gaussian splatting · 2026', href: 'synth-splat.html' },
     ],
-    segmentUrl: `${ASSET_BASE}/targets/target-region-3.ply`,
+    segmentUrl: `${ASSET_BASE}/regions/region-3/segment-preview.ply`,
     center: [-3.900, 0.517, 3.661], size: [2.6, 4.0, 4.0], pickRadius: 120,
   },
   {
     id: 'keyboard', label: 'back home', action: 'home',
-    segmentUrl: `${ASSET_BASE}/targets/target-region-4.ply`,
+    segmentUrl: `${ASSET_BASE}/regions/region-4/segment-preview.ply`,
     center: [0.878, 3.000, 2.399], size: [4.8, 0.8, 2.6],
   },
 ];
@@ -199,6 +199,9 @@ async function initDeskScene() {
   const segmentTargets = [];
   let lastReticleScanAt = -Infinity;
   let cachedReticleHit = null;
+  const lastSelectionCameraMatrix = new THREE.Matrix4();
+  let hasSelectionCameraSnapshot = false;
+  let lastSelectionSceneSignature = '';
   /* Debug rendering and HUD initialization disabled.
   const debugRay = createDebugRay(DEBUG_RAY_COLOR, 'world-space-selection-ray');
   const debugCameraRay = createDebugRay(DEBUG_CAMERA_COLOR, 'camera-space-optical-axis');
@@ -337,6 +340,25 @@ async function initDeskScene() {
       return cachedReticleHit.object.userData.interactionProxy || cachedReticleHit.object;
     }
     lastReticleScanAt = now;
+
+    const selectionSceneSignature = [
+      segmentTargets.length,
+      figurineTarget ? 1 : 0,
+      renderer.domElement.clientWidth,
+      renderer.domElement.clientHeight,
+    ].join(':');
+    if (
+      !forceScan
+      && hasSelectionCameraSnapshot
+      && selectionSceneSignature === lastSelectionSceneSignature
+      && lastSelectionCameraMatrix.equals(camera.matrixWorld)
+    ) {
+      if (!cachedReticleHit) return null;
+      return cachedReticleHit.object.userData.interactionProxy || cachedReticleHit.object;
+    }
+    lastSelectionCameraMatrix.copy(camera.matrixWorld);
+    lastSelectionSceneSignature = selectionSceneSignature;
+    hasSelectionCameraSnapshot = true;
 
     if (segmentTargets.length === 0 && !figurineTarget) {
       cachedReticleHit = null;
@@ -1771,7 +1793,9 @@ function createFigurineOverlay(figurineAnchor, deskRoot) {
 }
 
 function setOverlayOpacity(overlay, opacity) {
-  overlay.mesh.visible = overlay.mesh.userData.isSegmentSurface || opacity > 0.002;
+  // Do not submit transparent preview splats to Spark. They remain available
+  // to the CPU-side selection scan even while hidden.
+  overlay.mesh.visible = opacity > 0.002;
   if (overlay.materials) {
     for (const material of overlay.materials) material.opacity = opacity * 0.72;
   } else {

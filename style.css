@@ -162,6 +162,7 @@ nav {
 
 .nav-links a.active {
   color: var(--color-verdigris);
+  font-weight: 700;
 }
 
 /* ── Hero ── */
