@@ -1198,7 +1198,7 @@ async function measureIsolatedSplats({
   }
   scene.background = null;
   renderer.setRenderTarget(target);
-  renderer.setClearColor(0x000000, 0);
+  renderer.setClearColor(var(--color-bone), 0);
   renderer.setScissorTest(false);
   renderer.setViewport(0, 0, drawingSize.x, drawingSize.y);
 

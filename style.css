@@ -562,7 +562,7 @@ body.wide footer {
 
 body.home-page {
   overflow: hidden;
-  background: #000;
+  background: var(--color-bone);
 }
 
 .home-page > .desk-home {
@@ -576,7 +576,7 @@ body.home-page {
   margin: 0 calc(-1 * var(--spacing-4));
   padding: 0;
   overflow: hidden;
-  background: #000;
+  background: var(--color-bone);
 }
 
 .desk-viewport {
@@ -978,6 +978,10 @@ body.home-page {
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.3);
   pointer-events: auto;
   backdrop-filter: blur(16px);
+}
+
+.home-page .desk-card {
+  background-color: var(--color-bone);
 }
 
 .desk-card-eyebrow {
