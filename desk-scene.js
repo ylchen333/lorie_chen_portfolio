@@ -883,10 +883,19 @@ async function initDeskScene() {
     interactionOverlays.push(...overlays);
     discoveryPulseStart = clock.elapsedTime;
   });
-  if (loadingLabel) loadingLabel.textContent = 'loading the figurine';
 
-  try {
-    figurineAnchor = await loadFigurine(deskRoot);
+  if (loadingProgress) loadingProgress.textContent = '100%';
+  render();
+  requestAnimationFrame(() => {
+    setInteractionState(INTERACTION_STATE.EXPLORE);
+    hero.classList.add('scene-ready');
+  });
+
+  // The desk is usable as soon as its initial RAD pages are ready. Load the
+  // figurine in the background so its download and GLTF decode do not hold the
+  // loading screen open on a cold cache.
+  loadFigurine(deskRoot).then((loadedFigurineAnchor) => {
+    figurineAnchor = loadedFigurineAnchor;
     interactionOverlays.push(createFigurineOverlay(figurineAnchor, deskRoot));
     const figurineProxy = createInteractionProxy({
       id: 'figurine',
@@ -904,15 +913,9 @@ async function initDeskScene() {
     figurineAnchor.add(figurineProxy);
     interactionTargets.push(figurineProxy);
     figurineTarget = figurineProxy;
-  } catch (error) {
+    render();
+  }).catch((error) => {
     console.warn('Figurine could not load; continuing with the desk:', error);
-  }
-
-  if (loadingProgress) loadingProgress.textContent = '100%';
-  render();
-  requestAnimationFrame(() => {
-    setInteractionState(INTERACTION_STATE.EXPLORE);
-    hero.classList.add('scene-ready');
   });
 }
 
