@@ -128,7 +128,7 @@ nav {
   min-height: var(--nav-height);
   margin-bottom: 0;
   padding: 0 var(--spacing-4);
-  background: rgba(243, 241, 234, 0.82);
+  background: rgba(17, 17, 15, 0.82);
   border-bottom: 1px solid var(--color-fog);
   backdrop-filter: blur(12px);
 }
@@ -138,7 +138,7 @@ nav {
   font-size: var(--text-xs);
   letter-spacing: var(--tracking-widest);
   text-transform: uppercase;
-  color: var(--color-ink);
+  color: var(--color-bone);
   text-decoration: none;
 }
 
@@ -157,7 +157,7 @@ nav {
 }
 
 .nav-links a:hover {
-  color: var(--color-ink);
+  color: var(--color-bone);
 }
 
 .nav-links a.active {
@@ -186,7 +186,7 @@ nav {
 }
 
 .back-link:hover {
-  color: var(--color-ink);
+  color: var(--color-bone);
 }
 
 .tagline {
@@ -297,7 +297,7 @@ section p {
 }
 
 .work-title a {
-  color: var(--color-ink);
+  color: var(--color-bone);
   text-decoration: none;
 }
 
@@ -455,7 +455,7 @@ section p {
 /* ── Links ── */
 
 a {
-  color: var(--color-ink);
+  color: var(--color-bone);
   text-decoration: none;
 }
 
