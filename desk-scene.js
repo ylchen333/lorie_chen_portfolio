@@ -118,7 +118,7 @@ async function initDeskScene() {
     antialias: false,
     powerPreference: 'high-performance',
   });
-  renderer.setClearColor(0x000000, 1);
+  renderer.setClearColor(0x1B1915, 1);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.05;
@@ -127,7 +127,7 @@ async function initDeskScene() {
   viewport.appendChild(renderer.domElement);
 
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x000000);
+  scene.background = new THREE.Color(0x1B1915);
 
   const camera = new THREE.PerspectiveCamera(52, 1, 0.04, 120);
   const defaultCamera = new THREE.PerspectiveCamera(52, 16 / 10, 0.04, 120);
