@@ -20,8 +20,8 @@ img {
   --color-slate: #5C5749;
 
   /* legacy aliases (kept so older rules below keep working) */
-  --bg: var(--color-bone);
-  --text: var(--color-ink);
+  --bg: var(--color-ink);
+  --text: var(--color-bone);
   --muted: var(--color-slate);
   --accent: var(--color-verdigris);
   --max-width: 720px;
