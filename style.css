@@ -562,18 +562,20 @@ body.wide footer {
 
 body.home-page {
   overflow: hidden;
+  padding: 0;
   background: #000;
 }
 
 .home-page > .desk-home {
-  position: relative;
+  position: fixed;
   z-index: 1;
+  inset: var(--nav-height) 0 0;
   isolation: isolate;
-  width: calc(100% + (2 * var(--spacing-4)));
-  height: calc(100svh - var(--nav-height));
-  min-height: calc(100svh - var(--nav-height));
+  width: 100vw;
+  height: auto;
+  min-height: 0;
   max-width: none;
-  margin: 0 calc(-1 * var(--spacing-4));
+  margin: 0;
   padding: 0;
   overflow: hidden;
   background: #000;
@@ -1974,7 +1976,7 @@ body.home-page {
   }
 
   .home-page > .desk-home {
-    width: calc(100% + (2 * var(--spacing-4)));
+    width: 100vw;
   }
 
   .desk-home-content {
