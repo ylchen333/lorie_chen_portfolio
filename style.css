@@ -973,8 +973,8 @@ body.home-page {
   padding: clamp(22px, 3vw, 34px);
   color: var(--color-ink);
   transform: translateY(-50%);
-  background: rgba(243, 241, 234, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.62);
+  background: var(--color-bone);
+  border: 1px solid var(--color-fog);
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.3);
   pointer-events: auto;
   backdrop-filter: blur(16px);
