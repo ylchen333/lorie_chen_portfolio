@@ -14,10 +14,10 @@ img {
   /* colors */
   --color-bone: #1B1915;
   --color-white: #FFFFFF;
-  --color-fog: #DEDACD;
+  --color-fog: #929292;
   --color-ink: #F3F1EA;
-  --color-verdigris: #4E6E5D;
-  --color-slate: #5C5749;
+  --color-verdigris: #75b894;
+  --color-slate: #a79e85;
 
   /* legacy aliases (kept so older rules below keep working) */
   --bg: var(--color-bone);
@@ -128,7 +128,7 @@ nav {
   min-height: var(--nav-height);
   margin-bottom: 0;
   padding: 0 var(--spacing-4);
-  background: rgba(243, 241, 234, 0.82);
+  background: rgba(88, 86, 80, 0.82);
   border-bottom: 1px solid var(--color-fog);
   backdrop-filter: blur(12px);
 }
