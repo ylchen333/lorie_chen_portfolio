@@ -51,9 +51,9 @@ img {
   --tracking-wide: 0.08em;
   --tracking-widest: 0.18em;
 
-  --leading-tight: 105%;
-  --leading-normal: 130%;
-  --leading-relaxed: 165%;
+  --leading-tight: 1.05;
+  --leading-normal: 1.3;
+  --leading-relaxed: 1.65;
 
   /* spacing */
   --spacing-1: 4px;
