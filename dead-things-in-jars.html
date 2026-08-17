@@ -50,6 +50,9 @@
 
       <div class="project-content">
         <section class="project-writeup">
+          <h2 class="project-section-label">Question</h2>
+          <p class="project-question">How can institutions digitize objects that break conventional photogrammetry?</p>
+          <h2 class="project-section-label">Context</h2>
           <p>
             Traditional photogrammetry fails on glass and liquid. The reflective and translucent
             surfaces that make wet specimens so visually compelling produce garbage point clouds —
@@ -57,6 +60,7 @@
             to figure out what it would actually take to digitally preserve natural history
             collections housed in ethanol.
           </p>
+          <h2 class="project-section-label">Experiment &amp; technical approach</h2>
           <img class="inline-img right" src="images/graphics/dead_things_in_jars/DSC06310.JPG" alt="" loading="lazy" />
           <p>
             The answer turned out to be 3D Gaussian Splatting. Unlike NeRFs, which bake scene
@@ -72,6 +76,9 @@
             project is ongoing: the goal is a workflow robust enough to hand off to collection
             stewards who don't want to think about Gaussians.
           </p>
+          <h2 class="project-section-label">Findings</h2>
+          <p>Gaussian splatting preserved view-dependent reflections and translucency that photogrammetry treated as faulty geometry. The remaining bottleneck is operational rather than visual: capture coverage, processing choices, file size, and browser delivery still demand too much tacit technical knowledge.</p>
+          <div class="project-implication"><h2 class="project-section-label">Implications</h2><p>A useful collection product would guide non-specialists through capture, flag missing views, choose sensible reconstruction settings, and publish a lightweight result. The opportunity is not merely a better scan, but a handoff-ready workflow that collection stewards can own.</p></div>
         </section>
       </div>
 

@@ -64,27 +64,27 @@
             </iframe>
           </div>
           <div class="gif-embed">
-            <img src="images/graphics/synth_splat/ezgif-54c8a933d80eb2ef.gif"/>
+            <img src="images/graphics/synth_splat/ezgif-54c8a933d80eb2ef.gif" alt="Audio reshaping a Gaussian splat scene" />
           </div>
-
+          <h2 class="project-section-label">Question</h2>
+          <p class="project-question">Can a captured 3D world behave like a live musical instrument?</p>
+          <h2 class="project-section-label">Context</h2>
           <p>
-
-            Synth Splat is an audio-reactive 3D Gaussian Splatting project, built with a team.
-            Sound drives the splat scene in real time, turning music into a live, navigable
-            radiance field.
+            Gaussian splats are usually treated as static records of real places. We wanted to test them as expressive, time-based material: a scene that listens and changes with a performer instead of merely being viewed.
           </p>
+          <h2 class="project-section-label">Experiment &amp; technical approach</h2>
           <p>
-            Built at the Worlds in Action Hackathon in Los Angeles, Synth Splat was a 48-hour project that explored the intersection of music and 3D graphics. 
-            The team used Spark.js for the 3D rendering, Meyda.js for audio feature extraction, and XGrids PortalCam for camera control.
-            I was responsible for implementing the audio-reactive features, including mapping audio features to splat parameters and creating a dynamic camera system that responds to the music.
-            In addition to the technical implementation, I also contributed to the overall design and user experience of the project, ensuring that the interface was intuitive for users and accessible through the web browser.
+            In 48 hours at the Worlds in Action Hackathon, we built a browser performance system using Spark.js, Meyda.js, and XGrids PortalCam. I explored mappings from audio features to splat scale, opacity, motion, and camera behavior, then shaped the interface so someone could move from a prepared setlist to a live visual without a specialist 3D tool.
           </p>
           <p>
             In collaboration with Steph Ng and Nick Pudjarminta.
             Steph Ng is a creative technologist with skills in both design and engineering, with a background in AR/VR. Currently building a startup in digital fashion. 
             Nick Pudjarminta is a creative technologist who co-founded the award-winning mixed reality studio AmaVR, led cutting edge VR research at the USC World Building Media Lab, and facilitated Metaverse technical pipelines at Meta.
           </p>
-          <p>Workflow = Setlist preprocessing → Marble (generate/edit splats) → export ply/spz → web visualizer (Spark.js, shader/audio-reactive animation via Meyda.js)</p>
+          <p>Workflow: setlist preprocessing &rarr; Marble generation and editing &rarr; PLY/SPZ export &rarr; Spark.js visualizer &rarr; shader and camera animation driven by Meyda.js.</p>
+          <h2 class="project-section-label">Findings</h2>
+          <p>Low-level audio mappings were immediately legible, but too many simultaneous responses made the world feel like an equalizer rather than an instrument. The stronger interaction came from giving different musical features distinct spatial responsibilities and letting the camera respond more slowly than the shaders.</p>
+          <div class="project-implication"><h2 class="project-section-label">Implications</h2><p>Future spatial-creation tools could treat sound as an authoring input, not an effect added at export. A useful product workflow would let performers compose mappings, preview them live, and carry a captured world between editing and performance without rebuilding it in a game engine.</p></div>
         </section>
       </div>
 

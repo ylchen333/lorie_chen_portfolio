@@ -173,6 +173,14 @@ nav {
   letter-spacing: var(--tracking-tight);
 }
 
+.page-intro {
+  max-width: 650px;
+  margin-top: var(--spacing-3);
+  color: var(--color-slate);
+  font-size: var(--text-lg);
+  line-height: 1.45;
+}
+
 .back-link {
   display: inline-block;
   font-family: var(--font-mono);
@@ -643,6 +651,54 @@ body.home-page {
   font-size: clamp(16px, 1.55vw, 20px);
   line-height: var(--leading-relaxed);
   text-shadow: 0 1px 14px rgba(0, 0, 0, 0.5);
+}
+
+.home-primary-link {
+  margin-top: var(--spacing-4);
+  padding: 11px 16px;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  pointer-events: auto;
+  backdrop-filter: blur(10px);
+  background: rgba(27, 25, 21, 0.35);
+}
+
+.home-primary-link:hover {
+  color: var(--color-bone);
+  background: var(--color-ink);
+}
+
+.project-section-label {
+  margin: var(--spacing-5) 0 var(--spacing-2);
+  color: var(--color-verdigris);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+}
+
+.project-question {
+  max-width: 26ch;
+  margin-bottom: var(--spacing-5);
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  line-height: 1.2;
+}
+
+.project-implication {
+  margin-top: var(--spacing-5);
+  padding: var(--spacing-4);
+  border-left: 2px solid var(--color-verdigris);
+  background: rgba(117, 184, 148, 0.08);
+}
+
+.project-implication .project-section-label {
+  margin-top: 0;
 }
 
 .home-scroll-cue {

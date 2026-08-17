@@ -51,12 +51,16 @@
 
       <div class="project-content">
         <section class="project-writeup">
+          <h2 class="project-section-label">Question</h2>
+          <p class="project-question">How can computer vision produce new forms of image-making, rather than only interpret images?</p>
+          <h2 class="project-section-label">Context</h2>
           <p>
             I drive a lot. This year I made ten 10-hour road trips between Pittsburgh and the
             Midwest, and left a dashcam running the whole way &mdash; through a towing incident,
             two snowstorms, a swerve on I-76. The footage accumulated into hours of highway,
             weather, and road texture: everything a car processes automatically and nobody watches.
           </p>
+          <h2 class="project-section-label">Experiments &amp; technical approach</h2>
           <img class="inline-img right" src="images/plotting_art/dashcam/clean_slitscan.jpg" alt="" loading="lazy" />
           <p>
             Digitally, slit scans collapse each frame to a single column and concatenate across
@@ -79,6 +83,9 @@
             quality I couldn't replicate by hand. The results look like damaged signal or
             compressed memory, which is approximately what they are.
           </p>
+          <h2 class="project-section-label">Findings</h2>
+          <p>Models trained to identify ordinary categories became most interesting at their edges: snow masks exposed pedestrian desire paths, slit scans turned time into landscape, and plotting translated digital certainty into pigment bleed and mechanical error. The mistakes carried more information than a clean reconstruction.</p>
+          <div class="project-implication"><h2 class="project-section-label">Implications</h2><p>Creative vision tools could expose intermediate representations&mdash;masks, tracks, calibration, temporal slices&mdash;as editable materials. That would let artists steer how a model sees, then move fluidly from video analysis to images, spatial scenes, or physical output.</p></div>
         </section>
       </div>
 
