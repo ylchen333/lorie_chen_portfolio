@@ -89,6 +89,7 @@ const DESK_DESTINATIONS = [
 
 const hero = document.querySelector('.desk-home');
 const viewport = document.querySelector('.desk-viewport');
+const introProceedButton = document.querySelector('#desk-intro-proceed');
 const loadingLabel = document.querySelector('.desk-loading-label');
 const loadingProgress = document.querySelector('.desk-loading-progress');
 const fallback = document.querySelector('.desk-fallback');
@@ -265,6 +266,13 @@ async function initDeskScene() {
     }
     const targetedSegment = resolveCenterTarget(true);
     if (targetedSegment) selectDestination(targetedSegment);
+  });
+
+  introProceedButton?.addEventListener('click', () => {
+    hero.classList.add('is-desk-active');
+    if (!HAS_TOUCH_INPUT && !isolatedSplatTestRunning && !pointerControls.isLocked) {
+      pointerControls.lock();
+    }
   });
 
   const touchLookEuler = new THREE.Euler(0, 0, 0, 'YXZ');
