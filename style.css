@@ -709,6 +709,7 @@ body.home-page {
 }
 
 .project-implication {
+  clear: both;
   margin-top: var(--spacing-5);
   padding: var(--spacing-4);
   border-left: 2px solid var(--color-verdigris);
