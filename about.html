@@ -21,6 +21,7 @@
         <a href="work.html">work</a>
         <a href="about.html" class="active">about</a>
         <a href="playlab.html">playlab</a>
+        <a href="mailto:lorichendd@gmail.com" class="nav-contact">contact</a>
       </div>
     </nav>
     <div class="tagline">
@@ -38,13 +39,13 @@
         <div class="about-body">
           <div class="about-copy">
             <p>
-              I&rsquo;m Lorie Chen&mdash;a creative technologist, artist, engineer, and occasional snowboarder. I investigate how computational technologies become creative media: not simply tools to use, but materials whose behavior, interfaces, and possibilities can be shaped.
+              I&rsquo;m a creative technologist, artist, engineer, and occasional snowboarder. I treat computational techniques as materials, and I want to know what their behavior and interfaces let creative people shape.
             </p>
             <p>
               My practice moves through a research loop: find an emerging technique, ask what it might let creative people do, prototype a workflow, then follow its successes and interesting failures. That has led to 3D Gaussian splats of preserved
               biology floating in glass jars, slit scans of ten-hour road trips turned into plotter
               drawings, command-line interfaces for navigating a bedroom's accumulated history. I'm
-              drawn to techniques that fail interestingly &mdash; confocal stereo on translucent
+              drawn to techniques that fail interestingly: confocal stereo on translucent
               gemstones, photogrammetry on reflective surfaces, segmentation models pointed at snow.
             </p>
             <p>
@@ -112,8 +113,8 @@
     <section class="open-to-work" aria-labelledby="open-to-work-title">
       <span class="availability-status"><i aria-hidden="true"></i> available for work</span>
       <div class="open-to-work-copy">
-        <h2 id="open-to-work-title">Looking for a creative R&amp;D team.</h2>
-        <p>I&rsquo;m interested in roles where prototyping connects research, engineering, interaction design, computer graphics, and artistic practice.</p>
+        <h2 id="open-to-work-title">Looking for a creative tools or spatial computing team.</h2>
+        <p>I want to be the person who prototypes an idea, tries it with artists, and works with engineers to ship it.</p>
       </div>
       <div class="open-to-work-links">
         <a href="mailto:lorichendd@gmail.com">get in touch &rarr;</a>
@@ -139,6 +140,7 @@
             document.querySelector('.instagram-media')?.setAttribute('data-instgrm-theme', 'dark');
           </script>
           <script async src="https://www.instagram.com/embed.js"></script>
+          <a class="embed-fallback-link" href="https://www.instagram.com/lovvipop.zip/" target="_blank" rel="noopener">@lovvipop.zip on Instagram &rarr;</a>
         </div>
       </div>
     </section>
@@ -159,7 +161,7 @@
         .then(r => r.ok ? r.json() : null)
         .then(data => {
           if (!data?.playlistId) {
-            container.innerHTML = '<div class="embed-placeholder">no recent tracks</div>';
+            container.innerHTML = '<div class="embed-placeholder">nothing playing lately<a href="https://open.spotify.com" target="_blank" rel="noopener">open Spotify &rarr;</a></div>';
             return;
           }
           container.innerHTML = `
@@ -175,7 +177,7 @@
           `;
         })
         .catch(() => {
-          container.innerHTML = '<div class="embed-placeholder">no recent tracks</div>';
+          container.innerHTML = '<div class="embed-placeholder">nothing playing lately<a href="https://open.spotify.com" target="_blank" rel="noopener">open Spotify &rarr;</a></div>';
         });
     }
   </script>

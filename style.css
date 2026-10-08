@@ -146,11 +146,22 @@ nav {
   display: flex;
   gap: var(--spacing-4);
   font-family: var(--font-mono);
-  font-size: var(--text-xs);
+  font-size: 13px;
+}
+
+.nav-links a.nav-contact {
+  color: var(--color-ink);
+  border-bottom: 1px solid var(--color-verdigris);
+  align-self: center;
+  min-height: 0;
+  padding-bottom: 2px;
 }
 
 .nav-links a {
-  color: var(--color-slate);
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: #d8d0b8;
   text-decoration: none;
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
@@ -314,10 +325,10 @@ section p {
 
 .work-tags {
   font-family: var(--font-mono);
-  font-size: var(--text-xs);
+  font-size: 13px;
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
-  color: var(--color-slate);
+  color: #c9c0a6;
   margin-bottom: var(--spacing-3);
 }
 
@@ -326,10 +337,31 @@ section p {
   line-height: var(--leading-relaxed);
 }
 
+.work-outcome {
+  max-width: 520px;
+  margin-top: var(--spacing-3);
+  color: var(--color-slate);
+  font-size: 14px;
+  line-height: var(--leading-relaxed);
+}
+
+.work-outcome a {
+  color: var(--color-verdigris);
+}
+
+.work-intro-note {
+  max-width: 62ch;
+  margin-top: var(--spacing-3);
+  color: var(--color-ink);
+  line-height: var(--leading-relaxed);
+}
+
 .work-media {
   flex: 1 1 50%;
   display: block;
   overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .work-media img {
@@ -753,18 +785,17 @@ body.home-page {
 .desk-loading {
   position: absolute;
   z-index: 4;
-  top: 50%;
-  left: 50%;
+  top: var(--spacing-4);
+  right: var(--spacing-4);
   display: grid;
   min-width: 190px;
   grid-template-columns: auto 1fr auto;
   gap: 10px;
   align-items: center;
-  padding: 12px 14px;
+  padding: 10px 14px;
   color: var(--color-ink);
-  transform: translate(-50%, -50%);
-  background: rgba(243, 241, 234, 0.82);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(27, 25, 21, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 2px;
   box-shadow: 0 12px 42px rgba(35, 32, 25, 0.18);
   font-family: var(--font-mono);
@@ -1969,8 +2000,10 @@ body.home-page {
 }
 
 .embed-placeholder {
-  background: var(--color-white);
+  background: transparent;
   border: 1px dashed var(--color-fog);
+  flex-direction: column;
+  gap: var(--spacing-2);
   padding: var(--spacing-4);
   font-family: var(--font-mono);
   font-size: var(--text-xs);
@@ -2158,5 +2191,90 @@ body.home-page {
 
   .about-portrait {
     width: min(100%, 28rem);
+  }
+}
+
+.embed-placeholder a {
+  color: var(--color-verdigris);
+}
+
+.embed-block .instagram-media {
+  max-height: 560px;
+  overflow: hidden;
+}
+
+.desk-fallback {
+  max-width: min(420px, calc(100% - 2 * var(--spacing-4)));
+  color: #1B1915;
+  text-align: center;
+  line-height: var(--leading-relaxed);
+}
+
+.desk-fallback a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/* Touch screens have no mouse look or WASD, so hide those hints. */
+@media (pointer: coarse) {
+  .desk-controls {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav-links {
+    gap: var(--spacing-2);
+    font-size: 12px;
+  }
+
+  .desk-loading {
+    top: var(--spacing-3);
+    right: var(--spacing-3);
+    min-width: 0;
+  }
+}
+
+.home-secondary-link {
+  display: inline-block;
+  margin: var(--spacing-4) 0 0 var(--spacing-3);
+  padding: 11px 4px;
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.tools-preview {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-4);
+  border: 1px solid var(--color-fog);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-verdigris);
+}
+
+.work-title {
+  color: var(--color-ink);
+}
+
+.embed-fallback-link {
+  display: inline-block;
+  margin-top: var(--spacing-2);
+  color: var(--color-verdigris);
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+@media (max-width: 600px) {
+  .kicker-open,
+  .desk-controls {
+    display: none;
   }
 }
