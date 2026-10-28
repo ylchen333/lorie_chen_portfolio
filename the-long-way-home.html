@@ -17,17 +17,27 @@
       <a href="index.html" class="wordmark">Lorie Chen</a>
       <div class="nav-links">
         <!-- <a href="index.html">home</a> -->
-        <a href="work.html" class="active">work</a>
+        <a href="index.html" class="active">work</a>
+        <a href="desk.html">desk</a>
         <a href="about.html">about</a>
         <a href="playlab.html">playlab</a>
         <a href="mailto:lorichendd@gmail.com" class="nav-contact">contact</a>
       </div>
     </nav>
     <div class="hero">
-      <a href="work.html" class="back-link">&larr; work</a>
+      <a href="index.html" class="back-link">&larr; work</a>
       <h1>The Long Way Home</h1>
+      <p class="project-statement">Landscapes, observed and drawn by machines</p>
       <p class="tagline">SAM &middot; OpenCV &middot; vsketch &middot; vpype &middot; HP Draftmaster Plotter &middot; 2026</p>
     </div>
+    <figure class="hero-figure">
+      <a href="images-web/plotting_art/dashcam/all_masks_overlay_full.jpg" target="_blank" rel="noopener" aria-label="Open the full-resolution image">
+        <img src="images-web/plotting_art/dashcam/all_masks_overlay.jpg"
+             srcset="images-web/plotting_art/dashcam/all_masks_overlay.jpg 1600w, images-web/plotting_art/dashcam/all_masks_overlay_2880.jpg 2880w"
+             sizes="100vw" width="2880" height="426"
+             alt="Segmentation masks overlaid on a panoramic dashcam landscape" loading="eager" decoding="async" />
+      </a>
+    </figure>
   </header>
 
   <main>
@@ -52,8 +62,6 @@
 
       <div class="project-content">
         <section class="project-writeup">
-          <h2 class="project-section-label">Question</h2>
-          <p class="project-question">How can computer vision produce new forms of image-making, rather than only interpret images?</p>
           <h2 class="project-section-label">Context</h2>
           <p>
             I drive a lot. This year I made ten 10-hour road trips between Pittsburgh and the
@@ -73,7 +81,6 @@
             actually move through intersections &mdash; ghosts of human presence in footage that
             wasn't looking for them.
           </p>
-          <img class="inline-img right" src="images-web/plotting_art/dashcam/all_masks_overlay.jpg" alt="" loading="lazy" />
           <p>
             The same material was rendered physically for Golan Levin's Drawing with Machines
             studio: slit scans extracted via ffmpeg, SAM segmentation to isolate moving elements,

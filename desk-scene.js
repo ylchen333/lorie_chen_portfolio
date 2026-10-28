@@ -20,15 +20,17 @@ const DEBUG_SPLAT_COLOR = 0x39ff14;
 const DEBUG_SPLAT_SIGMA = 2.5;
 const DEBUG_CALIBRATION_SAMPLE_COUNT = 7;
 const ISOLATED_SPLAT_ALPHA_THRESHOLD = 8;
-const RETICLE_PICK_RADIUS_PX = 10;
+const POINTER_PICK_RADIUS_PX = 12;
+const TOUCH_PICK_RADIUS_PX = 28;
 const RETICLE_MIN_SPLAT_OPACITY = 0.6;
 const RETICLE_MIN_SPLAT_SUPPORT = 4;
-const INVISIBLE_SELECTION_OFFSET_PX = new THREE.Vector2(-253, 128);
-const TOUCH_SELECTION_ANCHOR_NDC = new THREE.Vector2(-0.264, -0.237);
+// Selection is picked from the pointer's own position (NDC). While immersive
+// mode holds the pointer lock, it falls back to the screen center.
 const SELECTION_ANCHOR_NDC = new THREE.Vector2(0, 0);
+const pointerState = { ndc: new THREE.Vector2(), valid: false, locked: false, pickRadiusPx: POINTER_PICK_RADIUS_PX };
 const HAS_TOUCH_INPUT = window.matchMedia('(pointer: coarse)').matches
   || navigator.maxTouchPoints > 0;
-const TOUCH_LOOK_SENSITIVITY = 0.003;
+const LOOK_SENSITIVITY = 0.003;
 const TOUCH_TAP_THRESHOLD_PX = 10;
 const DEFAULT_SPLAT_TRANSFORM = {
   position: new THREE.Vector3(-3.6, -1.4, 6.5),
@@ -54,7 +56,7 @@ const DESK_DESTINATIONS = [
   {
     id: 'monitor', label: 'selected work', title: 'SELECTED WORK', eyebrow: 'monitor',
     copy: 'A selection of projects across 3D capture, creative tools, graphics, and physical computing.',
-    href: 'work.html', linkLabel: 'see all work →',
+    href: 'index.html', linkLabel: 'see all work →',
     projects: [
       { title: 'synth splat', meta: 'audio-reactive Gaussian splatting · 2026', href: 'synth-splat.html' },
       { title: 'catalogue raisonné', meta: 'interactive spatial archive · 2025–2026', href: 'catalogue_raisonne.html' },
@@ -73,7 +75,7 @@ const DESK_DESTINATIONS = [
   {
     id: 'computer', label: 'most recent work', title: 'RECENT WORK', eyebrow: 'PC',
     copy: 'Synth Splat turns sound into a live, navigable radiance field.',
-    href: 'work.html', linkLabel: 'see all work →',
+    href: 'index.html', linkLabel: 'see all work →',
     projects: [
       { title: 'synth splat', meta: 'audio-reactive Gaussian splatting · 2026', href: 'synth-splat.html' },
     ],
@@ -89,7 +91,6 @@ const DESK_DESTINATIONS = [
 
 const hero = document.querySelector('.desk-home');
 const viewport = document.querySelector('.desk-viewport');
-const introProceedButton = document.querySelector('#desk-intro-proceed');
 const loadingLabel = document.querySelector('.desk-loading-label');
 const loadingProgress = document.querySelector('.desk-loading-progress');
 const fallback = document.querySelector('.desk-fallback');
@@ -103,7 +104,8 @@ const deskCardProjects = document.querySelector('.desk-card-projects');
 const deskCardLink = document.querySelector('.desk-card-link');
 const deskCardBack = document.querySelector('.desk-card-back');
 const deskReticle = document.querySelector('.desk-reticle');
-const deskFakeReticle = document.querySelector('.desk-fake-reticle');
+const immersiveToggle = document.querySelector('.desk-immersive-toggle');
+const introExploreButton = document.querySelector('#desk-intro-explore');
 // Isolation test UI hooks are disabled.
 // const isolationTestOverlay = document.querySelector('.desk-isolation-test');
 // const isolationTestPercent = document.querySelector('.desk-isolation-test-percent');
@@ -246,37 +248,72 @@ async function initDeskScene() {
   // Kept false so legacy guard clauses remain inert while isolation is disabled.
   const isolatedSplatTestRunning = false;
 
+  // Pointer lock is opt-in: only the "immersive mode" toggle requests it.
   pointerControls.addEventListener('lock', () => {
+    pointerState.locked = true;
+    hero.classList.add('is-immersive', 'is-desk-active');
+    immersiveToggle?.setAttribute('aria-pressed', 'true');
+    updateControlsHint();
+    updateCursor();
     if (isolatedSplatTestRunning) return;
     if (interactionState !== INTERACTION_STATE.FOCUSED) setInteractionState(INTERACTION_STATE.EXPLORE);
   });
   pointerControls.addEventListener('unlock', () => {
+    pointerState.locked = false;
+    hero.classList.remove('is-immersive');
+    immersiveToggle?.setAttribute('aria-pressed', 'false');
     pressedKeys.clear();
+    updateControlsHint();
+    updateCursor();
     if (isolatedSplatTestRunning) return;
     if (interactionState !== INTERACTION_STATE.FOCUSED) setInteractionState(INTERACTION_STATE.EXPLORE);
   });
 
+  immersiveToggle?.addEventListener('click', () => {
+    if (pointerControls.isLocked) pointerControls.unlock();
+    else if (interactionState === INTERACTION_STATE.EXPLORE) pointerControls.lock();
+  });
+
+  introExploreButton?.addEventListener('click', () => {
+    hero.classList.add('is-desk-active');
+    viewport.focus({ preventScroll: true });
+  });
+
+  // In immersive mode the mouse drives the look, so a plain click picks the
+  // object under the center crosshair.
   renderer.domElement.addEventListener('click', () => {
-    if (HAS_TOUCH_INPUT) return;
-    if (isolatedSplatTestRunning) return;
-    if (cameraTransition || interactionState === INTERACTION_STATE.FOCUSED) return;
-    if (!pointerControls.isLocked) {
-      pointerControls.lock();
-      return;
-    }
+    if (!pointerState.locked) return;
+    if (isolatedSplatTestRunning || cameraTransition || interactionState !== INTERACTION_STATE.EXPLORE) return;
     const targetedSegment = resolveCenterTarget(true);
     if (targetedSegment) selectDestination(targetedSegment);
   });
 
-  introProceedButton?.addEventListener('click', () => {
-    hero.classList.add('is-desk-active');
-    if (!HAS_TOUCH_INPUT && !isolatedSplatTestRunning && !pointerControls.isLocked) {
-      pointerControls.lock();
-    }
-  });
+  function updateCursor() {
+    const cursor = pointerState.locked
+      ? 'none'
+      : lookGesture.pointerId !== null && lookGesture.dragged
+        ? 'grabbing'
+        : hoveredTarget
+          ? 'pointer'
+          : 'grab';
+    renderer.domElement.style.cursor = cursor;
+  }
 
-  const touchLookEuler = new THREE.Euler(0, 0, 0, 'YXZ');
-  const touchGesture = {
+  function updateControlsHint() {
+    if (!controlsMode) return;
+    if (interactionState !== INTERACTION_STATE.EXPLORE) {
+      controlsMode.textContent = 'focused · choose a link or return to the desk';
+    } else if (pointerState.locked) {
+      controlsMode.textContent = 'immersive · move the mouse to look · click to open · Esc exits';
+    } else {
+      controlsMode.textContent = HAS_TOUCH_INPUT
+        ? 'explore · drag to look · tap to select'
+        : 'drag to look · WASD to move · click an object to open it';
+    }
+  }
+
+  const lookEuler = new THREE.Euler(0, 0, 0, 'YXZ');
+  const lookGesture = {
     pointerId: null,
     startX: 0,
     startY: 0,
@@ -285,51 +322,79 @@ async function initDeskScene() {
     dragged: false,
   };
 
+  function setPointerFromEvent(event) {
+    const rect = renderer.domElement.getBoundingClientRect();
+    pointerState.ndc.set(
+      ((event.clientX - rect.left) / Math.max(1, rect.width)) * 2 - 1,
+      -((event.clientY - rect.top) / Math.max(1, rect.height)) * 2 + 1,
+    );
+    pointerState.valid = true;
+    pointerState.pickRadiusPx = event.pointerType === 'touch' ? TOUCH_PICK_RADIUS_PX : POINTER_PICK_RADIUS_PX;
+  }
+
   renderer.domElement.addEventListener('pointerdown', (event) => {
-    if (!HAS_TOUCH_INPUT || event.pointerType !== 'touch') return;
+    if (pointerState.locked) return;
+    if (event.pointerType === 'mouse' && event.button !== 0) return;
+    hero.classList.add('is-desk-active');
+    viewport.focus({ preventScroll: true });
     if (cameraTransition || interactionState === INTERACTION_STATE.FOCUSED) return;
     event.preventDefault();
-    touchGesture.pointerId = event.pointerId;
-    touchGesture.startX = event.clientX;
-    touchGesture.startY = event.clientY;
-    touchGesture.lastX = event.clientX;
-    touchGesture.lastY = event.clientY;
-    touchGesture.dragged = false;
+    setPointerFromEvent(event);
+    lookGesture.pointerId = event.pointerId;
+    lookGesture.startX = event.clientX;
+    lookGesture.startY = event.clientY;
+    lookGesture.lastX = event.clientX;
+    lookGesture.lastY = event.clientY;
+    lookGesture.dragged = false;
     renderer.domElement.setPointerCapture(event.pointerId);
   });
 
   renderer.domElement.addEventListener('pointermove', (event) => {
-    if (event.pointerId !== touchGesture.pointerId) return;
+    if (pointerState.locked) return;
+    if (event.pointerId !== lookGesture.pointerId) {
+      // Plain hover: track the cursor so the object under it can highlight.
+      if (event.pointerType !== 'touch') setPointerFromEvent(event);
+      return;
+    }
     event.preventDefault();
-    const deltaX = event.clientX - touchGesture.lastX;
-    const deltaY = event.clientY - touchGesture.lastY;
+    setPointerFromEvent(event);
+    const deltaX = event.clientX - lookGesture.lastX;
+    const deltaY = event.clientY - lookGesture.lastY;
     const distanceFromStart = Math.hypot(
-      event.clientX - touchGesture.startX,
-      event.clientY - touchGesture.startY,
+      event.clientX - lookGesture.startX,
+      event.clientY - lookGesture.startY,
     );
-    if (distanceFromStart > TOUCH_TAP_THRESHOLD_PX) touchGesture.dragged = true;
+    if (distanceFromStart > TOUCH_TAP_THRESHOLD_PX) {
+      lookGesture.dragged = true;
+      updateCursor();
+    }
+    if (!lookGesture.dragged) return;
 
-    touchLookEuler.setFromQuaternion(camera.quaternion);
-    touchLookEuler.y -= deltaX * TOUCH_LOOK_SENSITIVITY;
-    touchLookEuler.x -= deltaY * TOUCH_LOOK_SENSITIVITY;
-    touchLookEuler.x = THREE.MathUtils.clamp(
-      touchLookEuler.x,
+    lookEuler.setFromQuaternion(camera.quaternion);
+    lookEuler.y -= deltaX * LOOK_SENSITIVITY;
+    lookEuler.x -= deltaY * LOOK_SENSITIVITY;
+    lookEuler.x = THREE.MathUtils.clamp(
+      lookEuler.x,
       -Math.PI / 2 + 0.12,
       Math.PI / 2 - 0.12,
     );
-    camera.quaternion.setFromEuler(touchLookEuler);
-    touchGesture.lastX = event.clientX;
-    touchGesture.lastY = event.clientY;
+    camera.quaternion.setFromEuler(lookEuler);
+    lookGesture.lastX = event.clientX;
+    lookGesture.lastY = event.clientY;
   });
 
-  const finishTouchGesture = (event, cancelled = false) => {
-    if (event.pointerId !== touchGesture.pointerId) return;
+  const finishLookGesture = (event, cancelled = false) => {
+    if (event.pointerId !== lookGesture.pointerId) return;
     event.preventDefault();
-    const wasTap = !cancelled && !touchGesture.dragged;
+    setPointerFromEvent(event);
+    const wasTap = !cancelled && !lookGesture.dragged;
     if (renderer.domElement.hasPointerCapture(event.pointerId)) {
       renderer.domElement.releasePointerCapture(event.pointerId);
     }
-    touchGesture.pointerId = null;
+    lookGesture.pointerId = null;
+    lookGesture.dragged = false;
+    if (event.pointerType === 'touch') pointerState.valid = false;
+    updateCursor();
     if (
       wasTap
       && !cameraTransition
@@ -341,8 +406,14 @@ async function initDeskScene() {
     }
   };
 
-  renderer.domElement.addEventListener('pointerup', event => finishTouchGesture(event));
-  renderer.domElement.addEventListener('pointercancel', event => finishTouchGesture(event, true));
+  renderer.domElement.addEventListener('pointerup', event => finishLookGesture(event));
+  renderer.domElement.addEventListener('pointercancel', event => finishLookGesture(event, true));
+  renderer.domElement.addEventListener('pointerleave', (event) => {
+    if (event.pointerType === 'mouse' && lookGesture.pointerId === null) {
+      pointerState.valid = false;
+      setHoveredTarget(null);
+    }
+  });
 
   deskCardBack?.addEventListener('click', () => {
     if (!isolatedSplatTestRunning) returnToOverview();
@@ -386,7 +457,7 @@ async function initDeskScene() {
       return;
     }
 
-    if (isMovementKey(event.code)) {
+    if (isMovementKey(event.code) && canMoveWithKeyboard(event)) {
       event.preventDefault();
       pressedKeys.add(event.code);
     }
@@ -394,6 +465,16 @@ async function initDeskScene() {
 
   window.addEventListener('keyup', (event) => pressedKeys.delete(event.code));
   window.addEventListener('blur', () => pressedKeys.clear());
+  viewport.addEventListener('blur', () => pressedKeys.clear());
+
+  // Keys drive the camera when the desk owns the keyboard: the viewport has
+  // focus (or nothing does) and no form control is being typed into.
+  function canMoveWithKeyboard(event) {
+    if (isEditableElement(event.target) || interactionState !== INTERACTION_STATE.EXPLORE) return false;
+    if (pointerState.locked) return true;
+    const active = document.activeElement;
+    return active === viewport || active === document.body || active === null;
+  }
 
   function updateHoveredTarget() {
     if (isolatedSplatTestRunning) return;
@@ -407,6 +488,11 @@ async function initDeskScene() {
 
   function resolveCenterTarget(forceScan = false) {
     syncCameraForInteraction();
+    if (!pointerState.locked && !pointerState.valid) {
+      // No pointer over the canvas yet: nothing to pick.
+      cachedReticleHit = null;
+      return null;
+    }
     // This ray is diagnostic only. It follows the same invisible screen-space
     // aperture as projected-splat selection instead of the optical axis.
     const selectionAnchorNdc = getSelectionAnchorNdc(renderer.domElement);
@@ -429,6 +515,7 @@ async function initDeskScene() {
       figurineTarget ? 1 : 0,
       renderer.domElement.clientWidth,
       renderer.domElement.clientHeight,
+      pointerState.locked ? 'locked' : `${pointerState.ndc.x.toFixed(4)},${pointerState.ndc.y.toFixed(4)}`,
     ].join(':');
     if (
       !forceScan
@@ -723,7 +810,7 @@ async function initDeskScene() {
       return;
     }
     hoveredTarget = target;
-    renderer.domElement.style.cursor = 'none';
+    updateCursor();
     deskReticle?.classList.toggle('is-targeted', Boolean(target));
 
     if (!objectLabel) return;
@@ -747,10 +834,11 @@ async function initDeskScene() {
     }
     const bounds = viewport.getBoundingClientRect();
     const containingBounds = objectLabel.offsetParent?.getBoundingClientRect() || bounds;
-    // The label follows the same center-screen anchor used by the visible
-    // reticle and the projected-splat selection test.
-    const screenX = bounds.left + bounds.width * 0.5;
-    const screenY = bounds.top + bounds.height * 0.5;
+    // The label follows the same anchor the projected-splat selection uses:
+    // the pointer, or the screen center in immersive mode.
+    const anchor = getSelectionAnchorNdc();
+    const screenX = bounds.left + (anchor.x * 0.5 + 0.5) * bounds.width;
+    const screenY = bounds.top + (-anchor.y * 0.5 + 0.5) * bounds.height;
     objectLabel.hidden = false;
     objectLabel.style.left = `${screenX - containingBounds.left}px`;
     objectLabel.style.top = `${screenY - containingBounds.top}px`;
@@ -806,13 +894,7 @@ async function initDeskScene() {
     hero.classList.toggle('is-exploring', nextState === INTERACTION_STATE.EXPLORE);
     hero.classList.toggle('is-focused', nextState === INTERACTION_STATE.FOCUSED);
 
-    if (controlsMode) {
-      controlsMode.textContent = nextState === INTERACTION_STATE.EXPLORE
-        ? HAS_TOUCH_INPUT
-          ? 'explore · drag to look · tap to select'
-          : 'explore · look around to highlight · click to select · Esc releases mouse'
-        : 'focused · choose a link or return to the desk';
-    }
+    updateControlsHint();
     if (nextState !== INTERACTION_STATE.EXPLORE) {
       deskReticle?.classList.remove('is-targeted');
       // hideDebugVisuals(); // diagnostics disabled
@@ -904,17 +986,8 @@ async function initDeskScene() {
   function resize() {
     if (isolatedSplatTestRunning) return;
     const bounds = viewport.getBoundingClientRect();
-    const heroBounds = hero.getBoundingClientRect();
     const width = Math.max(1, Math.round(bounds.width));
     const height = Math.max(1, Math.round(bounds.height));
-    if (deskReticle) {
-      deskReticle.style.left = `${bounds.left - heroBounds.left + (SELECTION_ANCHOR_NDC.x * 0.5 + 0.5) * bounds.width}px`;
-      deskReticle.style.top = `${bounds.top - heroBounds.top + (-SELECTION_ANCHOR_NDC.y * 0.5 + 0.5) * bounds.height}px`;
-    }
-    if (deskFakeReticle) {
-      deskFakeReticle.style.left = `${bounds.left - heroBounds.left + bounds.width * 0.5}px`;
-      deskFakeReticle.style.top = `${bounds.top - heroBounds.top + bounds.height * 0.5}px`;
-    }
     const pixelRatioCap = HAS_TOUCH_INPUT ? 1 : window.innerWidth < 760 ? 1.25 : 1.6;
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, pixelRatioCap));
     renderer.setSize(width, height, false);
@@ -1010,7 +1083,7 @@ function setDefaultCamera(camera) {
 }
 
 function updateCameraMovement(controls, camera, keys, delta) {
-  if (!controls.isLocked || !keys.size) return;
+  if (!keys.size) return;
   const speed = (keys.has('ShiftLeft') || keys.has('ShiftRight')) ? 10 : 4;
   const distance = speed * delta;
 
@@ -1567,7 +1640,7 @@ function findReticleSplat(mesh, camera, canvas) {
     const screenX = (projectedCenter.x - selectionAnchorNdc.x) * width * 0.5;
     const screenY = (projectedCenter.y - selectionAnchorNdc.y) * height * 0.5;
     const screenDistance = Math.hypot(screenX, screenY);
-    if (screenDistance > RETICLE_PICK_RADIUS_PX) return;
+    if (screenDistance > pointerState.pickRadiusPx) return;
     supportCount += 1;
 
     const depth = cameraDirection.dot(worldCenter) - cameraDepthOffset;
@@ -1646,13 +1719,9 @@ function findProjectedProxyHit(proxy, camera, canvas, selectionNdc) {
   };
 }
 
-function getSelectionAnchorNdc(canvas) {
-  if (HAS_TOUCH_INPUT) return SELECTION_ANCHOR_NDC.copy(TOUCH_SELECTION_ANCHOR_NDC);
-  SELECTION_ANCHOR_NDC.set(
-    INVISIBLE_SELECTION_OFFSET_PX.x * 2 / Math.max(1, canvas.clientWidth),
-    -INVISIBLE_SELECTION_OFFSET_PX.y * 2 / Math.max(1, canvas.clientHeight),
-  );
-  return SELECTION_ANCHOR_NDC;
+function getSelectionAnchorNdc() {
+  if (pointerState.locked || !pointerState.valid) return SELECTION_ANCHOR_NDC.set(0, 0);
+  return SELECTION_ANCHOR_NDC.copy(pointerState.ndc);
 }
 
 function updateDebugSplat(helper, segment, splat) {

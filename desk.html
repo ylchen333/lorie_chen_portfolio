@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Desk | Lorie Chen</title>
+  <meta name="description" content="Lorie Chen prototypes future creative tools and experiences with emerging AI, computer graphics, robotics, and interactive technologies." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" />
+  <link rel="canonical" href="https://loriechen.com/desk" />
+  <link rel="preconnect" href="https://portfolioassets.loriechen.com" crossorigin />
+  <link rel="preload" href="https://portfolioassets.loriechen.com/local/output/desk_portfolio_cropped-lod.rad" as="fetch" crossorigin />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/",
+        "@sparkjsdev/spark": "https://sparkjs.dev/releases/spark/2.1.0/spark.module.js"
+      }
+    }
+  </script>
+</head>
+<body class="home-page">
+
+  <header class="desk-home" id="hello">
+    <nav>
+      <a href="index.html" class="wordmark">Lorie Chen</a>
+      <div class="nav-links">
+        <a href="index.html">work</a>
+        <a href="desk.html" class="active">desk</a>
+        <a href="about.html">about</a>
+        <a href="playlab.html">playlab</a>
+        <a href="mailto:lorichendd@gmail.com" class="nav-contact">contact</a>
+      </div>
+    </nav>
+    <div class="desk-viewport" tabindex="0" role="application" aria-label="Interactive Gaussian splat desk. Drag to look, move with W A S D Q E, click an object to open it."></div>
+    <div class="desk-home-content">
+      <div class="desk-intro-card" id="desk-intro-card">
+        <p class="desk-home-kicker">Creative technologist &middot; artist &middot; engineer<br /><span class="kicker-open">Open to creative-tools and spatial-computing teams</span></p>
+        <h1>Prototyping how we&rsquo;ll create next.</h1>
+        <p class="desk-home-intro">
+          I build small experimental tools with AI, graphics, robotics, and interactive tech.
+          I want to know what artists do when they can reshape the technology itself.
+        </p>
+        <button type="button" class="home-primary-link" id="desk-intro-explore">Explore the desk</button>
+        <a class="home-secondary-link" id="desk-intro-proceed" href="index.html">See the work &rarr;</a>
+        <a class="home-secondary-link" href="mailto:lorichendd@gmail.com">Email me</a>
+        <p class="desk-home-instruction">This desk is a Gaussian splat. Drag to look around.</p>
+      </div>
+    </div>
+    <div class="desk-loading" role="status" aria-live="polite">
+      <span class="desk-loading-mark" aria-hidden="true"></span>
+      <span class="desk-loading-label">assembling the desk</span>
+      <span class="desk-loading-progress">0%</span>
+    </div>
+    <!-- Isolation test UI disabled.
+    <div class="desk-isolation-test" hidden role="status" aria-live="polite" aria-busy="true">
+      <div class="desk-isolation-test-copy">
+        <span>isolating Gaussian splats</span>
+        <span class="desk-isolation-test-percent">0%</span>
+      </div>
+      <div class="desk-isolation-test-track" aria-hidden="true">
+        <span class="desk-isolation-test-bar"></span>
+      </div>
+    </div>
+    -->
+    <div class="desk-fallback" hidden>
+      <p>The interactive desk could not load. <a href="index.html">See the work</a> or <a href="mailto:lorichendd@gmail.com">email me</a>.</p>
+    </div>
+    <div class="desk-controls" aria-live="polite">
+      <p class="desk-controls-mode">drag to look · WASD to move · click an object to open it</p>
+      <p class="desk-controls-help"><kbd>WASD</kbd> move &middot; <kbd>Q/E</kbd> down/up &middot; drag to look &middot; <kbd>Esc</kbd> leaves immersive mode</p>
+      <button type="button" class="desk-immersive-toggle" aria-pressed="false">immersive mode</button>
+    </div>
+    <div class="desk-reticle" aria-hidden="true"></div>
+    <div class="desk-object-label" hidden></div>
+    <aside class="desk-card" hidden aria-live="polite" aria-labelledby="desk-card-title">
+      <p class="desk-card-eyebrow"></p>
+      <h2 id="desk-card-title"></h2>
+      <p class="desk-card-copy"></p>
+      <div class="desk-card-projects" hidden></div>
+      <div class="desk-card-actions">
+        <a class="desk-card-link" href="#">open &rarr;</a>
+        <button class="desk-card-back" type="button">back to desk</button>
+      </div>
+    </aside>
+    <div class="camera-preview" aria-label="Default camera preview" hidden>
+      <span>default camera</span>
+    </div>
+    <noscript><p class="desk-noscript">Enable JavaScript to explore the interactive desk.</p></noscript>
+  </header>
+
+
+  <script type="module" src="desk-scene.js?v=20260808-4"></script>
+</body>
+</html>

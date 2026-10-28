@@ -5,134 +5,112 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lorie Chen | Creative Technologist</title>
   <meta name="description" content="Lorie Chen prototypes future creative tools and experiences with emerging AI, computer graphics, robotics, and interactive technologies." />
+  <link rel="canonical" href="https://loriechen.com/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.ico" />
-  <link rel="preconnect" href="https://portfolioassets.loriechen.com" crossorigin />
-  <link rel="preload" href="https://portfolioassets.loriechen.com/local/output/desk_portfolio_cropped-lod.rad" as="fetch" crossorigin />
-  <script type="importmap">
-    {
-      "imports": {
-        "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
-        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/",
-        "@sparkjsdev/spark": "https://sparkjs.dev/releases/spark/2.1.0/spark.module.js"
-      }
-    }
-  </script>
 </head>
-<body class="home-page">
+<body class="work-home">
 
-  <header class="desk-home" id="hello">
+  <header>
     <nav>
       <a href="index.html" class="wordmark">Lorie Chen</a>
       <div class="nav-links">
-        <!-- <a href="index.html" class="active">home</a> -->
-        <a href="work.html">work</a>
+        <a href="index.html" class="active">work</a>
+        <a href="desk.html">desk</a>
         <a href="about.html">about</a>
         <a href="playlab.html">playlab</a>
         <a href="mailto:lorichendd@gmail.com" class="nav-contact">contact</a>
       </div>
     </nav>
-    <div class="desk-viewport" tabindex="0" role="application" aria-label="Interactive Gaussian splat desk. Click to look with the mouse and move with W A S D Q E."></div>
-    <div class="desk-home-content">
-      <div class="desk-intro-card" id="desk-intro-card">
-        <p class="desk-home-kicker">Creative technologist &middot; artist &middot; engineer<br /><span class="kicker-open">Open to creative-tools and spatial-computing teams</span></p>
-        <h1>Prototyping how we&rsquo;ll create next.</h1>
-        <p class="desk-home-intro">
-          I build small experimental tools with AI, graphics, robotics, and interactive tech.
-          I want to know what artists do when they can reshape the technology itself.
-        </p>
-        <button type="button" class="home-primary-link" id="desk-intro-proceed">See the work &rarr;</button>
-        <a class="home-secondary-link" href="mailto:lorichendd@gmail.com">Email me</a>
-        <p class="desk-home-instruction">This desk is a Gaussian splat. Look around.</p>
-      </div>
+    <div class="home-hero">
+      <p class="home-hero-kicker">Creative technologist &middot; artist &middot; engineer<br /><span class="kicker-open">Open to creative-tools and spatial-computing teams</span></p>
+      <h1>Prototyping how we&rsquo;ll create next.</h1>
+      <p class="home-hero-intro">
+        I build small experimental tools with AI, graphics, robotics, and interactive tech.
+        I want to know what artists do when they can reshape the technology itself.
+      </p>
+      <p class="home-hero-links">
+        <a href="mailto:lorichendd@gmail.com">Email me</a>
+        <a href="desk.html">Explore the 3D desk &rarr;</a>
+      </p>
     </div>
-    <div class="desk-loading" role="status" aria-live="polite">
-      <span class="desk-loading-mark" aria-hidden="true"></span>
-      <span class="desk-loading-label">assembling the desk</span>
-      <span class="desk-loading-progress">0%</span>
-    </div>
-    <!-- Isolation test UI disabled.
-    <div class="desk-isolation-test" hidden role="status" aria-live="polite" aria-busy="true">
-      <div class="desk-isolation-test-copy">
-        <span>isolating Gaussian splats</span>
-        <span class="desk-isolation-test-percent">0%</span>
-      </div>
-      <div class="desk-isolation-test-track" aria-hidden="true">
-        <span class="desk-isolation-test-bar"></span>
-      </div>
-    </div>
-    -->
-    <div class="desk-fallback" hidden>
-      <p>The interactive desk could not load. <a href="work.html">See the work</a> or <a href="mailto:lorichendd@gmail.com">email me</a>.</p>
-    </div>
-    <div class="desk-controls" aria-live="polite">
-      <p class="desk-controls-mode">explore · look around to highlight · click to capture the mouse</p>
-      <p class="desk-controls-help"><kbd>WASD</kbd> move &middot; <kbd>Q/E</kbd> down/up &middot; mouse look &middot; <kbd>Esc</kbd> release</p>
-    </div>
-    <div class="desk-reticle" aria-hidden="true"></div>
-    <div class="desk-fake-reticle" aria-hidden="true"></div>
-    <div class="desk-object-label" hidden></div>
-    <aside class="desk-card" hidden aria-live="polite" aria-labelledby="desk-card-title">
-      <p class="desk-card-eyebrow"></p>
-      <h2 id="desk-card-title"></h2>
-      <p class="desk-card-copy"></p>
-      <div class="desk-card-projects" hidden></div>
-      <div class="desk-card-actions">
-        <a class="desk-card-link" href="#">open &rarr;</a>
-        <button class="desk-card-back" type="button">back to desk</button>
-      </div>
-    </aside>
-    <div class="camera-preview" aria-label="Default camera preview" hidden>
-      <span>default camera</span>
-    </div>
-    <noscript><p class="desk-noscript">Enable JavaScript to explore the interactive desk.</p></noscript>
   </header>
 
-  <!-- Featured projects are temporarily hidden while the desk becomes the homepage.
   <main>
-    <section class="featured-work" aria-labelledby="featured-work-title">
-      <div class="section-heading-row">
-        <h2 id="featured-work-title">featured work</h2>
-        <a href="work.html" class="section-link">all work &rarr;</a>
-      </div>
-
-      <div class="featured-work-grid">
-        <a class="featured-card" href="synth-splat.html">
-          <div class="featured-card-media">
-            <img src="images-web/graphics/synth_splat/Screenshot 2026-08-01 at 3.55.46 PM.png" alt="Synth Splat audio-reactive 3D environment interface" loading="lazy" />
-          </div>
-          <div class="featured-card-copy">
-            <h3>synth splat</h3>
-            <p>Audio-reactive 3D Gaussian splats shaped by sound in real time.</p>
-            <span>3D Gaussian Splatting &middot; 2026</span>
-          </div>
+    <section class="project-grid" aria-label="projects">
+<!-- projects:start -->
+      <article class="project-card">
+        <a class="project-card-media" href="synth-splat.html" tabindex="-1" aria-hidden="true">
+          <img src="images-web/graphics/synth_splat/synth_splat_ui.jpg" alt="Synth Splat audio-reactive 3D environment interface" style="object-position: 50% 50%" loading="eager" decoding="async" />
         </a>
-
-        <a class="featured-card" href="catalogue_raisonne.html">
-          <div class="featured-card-media">
-            <img src="images-web/graphics/catalogue_raisonne/Screenshot 2026-07-16 at 1.33.41 PM.png" alt="Catalogue raisonné room interface" loading="lazy" />
-          </div>
-          <div class="featured-card-copy">
-            <h3>catalogue raisonn&eacute;</h3>
-            <p>A queryable 3D archive of a studio and bedroom at the end of college.</p>
-            <span>3D Gaussian Splatting &middot; web &middot; 2025&ndash;2026</span>
-          </div>
+        <h3 class="project-card-title"><a href="synth-splat.html">synth splat</a></h3>
+        <p class="project-card-statement">A realistic 3D environment that responds to music</p>
+        <p class="project-card-tags">3D Gaussian Splatting · Audio-Reactive</p>
+        <p class="project-card-links">
+          <a href="synth-splat.html">read &rarr;</a>
+          <a class="project-card-live" href="https://synthsplat.loriechen.com/" target="_blank" rel="noopener">live build &rarr;</a>
+        </p>
+      </article>
+      <article class="project-card">
+        <a class="project-card-media" href="catalogue_raisonne.html" tabindex="-1" aria-hidden="true">
+          <img src="images-web/graphics/catalogue_raisonne/catalogue_room.jpg" alt="Catalogue raisonné room interface" style="object-position: 50% 40%" loading="eager" decoding="async" />
         </a>
-
-        <a class="featured-card" href="the-long-way-home.html">
-          <div class="featured-card-media">
-            <img src="images/plotting_art/dashcam/clean_slitscan.jpg" alt="Highway footage transformed into a slit scan" loading="lazy" />
-          </div>
-          <div class="featured-card-copy">
-            <h3>The Long Way Home</h3>
-            <p>Ten-hour drives compressed into plotted records of road, weather, and memory.</p>
-            <span>computer vision &middot; plotting &middot; 2026</span>
-          </div>
+        <h3 class="project-card-title"><a href="catalogue_raisonne.html">catalogue raisonné</a></h3>
+        <p class="project-card-statement">A walkable 3D room that works like a searchable archive</p>
+        <p class="project-card-tags">3D Gaussian Splatting · HDBSCAN · CLIP · SAM · WebGL</p>
+        <p class="project-card-links">
+          <a href="catalogue_raisonne.html">read &rarr;</a>
+          <a class="project-card-live" href="https://room.loriechen.com" target="_blank" rel="noopener">live build &rarr;</a>
+        </p>
+      </article>
+      <article class="project-card">
+        <a class="project-card-media" href="gem-stacking.html" tabindex="-1" aria-hidden="true">
+          <img src="images-web/graphics/getty/IMG_7515.jpg" alt="Hands holding a color checker beside a camera lens at the Getty Villa" style="object-position: 50% 50%" loading="lazy" decoding="async" />
         </a>
-      </div>
+        <h3 class="project-card-title"><a href="gem-stacking.html">Gem Stacking</a></h3>
+        <p class="project-card-statement">A new 3D scanning method for historic cameo-glass gems</p>
+        <p class="project-card-tags">Confocal Stereo · Computational Photography · Cultural Heritage</p>
+        <p class="project-card-links">
+          <a href="gem-stacking.html">read &rarr;</a>
+        </p>
+      </article>
+      <article class="project-card">
+        <a class="project-card-media" href="the-long-way-home.html" tabindex="-1" aria-hidden="true">
+          <img src="images/plotting_art/dashcam/clean_slitscan.jpg" alt="Dashcam footage turned into a slit scan" style="object-position: 50% 50%" loading="lazy" decoding="async" />
+        </a>
+        <h3 class="project-card-title"><a href="the-long-way-home.html">The Long Way Home</a></h3>
+        <p class="project-card-statement">Landscapes, observed and drawn by machines</p>
+        <p class="project-card-tags">SAM · OpenCV · vsketch · vpype · HP Draftmaster Plotter</p>
+        <p class="project-card-links">
+          <a href="the-long-way-home.html">read &rarr;</a>
+        </p>
+      </article>
+      <article class="project-card">
+        <a class="project-card-media" href="dead-things-in-jars.html" tabindex="-1" aria-hidden="true">
+          <img src="images-web/graphics/dead_things_in_jars/DSC06310.jpg" alt="Specimen jar from the dead things in jars capture" style="object-position: 50% 50%" loading="lazy" decoding="async" />
+        </a>
+        <h3 class="project-card-title"><a href="dead-things-in-jars.html">dead things in jars</a></h3>
+        <p class="project-card-statement">Capturing reflective, transparent specimens in 3D, where photogrammetry fails</p>
+        <p class="project-card-tags">3D Gaussian Splatting · Polycam · Natural History</p>
+        <p class="project-card-links">
+          <a href="dead-things-in-jars.html">read &rarr;</a>
+        </p>
+      </article>
+      <article class="project-card">
+        <a class="project-card-media" tabindex="-1" aria-hidden="true">
+          <span class="project-card-tiles" aria-hidden="true"><span>ComfyUI-VOSR2</span><span>ComfyUI-LocateAnything</span><span>ComfyUI-YOLO</span><span>ComfyCV</span></span>
+        </a>
+        <h3 class="project-card-title">comfyui nodes &amp; workshops</h3>
+        <p class="project-card-statement">Custom ComfyUI tools that let artists change what the model does</p>
+        <p class="project-card-tags">ComfyUI · Gemini · custom nodes · p5.js</p>
+        <p class="project-card-links">
+          <a href="https://github.com/ylchen333/ComfyUI-VOSR2" target="_blank" rel="noopener">nodes on github &rarr;</a>
+        </p>
+      </article>
+      <!-- projects:end -->
     </section>
   </main>
 
@@ -140,8 +118,6 @@
     <p>&copy; 2026 Lorie Chen</p>
     <p>Detroit, MI</p>
   </footer>
-  -->
 
-  <script type="module" src="desk-scene.js?v=20260808-3"></script>
 </body>
 </html>

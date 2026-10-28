@@ -1,0 +1,75 @@
+[
+  {
+    "slug": "synth-splat",
+    "title": "synth splat",
+    "statement": "A realistic 3D environment that responds to music",
+    "tags": "3D Gaussian Splatting · Audio-Reactive",
+    "thumb": "images-web/graphics/synth_splat/synth_splat_ui.jpg",
+    "thumbAlt": "Synth Splat audio-reactive 3D environment interface",
+    "thumbPosition": "50% 50%",
+    "page": "synth-splat.html",
+    "live": "https://synthsplat.loriechen.com/"
+  },
+  {
+    "slug": "catalogue-raisonne",
+    "title": "catalogue raisonné",
+    "statement": "A walkable 3D room that works like a searchable archive",
+    "tags": "3D Gaussian Splatting · HDBSCAN · CLIP · SAM · WebGL",
+    "thumb": "images-web/graphics/catalogue_raisonne/catalogue_room.jpg",
+    "thumbAlt": "Catalogue raisonné room interface",
+    "thumbPosition": "50% 40%",
+    "page": "catalogue_raisonne.html",
+    "live": "https://room.loriechen.com"
+  },
+  {
+    "slug": "gem-stacking",
+    "title": "Gem Stacking",
+    "statement": "A new 3D scanning method for historic cameo-glass gems",
+    "tags": "Confocal Stereo · Computational Photography · Cultural Heritage",
+    "thumb": "images-web/graphics/getty/IMG_7515.jpg",
+    "thumbAlt": "Hands holding a color checker beside a camera lens at the Getty Villa",
+    "thumbPosition": "50% 50%",
+    "page": "gem-stacking.html"
+  },
+  {
+    "slug": "the-long-way-home",
+    "title": "The Long Way Home",
+    "statement": "Landscapes, observed and drawn by machines",
+    "tags": "SAM · OpenCV · vsketch · vpype · HP Draftmaster Plotter",
+    "thumb": "images/plotting_art/dashcam/clean_slitscan.jpg",
+    "thumbAlt": "Dashcam footage turned into a slit scan",
+    "thumbPosition": "50% 50%",
+    "page": "the-long-way-home.html"
+  },
+  {
+    "slug": "dead-things-in-jars",
+    "title": "dead things in jars",
+    "statement": "Capturing reflective, transparent specimens in 3D, where photogrammetry fails",
+    "tags": "3D Gaussian Splatting · Polycam · Natural History",
+    "thumb": "images-web/graphics/dead_things_in_jars/DSC06310.jpg",
+    "thumbAlt": "Specimen jar from the dead things in jars capture",
+    "thumbPosition": "50% 50%",
+    "page": "dead-things-in-jars.html"
+  },
+  {
+    "slug": "comfyui-nodes",
+    "title": "comfyui nodes & workshops",
+    "statement": "Custom ComfyUI tools that let artists change what the model does",
+    "tags": "ComfyUI · Gemini · custom nodes · p5.js",
+    "thumb": "",
+    "thumbAlt": "",
+    "thumbPosition": "50% 50%",
+    "tiles": [
+      "ComfyUI-VOSR2",
+      "ComfyUI-LocateAnything",
+      "ComfyUI-YOLO",
+      "ComfyCV"
+    ],
+    "extra": [
+      {
+        "label": "nodes on github →",
+        "url": "https://github.com/ylchen333/ComfyUI-VOSR2"
+      }
+    ]
+  }
+]
