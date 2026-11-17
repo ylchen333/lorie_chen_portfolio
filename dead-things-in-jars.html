@@ -3,116 +3,129 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>dead things in jars — lorie's corner</title>
+  <title>dead things in jars — Lorie Chen</title>
+  <meta name="description" content="Wet specimens captured in 3D, glass and all." />
+  <link rel="canonical" href="https://loriechen.com/dead-things-in-jars.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.ico" />
 </head>
-<body class="wide">
-
-  <header>
-    <nav>
-      <a href="index.html" class="wordmark">Lorie Chen</a>
-      <div class="nav-links">
-        <!-- <a href="index.html">home</a> -->
-        <a href="index.html" class="active">work</a>
-        <a href="desk.html">desk</a>
-        <a href="about.html">about</a>
+<body>
+  <div class="site-top">
+    <header class="col site-header">
+      <a class="wordmark" href="index.html">Lorie Chen</a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="index.html#work" aria-current="page">work</a>
         <a href="playlab.html">playlab</a>
-        <a href="mailto:lorichendd@gmail.com" class="nav-contact">contact</a>
-      </div>
-    </nav>
-    <div class="hero">
-      <a href="index.html" class="back-link">&larr; work</a>
-      <h1>dead things in jars</h1>
-      <!-- TODO(Lorie): draft statement, approve or edit -->
-      <p class="project-statement">Capturing reflective, transparent specimens in 3D, where photogrammetry fails</p>
-      <p class="tagline">3D capture &middot; natural history &middot; 2024</p>
-    </div>
-  </header>
+        <a href="about.html">about</a>
+        <a href="mailto:lorichendd@gmail.com">contact</a>
+      </nav>
+    </header>
+  </div>
 
   <main>
+  <article class="col project">
+    <header>
+      <a class="back u" href="index.html#work">&larr; all work</a>
+      <h1 class="page-title">dead things in jars</h1>
+      <p class="page-sub">Wet specimens captured in 3D, glass and all.</p>
+    </header>
 
-    <div class="project-layout">
+    <figure class="fig">
+      <img src="images-web/graphics/dead-things-in-jars/a-wet-specimen-coiled-in-a-glass-jar-of-.jpg" alt="A wet specimen coiled in a glass jar of ethanol" width="1050" height="1400" loading="eager" decoding="async" />
+      <figcaption class="caption">A specimen in ethanol: glass, liquid and reflections, everything that breaks a normal 3D scan.</figcaption>
+    </figure>
 
-      <aside class="project-sidebar">
-        <dl class="project-info">
-          <dt>with</dt>
-          <dd>Golan Levin, Nica Ross, Rich Pell, Mariana Marques, Leo Lin, Oscar Dadfar, Jose Gomes</dd>
-          <dt>partners</dt>
-          <dd>Center for PostNatural History, Carnegie Museum of Natural History</dd>
-          <dt>supported by</dt>
-          <dd>FRFF Microgrant, BXA Small Grants</dd>
-          <dt>links</dt>
-          <dd>
-            <a href="https://lovvipop.substack.com/p/capstonefinal-undergraduate-program" target="_blank" rel="noopener">substack writeup →</a>
-          </dd>
-        </dl>
-      </aside>
-
-      <div class="project-content">
-        <section class="project-writeup">
-          <h2 class="project-section-label">Context</h2>
-          <p>
-            Traditional photogrammetry fails on glass and liquid. The reflective and translucent
-            surfaces that make wet specimens so visually compelling produce garbage point clouds —
-            scattered geometry, missing detail, surfaces that aren't there. I started this project
-            to figure out what it would actually take to digitally preserve natural history
-            collections housed in ethanol.
-          </p>
-          <h2 class="project-section-label">Experiment &amp; technical approach</h2>
-          <img class="inline-img right" src="images-web/graphics/dead_things_in_jars/DSC06310.jpg" alt="" loading="lazy" />
-          <p>
-            The answer turned out to be 3D Gaussian Splatting. Unlike NeRFs, which bake scene
-            appearance into a neural network, 3DGS represents a scene as oriented Gaussian
-            "blobs," each with its own opacity and color. It's unusually good at shiny,
-            transparent, complicated scenes — exactly the conditions inside a specimen jar.
-          </p>
-          <img class="inline-img right" src="images-web/graphics/dead_things_in_jars/frog_0003.jpg" alt="" loading="lazy" />
-          <p>
-            I worked with collections at the Carnegie Museum of Natural History and the Center
-            for PostNatural History, capturing specimens with Polycam and processing them through
-            both commercial (Postshot) and open-source (nerfstudio, COLMAP) pipelines. The
-            project is ongoing: the goal is a workflow robust enough to hand off to collection
-            stewards who don't want to think about Gaussians.
-          </p>
-          <h2 class="project-section-label">Findings</h2>
-          <p>Gaussian splatting preserved view-dependent reflections and translucency that photogrammetry treated as faulty geometry. The remaining bottleneck is operational rather than visual: capture coverage, processing choices, file size, and browser delivery still demand too much tacit technical knowledge.</p>
-          <div class="project-implication"><h2 class="project-section-label">Implications</h2><p>A useful collection product would guide non-specialists through capture, flag missing views, choose sensible reconstruction settings, and publish a lightweight result. The opportunity is not merely a better scan, but a handoff-ready workflow that collection stewards can own.</p></div>
-        </section>
-      </div>
-
+    <div class="prose">
+      <p>Natural history museums keep a second collection most visitors never see: animals preserved in fluid, coiled in jars of ethanol, sitting on shelves for decades. Wet specimens are strange to look at. You see the body through glass and liquid, warped by the curve of the jar and lit by reflections that move as you move. They only really make sense up close.</p>
+      <p>Most of the specimens here come from the Center for PostNatural History in Pittsburgh, a museum of living things that people have altered on purpose. I also had access to the collections of the Carnegie Museum of Natural History.</p>
     </div>
 
-    <div class="carousel-wrap">
-      <h2>documentation</h2>
-      <div class="carousel">
-        <div class="carousel-track">
-          <img src="images-web/graphics/dead_things_in_jars/DSC06310.jpg" alt="" loading="lazy" />
-          <img src="images-web/graphics/dead_things_in_jars/IMG_6552.jpg" alt="" loading="lazy" />
-          <img src="images-web/graphics/dead_things_in_jars/IMG_5985.jpg" alt="" loading="lazy" />
-          <img src="images-web/graphics/dead_things_in_jars/frog_0003.jpg" alt="" loading="lazy" />
-          <img src="images-web/graphics/dead_things_in_jars/many_frog_snapshot0001.jpg" alt="" loading="lazy" />
-          <img src="images-web/graphics/dead_things_in_jars/IMG_6757.jpg" alt="" loading="lazy" />
-          <img src="images-web/graphics/dead_things_in_jars/unnamed-5.jpg" alt="" loading="lazy" />
-          <img src="images-web/graphics/dead_things_in_jars/IMG_6094.jpg" alt="" loading="lazy" />
-        </div>
+    <figure class="fig">
+      <div class="pair">
+        <img src="images-web/graphics/dead-things-in-jars/a-large-turtle-specimen-lifted-out-of-it.jpg" alt="A large turtle specimen lifted out of its fluid in a metal tray" loading="lazy" decoding="async" />
+        <img src="images-web/graphics/dead-things-in-jars/a-snake-coiled-inside-a-glass-specimen-j.jpg" alt="A snake coiled inside a glass specimen jar" loading="lazy" decoding="async" />
       </div>
-      <div class="carousel-controls">
-        <button class="carousel-prev" aria-label="previous">&larr;</button>
-        <button class="carousel-next" aria-label="next">&rarr;</button>
-      </div>
+      <figcaption class="caption">Out of the fluid, and inside it.</figcaption>
+    </figure>
+
+    <h2 class="subhead">Why the usual scan fails</h2>
+
+    <div class="prose">
+      <p>Digitizing a collection usually means photogrammetry: photograph the object from every side, then let software match points between the photos and build a surface. Glass and liquid break that. Every reflection moves with the camera, so the software sees surfaces that aren’t there and loses the ones that are. The qualities that make a wet specimen worth looking at are exactly the ones the scan throws away as noise.</p>
     </div>
 
+    <h2 class="subhead">Keeping the glass</h2>
+
+    <figure class="fig">
+      <img src="images-web/graphics/dead-things-in-jars/gaussian-splat-render-of-a-frog-specimen.jpg" alt="Gaussian splat render of a frog specimen inside its jar" width="1400" height="788" loading="lazy" decoding="async" />
+      <figcaption class="caption">A frog specimen as a Gaussian splat. The reflections on the jar survive.</figcaption>
+    </figure>
+
+    <div class="prose">
+      <p>Gaussian splatting describes a scene as many small, soft blobs of color, each a little transparent, each able to look different from different angles. That makes it unusually good at shiny, see-through, complicated things. In a splat, the reflections on the jar survive, and the jar stays part of the object.</p>
+      <p>I photographed more than twenty specimens in a light box with Polycam, then trained the splats through a commercial pipeline (Postshot) and an open-source one (nerfstudio, COLMAP), to see what each kept and what each lost.</p>
+    </div>
+
+    <figure class="fig">
+      <div class="pair">
+        <img src="images-web/graphics/dead-things-in-jars/a-phone-on-a-tripod-in-front-of-a-lit-li.jpg" alt="A phone on a tripod in front of a lit light box" loading="lazy" decoding="async" />
+        <img src="images-web/graphics/dead-things-in-jars/a-first-splat-reconstruction-of-a-jar-on.jpg" alt="A first splat reconstruction of a jar on a computer monitor" loading="lazy" decoding="async" />
+      </div>
+      <figcaption class="caption">The capture setup, and a first reconstruction on screen.</figcaption>
+    </figure>
+
+    <h2 class="subhead">Two kinds of fragility</h2>
+
+    <div class="prose">
+      <p>Working on this, I kept noticing that the specimens and the splats are fragile in the same way. A wet specimen lasts only as long as its fluid and its seal. A splat holds together only from the angles it was photographed from: step outside those views and it dissolves into floaters and smears.</p>
+      <p>I stopped treating those glitches as failures to hide. They show exactly where the record runs out.</p>
+    </div>
+
+    <figure class="fig-wide">
+      <img src="images-web/graphics/dead-things-in-jars/a-jar-splat-mid-reconstruction-in-postsh.jpg" alt="A jar splat mid-reconstruction in Postshot, smearing at the edges" width="1600" height="789" loading="lazy" decoding="async" />
+      <figcaption class="caption">Mid-reconstruction. The splat falls apart wherever the cameras didn’t look.</figcaption>
+    </figure>
+
+    <figure class="fig">
+      <img src="images-web/graphics/dead-things-in-jars/many-frog-splats-arranged-together.jpg" alt="Many frog splats arranged together" width="1400" height="788" loading="lazy" decoding="async" />
+      <figcaption class="caption">Many specimens, one scene.</figcaption>
+    </figure>
+
+    <div class="prose">
+      <p>The images were never the hardest part. Capture coverage, processing choices, file size and getting a scan into a browser still take too much specialist knowledge. The goal is a workflow simple enough to hand to collection stewards who don’t want to think about Gaussians, and, eventually, a virtual museum of wet specimens that anyone can walk through.</p>
+    </div>
+
+    <p class="project-links"><a class="u" href="https://lovvipop.substack.com" target="_blank" rel="noopener">Read the longer write-up on Substack &nearr;</a></p>
+
+    <div class="credits">
+      <div><span class="k">Year</span><span class="v">2024–ongoing</span></div>
+      <div><span class="k">Specimens</span><span class="v">20+</span></div>
+      <div><span class="k">Tools</span><span class="v">3D Gaussian Splatting, Polycam, Postshot, nerfstudio, COLMAP</span></div>
+      <div><span class="k">Partners</span><span class="v">Center for PostNatural History; collections access at the Carnegie Museum of Natural History</span></div>
+      <div><span class="k">Support</span><span class="v">FRFF Microgrant, BXA Small Grants</span></div>
+    </div>
+
+    <nav class="prevnext" aria-label="More projects">
+      <a class="u" href="synth-splat.html">&larr; synth splat</a>
+      <a class="u" href="splat-fabrication.html">splat fabrication &rarr;</a>
+    </nav>
+  </article>
   </main>
 
-  <footer>
-    <p>&copy; 2026 Lorie Chen</p>
-    <p>Detroit, MI</p>
+  <footer class="col site-footer">
+    <span>&copy; 2026 Lorie Chen &middot; Detroit, MI</span>
+    <span class="links">
+      <a class="u" href="mailto:lorichendd@gmail.com">email</a>
+      <a class="u" href="https://github.com/ylchen333">github</a>
+      <a class="u" href="https://lovvipop.substack.com">substack</a>
+      <a class="u" href="https://www.instagram.com/lovvipop.zip">instagram</a>
+      <a class="u" href="https://www.linkedin.com/in/lorie-chen-lovvipop">linkedin</a>
+    </span>
   </footer>
 
-  <script src="main.js"></script>
+  <script src="main.js" defer></script>
 </body>
 </html>

@@ -1,3 +1,5 @@
+> **Superseded:** see `design-handoff/01-design-system.md` for the current design (B "near-minimal").
+
 # Portfolio Rework Specification
 ### Positioning Lorie Chen as a Creative R&D / Creative Technologist
 

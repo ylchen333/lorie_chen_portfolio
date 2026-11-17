@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>splat fabrication — Lorie Chen</title>
+  <meta name="description" content="Cameo portraits 3D printed from Gaussian splats, starting with one that failed." />
+  <link rel="canonical" href="https://loriechen.com/splat-fabrication.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" />
+</head>
+<body>
+  <div class="site-top">
+    <header class="col site-header">
+      <a class="wordmark" href="index.html">Lorie Chen</a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="index.html#work" aria-current="page">work</a>
+        <a href="playlab.html">playlab</a>
+        <a href="about.html">about</a>
+        <a href="mailto:lorichendd@gmail.com">contact</a>
+      </nav>
+    </header>
+  </div>
+
+  <main>
+  <article class="col project">
+    <header>
+      <a class="back u" href="index.html#work">&larr; all work</a>
+      <h1 class="page-title">splat fabrication</h1>
+      <p class="page-sub">Cameo portraits 3D printed from Gaussian splats, starting with one that failed.</p>
+    </header>
+
+    <figure class="fig">
+      <img src="images-web/graphics/3dgs_fabrication/DSC08739.jpg" alt="A white 3D-printed relief of a young woman in profile on an oval plaque" width="1200" height="1600" loading="eager" decoding="async" />
+      <figcaption class="caption">The final print: Emma, in profile.</figcaption>
+    </figure>
+
+    <div class="prose">
+      <p>This project came out of two things I couldn’t stop looking at. One was the cameo, and the bas-relief more generally: a portrait raised just off its ground, made to be held close and turned in the light. The other was a splat that failed.</p>
+      <p>While I was capturing specimens for dead things in jars, Polycam returned one jar as something unrecognizable. Instead of glass and fluid, it was a churned, organic mass that looked almost grown. My guess is that the structure-from-motion step (COLMAP) never aligned the cameras properly, so every view was pulling the scene in a slightly different direction.</p>
+    </div>
+
+    <figure class="fig">
+      <img src="images-web/graphics/splat-fabrication/a-gaussian-splat-of-a-specimen-jar-colla.jpg" alt="A Gaussian splat of a specimen jar collapsed into a flat, smeared disc of silver and black" width="1800" height="952" loading="lazy" decoding="async" />
+      <figcaption class="caption">The failed splat from dead things in jars.</figcaption>
+    </figure>
+
+    <div class="prose">
+      <p>I wanted to hold it. So I turned it into a mesh and 3D printed it, and the blue form below is that failure made physical.</p>
+    </div>
+
+    <figure class="fig">
+      <div class="pair">
+        <img src="images-web/graphics/3dgs_fabrication/IMG_9193.jpg" alt="A blue 3D print of a lumpy, organic form on a dark surface" loading="lazy" decoding="async" />
+        <img src="images-web/graphics/3dgs_fabrication/IMG_9258.jpg" alt="The same blue print seen from above on a wooden table" loading="lazy" decoding="async" />
+      </div>
+      <figcaption class="caption">The failed splat, printed.</figcaption>
+    </figure>
+
+    <h2 class="subhead">What can a splat become?</h2>
+
+    <div class="prose">
+      <p>That print raised a broader question: what kinds of meshes can you get out of a Gaussian splat, and where might a splat make a better capture, mesh or sculpture than a traditional 3D scan? A scanner aims for a correct surface. A splat is a cloud of soft, overlapping blobs, and converting it into a solid forces decisions about what counts as surface at all.</p>
+      <p>I made meshes from splats with Polycam and Kiri Engine, then repaired them in Blender until they were manifold (watertight, with no holes or self-intersections), which a print needs and which also matters for display.</p>
+    </div>
+
+    <figure class="fig">
+      <div class="pair">
+        <img src="images-web/graphics/3dgs_fabrication/IMG_9457.jpg" alt="A desktop 3D printer laying down the first layers of a print" loading="lazy" decoding="async" />
+        <img src="images-web/graphics/3dgs_fabrication/IMG_9482.jpg" alt="A white test print of a profile on a lattice backing, with holes through the face" loading="lazy" decoding="async" />
+      </div>
+      <figcaption class="caption">On the printer, and a test print of Emma with its lattice still showing.</figcaption>
+    </figure>
+
+    <h2 class="subhead">Choosing a subject</h2>
+
+    <div class="prose">
+      <p>The subject matters here. Cameos are intimate objects. They were often portraits of someone specific, made to be kept or given, so I captured people close to me: the side profile of my friend Emma, and the ear of my friend Sunny.</p>
+      <p>The two white prints are Emma; the silver prints are Sunny’s ear. In each test, the mesh carries something of the splat it came from. Holes open where the capture was thin, and soft edges fray. Some prints hold together as faces, and some dissolve back toward the failed jar I started with.</p>
+    </div>
+
+    <figure class="fig">
+      <div class="pair">
+        <img src="images-web/graphics/3dgs_fabrication/IMG_9273.jpg" alt="A rough silver 3D print of an ear standing on a table" loading="lazy" decoding="async" />
+        <img src="images-web/graphics/3dgs_fabrication/IMG_9350.jpg" alt="A silver print of an ear swirled across a round lattice plaque" loading="lazy" decoding="async" />
+      </div>
+      <figcaption class="caption">Sunny’s ear, twice.</figcaption>
+    </figure>
+
+    <div class="prose">
+      <p>The final print is the cleanest: Emma in profile on an oval ground, close to a classical cameo. Next to the tests, you can see what it took to get there.</p>
+    </div>
+
+    <figure class="fig-wide">
+      <img src="images-web/graphics/3dgs_fabrication/IMG_9543.jpg" alt="Five prints in a row on a white wall: two white portraits, a silver swirl, a silver lump and the blue form" width="1600" height="1200" loading="lazy" decoding="async" />
+      <figcaption class="caption">The whole series, from the final portrait back to the first failed print.</figcaption>
+    </figure>
+
+    <figure class="fig">
+      <div class="pair">
+        <img src="images-web/graphics/3dgs_fabrication/DSC08737.jpg" alt="The final white profile print leaning in the corner of a wooden shelf" loading="lazy" decoding="async" />
+        <img src="images-web/graphics/3dgs_fabrication/IMG_9539.jpg" alt="Three oval prints stacked on a shelf" loading="lazy" decoding="async" />
+      </div>
+      <figcaption class="caption">The final print, and the tests beside it.</figcaption>
+    </figure>
+
+    <div class="credits">
+      <div><span class="k">Year</span><span class="v">2025</span></div>
+      <div><span class="k">Course</span><span class="v">Pilot generative AI course, Golan Levin, Carnegie Mellon University</span></div>
+      <div><span class="k">Tools</span><span class="v">Polycam, Kiri Engine, Blender, 3D printing</span></div>
+      <div><span class="k">Subjects</span><span class="v">Emma (profile), Sunny (ear)</span></div>
+    </div>
+
+    <nav class="prevnext" aria-label="More projects">
+      <a class="u" href="dead-things-in-jars.html">&larr; dead things in jars</a>
+      <a class="u" href="the-long-way-home.html">the long way home &rarr;</a>
+    </nav>
+  </article>
+  </main>
+
+  <footer class="col site-footer">
+    <span>&copy; 2026 Lorie Chen &middot; Detroit, MI</span>
+    <span class="links">
+      <a class="u" href="mailto:lorichendd@gmail.com">email</a>
+      <a class="u" href="https://github.com/ylchen333">github</a>
+      <a class="u" href="https://lovvipop.substack.com">substack</a>
+      <a class="u" href="https://www.instagram.com/lovvipop.zip">instagram</a>
+      <a class="u" href="https://www.linkedin.com/in/lorie-chen-lovvipop">linkedin</a>
+    </span>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>

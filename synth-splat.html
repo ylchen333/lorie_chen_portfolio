@@ -3,117 +3,105 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>synth splat — lorie's corner</title>
+  <title>synth splat — Lorie Chen</title>
+  <meta name="description" content="A captured world that moves with music." />
+  <link rel="canonical" href="https://loriechen.com/synth-splat.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.ico" />
 </head>
-<body class="wide">
-
-  <header>
-    <nav>
-      <a href="index.html" class="wordmark">Lorie Chen</a>
-      <div class="nav-links">
-        <!-- <a href="index.html">home</a> -->
-        <a href="index.html" class="active">work</a>
-        <a href="desk.html">desk</a>
-        <a href="about.html">about</a>
+<body>
+  <div class="site-top">
+    <header class="col site-header">
+      <a class="wordmark" href="index.html">Lorie Chen</a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="index.html#work" aria-current="page">work</a>
         <a href="playlab.html">playlab</a>
-        <a href="mailto:lorichendd@gmail.com" class="nav-contact">contact</a>
-      </div>
-    </nav>
-    <div class="hero">
-      <a href="index.html" class="back-link">&larr; work</a>
-      <h1>synth splat</h1>
-      <p class="project-statement">A realistic 3D environment that responds to music</p>
-      <p class="tagline">3D Gaussian Splatting &middot; audio-reactive &middot; 2026</p>
-    </div>
-  </header>
+        <a href="about.html">about</a>
+        <a href="mailto:lorichendd@gmail.com">contact</a>
+      </nav>
+    </header>
+  </div>
 
   <main>
+  <article class="col project">
+    <header>
+      <a class="back u" href="index.html#work">&larr; all work</a>
+      <h1 class="page-title">synth splat</h1>
+      <p class="page-sub">A captured world that moves with music.</p>
+    </header>
 
-    <div class="project-layout">
+    <figure class="fig">
+      <img src="images-web/graphics/synth-splat/a-greenhouse-captured-as-a-gaussian-spla.jpg" alt="A greenhouse captured as a Gaussian splat inside the synth splat interface" width="1600" height="852" loading="eager" decoding="async" />
+      <figcaption class="caption">A captured greenhouse, reacting to a setlist. <a class="u" href="https://youtu.be/E-ccZaLr0Ao" target="_blank" rel="noopener">Watch the video ↗</a></figcaption>
+    </figure>
 
-      <aside class="project-sidebar">
-        <dl class="project-info">
-          <dt>built with</dt>
-          <dd>3D Gaussian Splatting, audio reactivity, spark.js, XGrids PortalCam, Meyda.js</dd>
-          <dt>links</dt>
-          <dd>
-            <a href="https://synthsplat.loriechen.com/" target="_blank" rel="noopener">live build &rarr;</a><br />
-            <a href="https://github.com/ylchen333/synth_splat_web" target="_blank" rel="noopener">github repository &rarr;</a><br />
-            <a href="https://youtu.be/E-ccZaLr0Ao?si=LasN7536b4Xu2s9s" target="_blank" rel="noopener">video documentation &rarr;</a><br />
-            <a href="https://devpost.com/software/la28_996_b?ref_content=user-portfolio&amp;ref_feature=in_progress" target="_blank" rel="noopener">devpost &rarr;</a>
-            <a href="https://www.worldlabs.ai/labs/showcase/synth-splat" target="_blank" rel="noopener">world labs showcase &rarr;</a><br />
-            <a href="https://www.linkedin.com/posts/270-builders-joined-us-in-la-for-the-worlds-ugcPost-7491191526136438785-ZbMJ/?utm_source=share&utm_medium=member_desktop&rcm=ACoAADbaarwBjUT8kYmznOBWw9ZMAGtR6K2e0fY" target="_blank" rel="noopener">linkedin &rarr;</a>
-          </dd>
-        </dl>
-      </aside>
-
-      <div class="project-content">
-        <section class="project-writeup">
-          <div class="video-embed">
-            <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/E-ccZaLr0Ao?si=GNp0UZJCrC6XHl63"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen>
-            </iframe>
-          </div>
-          <div class="gif-embed">
-            <img loading="lazy" decoding="async" src="images-web/graphics/synth_splat/ezgif-54c8a933d80eb2ef.gif" alt="Audio reshaping a Gaussian splat scene" />
-          </div>
-          <h2 class="project-section-label">Context</h2>
-          <p>
-            Gaussian splats are usually treated as static records of real places. We wanted to test them as expressive, time-based material: a scene that listens and changes with a performer instead of merely being viewed.
-          </p>
-          <h2 class="project-section-label">Experiment &amp; technical approach</h2>
-          <p>
-            In 48 hours at the Worlds in Action Hackathon, we built a browser performance system using Spark.js, Meyda.js, and XGrids PortalCam. I explored mappings from audio features to splat scale, opacity, motion, and camera behavior, then shaped the interface so someone could move from a prepared setlist to a live visual without a specialist 3D tool.
-          </p>
-          <p>
-            In collaboration with Steph Ng and Nick Pudjarminta.
-            Steph Ng is a creative technologist with skills in both design and engineering, with a background in AR/VR. Currently building a startup in digital fashion. 
-            Nick Pudjarminta is a creative technologist who co-founded the award-winning mixed reality studio AmaVR, led cutting edge VR research at the USC World Building Media Lab, and facilitated Metaverse technical pipelines at Meta.
-          </p>
-          <p>Workflow: setlist preprocessing &rarr; Marble generation and editing &rarr; PLY/SPZ export &rarr; Spark.js visualizer &rarr; shader and camera animation driven by Meyda.js.</p>
-          <h2 class="project-section-label">Findings</h2>
-          <p>Low-level audio mappings were immediately legible, but too many simultaneous responses made the world feel like an equalizer rather than an instrument. The stronger interaction came from giving different musical features distinct spatial responsibilities and letting the camera respond more slowly than the shaders.</p>
-          <div class="project-implication"><h2 class="project-section-label">Implications</h2><p>Future spatial-creation tools could treat sound as an authoring input, not an effect added at export. A useful product workflow would let performers compose mappings, preview them live, and carry a captured world between editing and performance without rebuilding it in a game engine.</p></div>
-        </section>
-      </div>
-
+    <div class="prose">
+      <p>Gaussian splats are usually treated as records: a real place, captured once and then looked at. Synth splat treats a captured world as a performance surface instead, a scene that listens and changes with the person playing it.</p>
+      <p>Visual music has a long history, from Oskar Fischinger’s animated films to VJs mixing live in clubs. Most of it is abstract. I wanted to know what happens when the visuals are a real place, and the place itself starts to move with the sound.</p>
     </div>
 
-    <div class="carousel-wrap">
-      <h2>documentation</h2>
-      <div class="carousel">
-        <div class="carousel-track">
-          <img src="images-web/graphics/synth_splat/Screenshot 2026-08-01 at 3.55.46 PM.png" alt="Synth Splat interface" loading="lazy" />
-          <img src="images-web/graphics/synth_splat/Screenshot 2026-08-01 at 3.56.18 PM.png" alt="Synth Splat audio-reactive scene" loading="lazy" />
-          <img src="images-web/graphics/synth_splat/IMG_20260723_152856_076_01_17.jpg" alt="Synth Splat presentation documentation" loading="lazy" />
-          <img src="images-web/graphics/synth_splat/IMG_2257.jpg" alt="Synth Splat project documentation" loading="lazy" />
-        </div>
+    <figure class="fig">
+      <div class="pair">
+        <img src="images-web/graphics/synth-splat/teammates-coding-on-laptops-at-a-hackath.jpg" alt="Teammates coding on laptops at a hackathon table" loading="lazy" decoding="async" />
+        <img src="images-web/graphics/synth-splat/the-siggraph-2026-sign-outside-the-los-a.jpg" alt="The SIGGRAPH 2026 sign outside the Los Angeles Convention Center" loading="lazy" decoding="async" />
       </div>
-      <div class="carousel-controls">
-        <button class="carousel-prev" aria-label="previous">&larr;</button>
-        <button class="carousel-next" aria-label="next">&rarr;</button>
-      </div>
+      <figcaption class="caption">Building it in 48 hours, and SIGGRAPH 2026 in Los Angeles.</figcaption>
+    </figure>
+
+    <div class="prose">
+      <p>In 48 hours at the Worlds in Action Hackathon, with Steph Ng and Nick Pudjarminta, we built a browser performance system with Spark.js, Meyda.js and an XGrids PortalCam. I mapped audio features to splat scale, opacity, motion and camera behavior, and shaped the interface so a performer could go from a prepared setlist to a live visual without opening a specialist 3D tool.</p>
     </div>
 
+    <figure class="fig">
+      <img src="images-web/graphics/synth-splat/a-greenhouse-splat-with-the-shader-and-m.jpg" alt="A greenhouse splat with the shader and mapping controls open" width="1600" height="852" loading="lazy" decoding="async" />
+      <figcaption class="caption">A greenhouse world, with the mapping controls open.</figcaption>
+    </figure>
+
+    <h2 class="subhead">Instrument, not equalizer</h2>
+
+    <div class="prose">
+      <p>The first mappings were easy to read but crowded. When every sound moved everything, the world felt like an equalizer. It started to feel like an instrument once each musical feature had its own spatial job, and the camera was allowed to answer more slowly than the surface, so the world breathes instead of twitching.</p>
+    </div>
+
+    <figure class="fig">
+      <img src="images-web/graphics/synth-splat/a-pastel-world-of-soft-cloud-like-splats.gif" alt="A pastel world of soft cloud-like splats moving with music" width="720" height="366" loading="lazy" decoding="async" />
+      <figcaption class="caption">Another world, mid-performance.</figcaption>
+    </figure>
+
+    <div class="prose">
+      <p>Sound becomes something you compose with while you author the world, not an effect added at export. The next version would let performers compose and preview their own mappings, and carry a captured world from editing to performance without rebuilding it in a game engine.</p>
+    </div>
+
+    <p class="project-links"><a class="u" href="https://synthsplat.loriechen.com" target="_blank" rel="noopener">Live build &nearr;</a> &middot; <a class="u" href="https://youtu.be/E-ccZaLr0Ao" target="_blank" rel="noopener">Video &nearr;</a> &middot; <a class="u" href="https://github.com/ylchen333/synth_splat_web" target="_blank" rel="noopener">GitHub &nearr;</a> &middot; <a class="u" href="https://devpost.com/software/la28_996_b" target="_blank" rel="noopener">Devpost &nearr;</a> &middot; <a class="u" href="https://www.worldlabs.ai/labs/showcase/synth-splat" target="_blank" rel="noopener">World Labs showcase &nearr;</a></p>
+
+    <div class="credits">
+      <div><span class="k">Year</span><span class="v">2026</span></div>
+      <div><span class="k">Made at</span><span class="v">Worlds in Action Hackathon, 48 hours</span></div>
+      <div><span class="k">With</span><span class="v">Steph Ng, Nick Pudjarminta</span></div>
+      <div><span class="k">Built with</span><span class="v">Spark.js, Meyda.js, XGrids PortalCam, Marble</span></div>
+    </div>
+
+    <nav class="prevnext" aria-label="More projects">
+      <a class="u" href="catalogue_raisonne.html">&larr; catalogue raisonné</a>
+      <a class="u" href="dead-things-in-jars.html">dead things in jars &rarr;</a>
+    </nav>
+  </article>
   </main>
 
-  <footer>
-    <p>&copy; 2026 Lorie Chen</p>
-    <p>Detroit, MI</p>
+  <footer class="col site-footer">
+    <span>&copy; 2026 Lorie Chen &middot; Detroit, MI</span>
+    <span class="links">
+      <a class="u" href="mailto:lorichendd@gmail.com">email</a>
+      <a class="u" href="https://github.com/ylchen333">github</a>
+      <a class="u" href="https://lovvipop.substack.com">substack</a>
+      <a class="u" href="https://www.instagram.com/lovvipop.zip">instagram</a>
+      <a class="u" href="https://www.linkedin.com/in/lorie-chen-lovvipop">linkedin</a>
+    </span>
   </footer>
 
-  <script src="main.js"></script>
+  <script src="main.js" defer></script>
 </body>
 </html>

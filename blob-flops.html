@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>blob flops — Lorie Chen</title>
+  <meta name="description" content="A hand-bound book of plotted reaction diffusion, cut down to its best pockets." />
+  <link rel="canonical" href="https://loriechen.com/blob-flops.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" />
+</head>
+<body>
+  <div class="site-top">
+    <header class="col site-header">
+      <a class="wordmark" href="index.html">Lorie Chen</a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="index.html#work" aria-current="page">work</a>
+        <a href="playlab.html">playlab</a>
+        <a href="about.html">about</a>
+        <a href="mailto:lorichendd@gmail.com">contact</a>
+      </nav>
+    </header>
+  </div>
+
+  <main>
+  <article class="col project">
+    <header>
+      <a class="back u" href="index.html#work">&larr; all work</a>
+      <h1 class="page-title">blob flops</h1>
+      <p class="page-sub">A hand-bound book of plotted reaction diffusion, cut down to its best pockets.</p>
+    </header>
+
+    <figure class="fig">
+      <img src="images-web/plotting_art/reaction_diffusion_contours/AK2A6369.jpg" alt="A small hand-bound book with a pink plotted cover on a white table" width="1600" height="1067" loading="eager" decoding="async" />
+      <figcaption class="caption">The finished book.</figcaption>
+    </figure>
+
+    <div class="prose">
+      <p>This one started as a failure. I wanted to use reaction diffusion, the simulation behind patterns like animal spots and stripes, to tone an image or turn it into vectors. It didn’t work at all.</p>
+      <p>So I went the other way and tried to make the simulation itself feel alive: a reaction diffusion that runs in real time and reacts to the cursor. My first attempt, in p5.js, was far too slow. After a crash course from Golan Levin on openFrameworks, I translated the math and my p5.js tests into C++, and finally had a simulation that ran in real time.</p>
+    </div>
+
+    <h2 class="subhead">From simulation to line</h2>
+
+    <div class="prose">
+      <p>With a working simulation, I could play with its parameters and watch the blobs split, merge and settle. I used OpenCV inside openFrameworks to trace the edges of the blobs, then filled the negative space with simple linear hatching. That gave me a drawing a plotter could follow.</p>
+    </div>
+
+    <figure class="fig">
+      <div class="pair">
+        <img src="images-web/plotting_art/reaction_diffusion_contours/AK2A6395.jpg" alt="A book page with two plotted ovals in blue line, open on a white table" loading="lazy" decoding="async" />
+        <img src="images-web/plotting_art/reaction_diffusion_contours/AK2A6413.jpg" alt="A spread with dark hatched lines and pale blobs layered over them" loading="lazy" decoding="async" />
+      </div>
+      <figcaption class="caption">Early pages.</figcaption>
+    </figure>
+
+    <h2 class="subhead">Making the plotter skip</h2>
+
+    <div class="prose">
+      <p>In parallel, I was testing the plotters themselves. I plotted the same set of parallel lines on top of itself again and again, adjusting the calibration, the pen height and the pen to force skips on the paper. The machine’s small mechanical failures started making patterns of their own.</p>
+      <p>Eventually the two experiments became one. I plotted the reaction diffusion hatching in multiple layers, with multiple pens, on HP pen plotters and an AxiDraw.</p>
+    </div>
+
+    <figure class="fig">
+      <div class="pair">
+        <img src="images-web/plotting_art/reaction_diffusion_contours/AK2A6424.jpg" alt="A spread of pink blobs over layered gold hatching" loading="lazy" decoding="async" />
+        <img src="images-web/plotting_art/reaction_diffusion_contours/AK2A6427.jpg" alt="Pink blobs and gold lines layered into a dense band across a page" loading="lazy" decoding="async" />
+      </div>
+      <figcaption class="caption">Layers, pens and skips.</figcaption>
+    </figure>
+
+    <h2 class="subhead">A book of pockets</h2>
+
+    <div class="prose">
+      <p>By the end I had a pile of plots, and a problem: most of them were only interesting in places. A sheet might hold one pocket of texture in a field of nothing much. So I cut the plots up, kept the best areas, and hand-bound them into a book of compositions.</p>
+      <p>A book felt like the right way to show them, much as photographers edit and sequence their work through photobooks. Each page is a small, curated view into an experiment that was mostly noise.</p>
+    </div>
+
+    <figure class="fig-wide">
+      <img src="images-web/plotting_art/reaction_diffusion_contours/AK2A6372.jpg" alt="The book open to a wide pink page of layered plotted lines, its bound spine on the left" width="1600" height="1067" loading="lazy" decoding="async" />
+      <figcaption class="caption">The binding, and the pink page that became the cover.</figcaption>
+    </figure>
+
+    <figure class="fig">
+      <div class="pair">
+        <img src="images-web/plotting_art/reaction_diffusion_contours/AK2A6419.jpg" alt="A page of white reaction diffusion blobs over pink, framed in dark hatching" loading="lazy" decoding="async" />
+        <img src="images-web/plotting_art/reaction_diffusion_contours/AK2A6430.jpg" alt="A spread with a torn edge revealing layered gold and black lines" loading="lazy" decoding="async" />
+      </div>
+      <figcaption class="caption">Pages from the book.</figcaption>
+    </figure>
+
+    <div class="prose">
+      <p>I made this for Golan Levin’s Drawing with Machines in 2024. I was very sick for most of the month before the exhibition, and I spent a lot of nights falling asleep to the sound of the AxiDraw plotting away.</p>
+    </div>
+
+    <p class="project-links"><a class="u" href="https://youtu.be/YXxGrEw9Pgw" target="_blank" rel="noopener">Watch the video &nearr;</a></p>
+
+    <div class="credits">
+      <div><span class="k">Year</span><span class="v">2024</span></div>
+      <div><span class="k">Course</span><span class="v">Drawing with Machines, Golan Levin, Carnegie Mellon University</span></div>
+      <div><span class="k">Built with</span><span class="v">p5.js, openFrameworks, OpenCV</span></div>
+      <div><span class="k">Plotters</span><span class="v">HP pen plotters, AxiDraw</span></div>
+      <div><span class="k">Form</span><span class="v">Hand-bound book</span></div>
+    </div>
+
+    <nav class="prevnext" aria-label="More projects">
+      <a class="u" href="dashcam-scrolls.html">&larr; the looooooooong way home</a>
+      <a class="u" href="gem-stacking.html">gem stacking &rarr;</a>
+    </nav>
+  </article>
+  </main>
+
+  <footer class="col site-footer">
+    <span>&copy; 2026 Lorie Chen &middot; Detroit, MI</span>
+    <span class="links">
+      <a class="u" href="mailto:lorichendd@gmail.com">email</a>
+      <a class="u" href="https://github.com/ylchen333">github</a>
+      <a class="u" href="https://lovvipop.substack.com">substack</a>
+      <a class="u" href="https://www.instagram.com/lovvipop.zip">instagram</a>
+      <a class="u" href="https://www.linkedin.com/in/lorie-chen-lovvipop">linkedin</a>
+    </span>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
