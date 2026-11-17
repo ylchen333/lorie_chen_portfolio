@@ -3,133 +3,106 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>catalogue raisonné — lorie's corner</title>
+  <title>catalogue raisonné — Lorie Chen</title>
+  <meta name="description" content="CMU’s Studio for Creative Inquiry as a walkable, searchable archive." />
+  <link rel="canonical" href="https://loriechen.com/catalogue_raisonne.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.ico" />
 </head>
-<body class="wide">
-
-  <header>
-    <nav>
-      <a href="index.html" class="wordmark">Lorie Chen</a>
-      <div class="nav-links">
-        <!-- <a href="index.html">home</a> -->
-        <a href="index.html" class="active">work</a>
-        <a href="desk.html">desk</a>
-        <a href="about.html">about</a>
+<body>
+  <div class="site-top">
+    <header class="col site-header">
+      <a class="wordmark" href="index.html">Lorie Chen</a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="index.html#work" aria-current="page">work</a>
         <a href="playlab.html">playlab</a>
-        <a href="mailto:lorichendd@gmail.com" class="nav-contact">contact</a>
-      </div>
-    </nav>
-    <div class="hero">
-      <a href="index.html" class="back-link">&larr; work</a>
-      <h1>catalogue raisonné</h1>
-      <!-- TODO(Lorie): draft statement, approve or edit -->
-      <p class="project-statement">A walkable 3D room that works like a searchable archive</p>
-      <p class="tagline">3D Gaussian Splatting &middot; web &middot; 2025&ndash;2026</p>
-    </div>
-  </header>
+        <a href="about.html">about</a>
+        <a href="mailto:lorichendd@gmail.com">contact</a>
+      </nav>
+    </header>
+  </div>
 
   <main>
+  <article class="col project">
+    <header>
+      <a class="back u" href="index.html#work">&larr; all work</a>
+      <h1 class="page-title">catalogue raisonné</h1>
+      <p class="page-sub">CMU’s Studio for Creative Inquiry as a walkable, searchable archive.</p>
+    </header>
 
-    <div class="project-layout">
+    <figure class="fig">
+      <img src="images-web/graphics/catalogue-raisonne/the-studio-for-creative-inquiry-as-a-gau.jpg" alt="The Studio for Creative Inquiry as a Gaussian splat with a command-line archive panel" width="1600" height="1067" loading="eager" decoding="async" />
+      <figcaption class="caption">room.loriechen.com: the studio as a queryable filesystem. <a class="u" href="https://room.loriechen.com" target="_blank" rel="noopener">Walk through it ↗</a></figcaption>
+    </figure>
 
-      <aside class="project-sidebar">
-        <dl class="project-info">
-          <dt>advised by</dt>
-          <dd>Ioannis Gkioulekas</dd>
-          <dt>built with</dt>
-          <dd>spark.js (World Labs), Three.js, HDBSCAN, CLIP, SAM</dd>
-          <dt>part of</dt>
-          <dd>BXA Capstone, Carnegie Mellon University</dd>
-          <dt>links</dt>
-          <dd>
-            <a href="https://room.loriechen.com" target="_blank" rel="noopener">live experience →</a><br />
-            <a href="https://youtu.be/I6ol_K3D7nk" target="_blank" rel="noopener">video documentation →</a><br />
-            <a href="https://lovvipop.substack.com/p/a-room" target="_blank" rel="noopener">substack writeup →</a>
-          </dd>
-        </dl>
-      </aside>
-
-      <div class="project-content">
-        <section class="project-writeup">
-          <div class="video-embed">
-            <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/I6ol_K3D7nk?si=Tym8BUBmowIdX2ta"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen>
-            </iframe>
-            <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/I6ol_K3D7nk?si=NkQnXNMa5e4EMD08" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
-          </div>
-          <h2 class="project-section-label">Context</h2>
-          <p>
-            Over two years my studio and bedroom at CMU accumulated a specific kind of density —
-            things placed, moved, replaced, forgotten. The arrangement of the space was an ongoing
-            record of how institutional life reshapes daily habits. At the end, before I left, I
-            scanned it.
-          </p>
-          <h2 class="project-section-label">Experiment &amp; technical approach</h2>
-          <img class="inline-img right" src="images-web/graphics/catalogue_raisonne/Screenshot 2026-07-16 at 1.33.41 PM.png" alt="" loading="lazy" />
-          <p>
-            Capture used Scaniverse on an iPhone (LiDAR + visual SLAM), with 3D Gaussian Splatting
-            trained from the resulting point cloud. Alternative capture processes also used include capturing raw images of the studio
-            and bedroom with a Fujifilm X-T5 and training a 3D Gaussian Splatting model, then converting to a splat representation.
-            The harder problem was making the result navigable and legible. I wanted each object to be queryable — not labeled by hand,
-            but surfaced through the geometry of the space itself.
-          </p>
-          <p>
-            The segmentation pipeline weighs surface normals at 2.5&times; position features to
-            identify object boundaries in a densely-packed scene, then applies HDBSCAN clustering,
-            CLIP for non-taxonomic semantic queries, and SAM for 2D instance masks. Visibility
-            scoring prunes floater Gaussians in free space. Hand segmentation (drawing bounding boxes) was also employed to refine the object boundaries. 
-            The result is a 3D archive of the space, where each object can be queried and explored in a browser.
-          </p>
-          <img class="inline-img right" src="images-web/graphics/catalogue_raisonne/Screenshot 2026-07-16 at 1.33.48 PM.png" alt="" loading="lazy" />
-          <p>
-            The interface avoids gallery conventions: it's a command-line-style filesystem with
-            typewriter reveals and first-person navigation. Objects appear as evidence, not
-            displays. Conceptually the work sits with Tracey Emin's <em>My Bed</em> and Gala
-            Porras-Kim's archival practice &mdash; the idea that a room, documented thoroughly
-            enough, becomes a primary source.
-          </p>
-          <h2 class="project-section-label">Findings</h2>
-          <p>The capture itself was easier than making a dense, personal room legible. Fully automatic clustering confused overlapping objects and produced floating fragments, while hand-authored labels erased the ambiguity that made the archive interesting. Combining geometric cues, semantic models, and selective manual correction produced a better division of labor.</p>
-          <div class="project-implication"><h2 class="project-section-label">Implications</h2><p>Spatial archives need interfaces for inquiry, not only photorealistic walkthroughs. Creative tools for 3D collections could let people search by association, move between object and room scale, and preserve uncertainty rather than forcing every object into a fixed museum taxonomy.</p></div>
-        </section>
-      </div>
-
+    <div class="prose">
+      <p>The Studio for Creative Inquiry is a lab at Carnegie Mellon for experimental work across art, science and technology, and like any working studio it accumulates: equipment, prototypes, boxes, leftovers from projects, things placed, moved, replaced and forgotten. The arrangement of the room is a running record of everything that has happened in it. I scanned it to see whether that record could be read.</p>
+      <p>A catalogue raisonné is the complete, annotated list of an artist’s works. Here the subject is a room. The project sits with Tracey Emin’s My Bed and Gala Porras-Kim’s archival practice: the idea that a space, documented thoroughly enough, becomes a primary source.</p>
     </div>
 
-    <div class="carousel-wrap">
-      <h2>documentation</h2>
-      <div class="carousel">
-        <div class="carousel-track">
-          <img src="images-web/graphics/catalogue_raisonne/Screenshot 2026-07-16 at 1.33.41 PM.png" alt="" loading="lazy" />
-          <img src="images-web/graphics/catalogue_raisonne/Screenshot 2026-07-16 at 1.33.48 PM.png" alt="" loading="lazy" />
-          <img src="images-web/graphics/catalogue_raisonne/Screenshot 2026-07-16 at 1.34.03 PM.png" alt="" loading="lazy" />
-        </div>
-      </div>
-      <div class="carousel-controls">
-        <button class="carousel-prev" aria-label="previous">&larr;</button>
-        <button class="carousel-next" aria-label="next">&rarr;</button>
-      </div>
+    <figure class="fig">
+      <img src="images-web/graphics/catalogue-raisonne/a-first-person-view-through-the-studio-f.jpg" alt="A first-person view through the Studio for Creative Inquiry splat in the browser" width="1493" height="958" loading="lazy" decoding="async" />
+      <figcaption class="caption">Walking through the studio in the browser.</figcaption>
+    </figure>
+
+    <h2 class="subhead">Making a room legible</h2>
+
+    <div class="prose">
+      <p>Capturing the studio was the easy part: Scaniverse on an iPhone (LiDAR and visual SLAM) for one pass, raw Fujifilm X-T5 photographs for another, each trained into a Gaussian splat.</p>
+      <p>Making it legible was harder. I wanted every object to be findable without labeling it by hand, surfaced through the geometry of the space itself. The segmentation weighs surface normals at 2.5× position to find object boundaries in a densely packed room, then uses HDBSCAN clustering, CLIP for searching by association, and SAM for masks. Hidden point removal suppresses what you shouldn’t be able to see through, and hand-drawn boxes fix the places where the models got it wrong.</p>
     </div>
 
+    <figure class="fig">
+      <img src="images-web/graphics/catalogue-raisonne/the-studio-splat-with-the-command-line-a.jpg" alt="The studio splat with the command-line archive panel open" width="1493" height="958" loading="lazy" decoding="async" />
+      <figcaption class="caption">Querying the room from the command line.</figcaption>
+    </figure>
+
+    <div class="prose">
+      <p>The interface avoids gallery conventions. You walk through in first person and query the room like a filesystem, with typewriter reveals, so objects turn up as evidence rather than as things on plinths.</p>
+    </div>
+
+    <figure class="fig">
+      <img src="images-web/graphics/catalogue-raisonne/another-first-person-view-of-the-studio-.jpg" alt="Another first-person view of the studio splat" width="1493" height="958" loading="lazy" decoding="async" />
+      <figcaption class="caption">Another corner of the studio.</figcaption>
+    </figure>
+
+    <h2 class="subhead">What it showed</h2>
+
+    <div class="prose">
+      <p>Fully automatic clustering confused overlapping objects and left floating fragments, and hand-written labels erased the ambiguity that made the archive interesting. The best result came from letting geometry and models do the first pass, and correcting only where it mattered.</p>
+      <p>Spatial archives need interfaces for inquiry, not just photorealistic walkthroughs: ways to search by association, move between an object and the whole room, and leave some things uncertain instead of forcing them into a fixed taxonomy.</p>
+    </div>
+
+    <p class="project-links"><a class="u" href="https://room.loriechen.com" target="_blank" rel="noopener">Live experience &nearr;</a> &middot; <a class="u" href="https://youtu.be/I6ol_K3D7nk" target="_blank" rel="noopener">Video &nearr;</a> &middot; <a class="u" href="https://lovvipop.substack.com/p/a-room" target="_blank" rel="noopener">Substack write-up &nearr;</a></p>
+
+    <div class="credits">
+      <div><span class="k">Year</span><span class="v">2025</span></div>
+      <div><span class="k">Advised by</span><span class="v">Ioannis Gkioulekas</span></div>
+      <div><span class="k">Built with</span><span class="v">spark.js (World Labs), Three.js, HDBSCAN, CLIP, SAM</span></div>
+      <div><span class="k">Part of</span><span class="v">BXA Capstone, Carnegie Mellon University</span></div>
+    </div>
+
+    <nav class="prevnext" aria-label="More projects">
+      <a class="u" href="comfy-dial.html">&larr; comfy-dial</a>
+      <a class="u" href="synth-splat.html">synth splat &rarr;</a>
+    </nav>
+  </article>
   </main>
 
-  <footer>
-    <p>&copy; 2026 Lorie Chen</p>
-    <p>Detroit, MI</p>
+  <footer class="col site-footer">
+    <span>&copy; 2026 Lorie Chen &middot; Detroit, MI</span>
+    <span class="links">
+      <a class="u" href="mailto:lorichendd@gmail.com">email</a>
+      <a class="u" href="https://github.com/ylchen333">github</a>
+      <a class="u" href="https://lovvipop.substack.com">substack</a>
+      <a class="u" href="https://www.instagram.com/lovvipop.zip">instagram</a>
+      <a class="u" href="https://www.linkedin.com/in/lorie-chen-lovvipop">linkedin</a>
+    </span>
   </footer>
 
-  <script src="main.js"></script>
+  <script src="main.js" defer></script>
 </body>
 </html>

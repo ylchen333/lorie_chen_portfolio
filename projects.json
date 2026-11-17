@@ -1,75 +1,112 @@
 [
   {
-    "slug": "synth-splat",
-    "title": "synth splat",
-    "statement": "A realistic 3D environment that responds to music",
-    "tags": "3D Gaussian Splatting · Audio-Reactive",
-    "thumb": "images-web/graphics/synth_splat/synth_splat_ui.jpg",
-    "thumbAlt": "Synth Splat audio-reactive 3D environment interface",
-    "thumbPosition": "50% 50%",
-    "page": "synth-splat.html",
-    "live": "https://synthsplat.loriechen.com/"
+    "slug": "dead-things-in-jars",
+    "title": "dead things in jars",
+    "year": "2024–",
+    "statement": "Wet specimens captured in 3D, glass and all.",
+    "cats": [
+      "3d"
+    ],
+    "thumb": "images-web/graphics/dead-things-in-jars/a-wet-specimen-coiled-in-a-glass-jar-of-.jpg",
+    "thumbAlt": "A wet specimen coiled in a glass jar of ethanol",
+    "page": "dead-things-in-jars.html"
+  },
+  {
+    "slug": "the-long-way-home",
+    "title": "the long way home",
+    "year": "2026",
+    "statement": "Ten road trips of dashcam footage, turned into slit scans and plotter drawings.",
+    "cats": [
+      "plot"
+    ],
+    "thumb": "images-web/graphics/the-long-way-home/slit-scan-of-a-highway-drive-compressed-.jpg",
+    "thumbAlt": "Slit scan of a highway drive compressed into one long image",
+    "page": "the-long-way-home.html"
+  },
+  {
+    "slug": "gem-stacking",
+    "title": "gem stacking",
+    "year": "2025–26",
+    "statement": "Recovering the depth of cameo glass with a museum’s own camera.",
+    "cats": [
+      "photo",
+      "3d"
+    ],
+    "thumb": "images-web/graphics/gem-stacking/a-carved-cameo-profile-photographed-with.jpg",
+    "thumbAlt": "A carved cameo profile photographed with a Phase One camera",
+    "page": "gem-stacking.html"
+  },
+  {
+    "slug": "comfy-dial",
+    "title": "comfy-dial",
+    "year": "2026",
+    "statement": "Draw a camera move; a video model shoots it and checks itself.",
+    "cats": [
+      "tools"
+    ],
+    "thumb": "images-web/graphics/comfy-dial/screen-recording-of-the-comfy-dial-studi.gif",
+    "thumbAlt": "Screen recording of the comfy-dial studio keyframing a camera move",
+    "page": "comfy-dial.html"
   },
   {
     "slug": "catalogue-raisonne",
     "title": "catalogue raisonné",
-    "statement": "A walkable 3D room that works like a searchable archive",
-    "tags": "3D Gaussian Splatting · HDBSCAN · CLIP · SAM · WebGL",
-    "thumb": "images-web/graphics/catalogue_raisonne/catalogue_room.jpg",
-    "thumbAlt": "Catalogue raisonné room interface",
-    "thumbPosition": "50% 40%",
-    "page": "catalogue_raisonne.html",
-    "live": "https://room.loriechen.com"
-  },
-  {
-    "slug": "gem-stacking",
-    "title": "Gem Stacking",
-    "statement": "A new 3D scanning method for historic cameo-glass gems",
-    "tags": "Confocal Stereo · Computational Photography · Cultural Heritage",
-    "thumb": "images-web/graphics/getty/IMG_7515.jpg",
-    "thumbAlt": "Hands holding a color checker beside a camera lens at the Getty Villa",
-    "thumbPosition": "50% 50%",
-    "page": "gem-stacking.html"
-  },
-  {
-    "slug": "the-long-way-home",
-    "title": "The Long Way Home",
-    "statement": "Landscapes, observed and drawn by machines",
-    "tags": "SAM · OpenCV · vsketch · vpype · HP Draftmaster Plotter",
-    "thumb": "images/plotting_art/dashcam/clean_slitscan.jpg",
-    "thumbAlt": "Dashcam footage turned into a slit scan",
-    "thumbPosition": "50% 50%",
-    "page": "the-long-way-home.html"
-  },
-  {
-    "slug": "dead-things-in-jars",
-    "title": "dead things in jars",
-    "statement": "Capturing reflective, transparent specimens in 3D, where photogrammetry fails",
-    "tags": "3D Gaussian Splatting · Polycam · Natural History",
-    "thumb": "images-web/graphics/dead_things_in_jars/DSC06310.jpg",
-    "thumbAlt": "Specimen jar from the dead things in jars capture",
-    "thumbPosition": "50% 50%",
-    "page": "dead-things-in-jars.html"
-  },
-  {
-    "slug": "comfyui-nodes",
-    "title": "comfyui nodes & workshops",
-    "statement": "Custom ComfyUI tools that let artists change what the model does",
-    "tags": "ComfyUI · Gemini · custom nodes · p5.js",
-    "thumb": "",
-    "thumbAlt": "",
-    "thumbPosition": "50% 50%",
-    "tiles": [
-      "ComfyUI-VOSR2",
-      "ComfyUI-LocateAnything",
-      "ComfyUI-YOLO",
-      "ComfyCV"
+    "year": "2025",
+    "statement": "CMU's Studio for Creative Inquiry as a walkable, searchable archive.",
+    "cats": [
+      "3d"
     ],
-    "extra": [
-      {
-        "label": "nodes on github →",
-        "url": "https://github.com/ylchen333/ComfyUI-VOSR2"
-      }
-    ]
+    "thumb": "images-web/graphics/catalogue-raisonne/the-studio-for-creative-inquiry-as-a-gau.jpg",
+    "thumbAlt": "The studio as a Gaussian splat with an archive panel",
+    "page": "catalogue_raisonne.html"
+  },
+  {
+    "slug": "synth-splat",
+    "title": "synth splat",
+    "year": "2026",
+    "statement": "A captured world that moves with music.",
+    "cats": [
+      "3d",
+      "tools"
+    ],
+    "thumb": "images-web/graphics/synth-splat/a-greenhouse-captured-as-a-gaussian-spla.jpg",
+    "thumbAlt": "A greenhouse captured as a Gaussian splat",
+    "page": "synth-splat.html"
+  },
+  {
+    "slug": "dashcam-scrolls",
+    "title": "the looooooooong way home",
+    "year": "2026",
+    "statement": "Slit scans of long drives, plotted as scrolls on Yupo and canvas.",
+    "cats": [
+      "plot"
+    ],
+    "thumb": "images-web/plotting_art/tooling_documentation/uscutter/IMG_8331.jpg",
+    "thumbAlt": "A long multicolor plotted landscape on Yupo pinned to a wall",
+    "page": "dashcam-scrolls.html"
+  },
+  {
+    "slug": "splat-fabrication",
+    "title": "splat fabrication",
+    "year": "2025",
+    "statement": "Cameo portraits 3D printed from Gaussian splats, starting with one that failed.",
+    "cats": [
+      "3d"
+    ],
+    "thumb": "images-web/graphics/3dgs_fabrication/DSC08739.jpg",
+    "thumbAlt": "A white 3D-printed relief of a young woman in profile",
+    "page": "splat-fabrication.html"
+  },
+  {
+    "slug": "blob-flops",
+    "title": "blob flops",
+    "year": "2024",
+    "statement": "A hand-bound book of plotted reaction diffusion.",
+    "cats": [
+      "plot"
+    ],
+    "thumb": "images-web/plotting_art/reaction_diffusion_contours/AK2A6369.jpg",
+    "thumbAlt": "A small hand-bound book with a pink plotted cover",
+    "page": "blob-flops.html"
   }
 ]

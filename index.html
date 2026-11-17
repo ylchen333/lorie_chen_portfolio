@@ -8,116 +8,113 @@
   <link rel="canonical" href="https://loriechen.com/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.ico" />
 </head>
-<body class="work-home">
-
-  <header>
-    <nav>
-      <a href="index.html" class="wordmark">Lorie Chen</a>
-      <div class="nav-links">
-        <a href="index.html" class="active">work</a>
-        <a href="desk.html">desk</a>
-        <a href="about.html">about</a>
+<body>
+  <div class="site-top">
+    <header class="col site-header">
+      <a class="wordmark" href="index.html">Lorie Chen</a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="index.html#work" aria-current="page">work</a>
         <a href="playlab.html">playlab</a>
-        <a href="mailto:lorichendd@gmail.com" class="nav-contact">contact</a>
-      </div>
-    </nav>
-    <div class="home-hero">
-      <p class="home-hero-kicker">Creative technologist &middot; artist &middot; engineer<br /><span class="kicker-open">Open to creative-tools and spatial-computing teams</span></p>
-      <h1>Prototyping how we&rsquo;ll create next.</h1>
-      <p class="home-hero-intro">
-        I build small experimental tools with AI, graphics, robotics, and interactive tech.
-        I want to know what artists do when they can reshape the technology itself.
-      </p>
-      <p class="home-hero-links">
-        <a href="mailto:lorichendd@gmail.com">Email me</a>
-        <a href="desk.html">Explore the 3D desk &rarr;</a>
-      </p>
-    </div>
-  </header>
+        <a href="about.html">about</a>
+        <a href="mailto:lorichendd@gmail.com">contact</a>
+      </nav>
+    </header>
+  </div>
 
   <main>
-    <section class="project-grid" aria-label="projects">
+    <section class="col home-intro">
+      <h1 class="lede">I’m a creative technologist and artist. I treat computational techniques as materials, and I want to know what their behavior and interfaces let creative people make.</h1>
+    </section>
+
+    <section class="col work" id="work">
+      <div class="section-head">
+        <h2 class="label">Work</h2>
+        <div class="filters" role="group" aria-label="Filter work">
+          <button class="filter" type="button" data-filter="all" aria-pressed="true">all</button>
+          <button class="filter" type="button" data-filter="3d" aria-pressed="false">3D capture</button>
+          <button class="filter" type="button" data-filter="plot" aria-pressed="false">plotting &amp; print</button>
+          <button class="filter" type="button" data-filter="photo" aria-pressed="false">photography</button>
+          <button class="filter" type="button" data-filter="tools" aria-pressed="false">tools &amp; video</button>
+        </div>
+      </div>
+      <div class="work-grid">
 <!-- projects:start -->
-      <article class="project-card">
-        <a class="project-card-media" href="synth-splat.html" tabindex="-1" aria-hidden="true">
-          <img src="images-web/graphics/synth_splat/synth_splat_ui.jpg" alt="Synth Splat audio-reactive 3D environment interface" style="object-position: 50% 50%" loading="eager" decoding="async" />
+        <a class="card" href="dead-things-in-jars.html" data-cats="3d">
+          <img src="images-web/graphics/dead-things-in-jars/a-wet-specimen-coiled-in-a-glass-jar-of-.jpg" alt="A wet specimen coiled in a glass jar of ethanol" loading="eager" decoding="async" />
+          <span class="card-row"><span class="card-title">dead things in jars</span><span class="card-year">2024–</span></span>
+          <span class="card-desc">Wet specimens captured in 3D, glass and all.</span>
         </a>
-        <h3 class="project-card-title"><a href="synth-splat.html">synth splat</a></h3>
-        <p class="project-card-statement">A realistic 3D environment that responds to music</p>
-        <p class="project-card-tags">3D Gaussian Splatting · Audio-Reactive</p>
-        <p class="project-card-links">
-          <a href="synth-splat.html">read &rarr;</a>
-          <a class="project-card-live" href="https://synthsplat.loriechen.com/" target="_blank" rel="noopener">live build &rarr;</a>
-        </p>
-      </article>
-      <article class="project-card">
-        <a class="project-card-media" href="catalogue_raisonne.html" tabindex="-1" aria-hidden="true">
-          <img src="images-web/graphics/catalogue_raisonne/catalogue_room.jpg" alt="Catalogue raisonné room interface" style="object-position: 50% 40%" loading="eager" decoding="async" />
+        <a class="card" href="the-long-way-home.html" data-cats="plot">
+          <img src="images-web/graphics/the-long-way-home/slit-scan-of-a-highway-drive-compressed-.jpg" alt="Slit scan of a highway drive compressed into one long image" loading="eager" decoding="async" />
+          <span class="card-row"><span class="card-title">the long way home</span><span class="card-year">2026</span></span>
+          <span class="card-desc">Ten road trips of dashcam footage, turned into slit scans and plotter drawings.</span>
         </a>
-        <h3 class="project-card-title"><a href="catalogue_raisonne.html">catalogue raisonné</a></h3>
-        <p class="project-card-statement">A walkable 3D room that works like a searchable archive</p>
-        <p class="project-card-tags">3D Gaussian Splatting · HDBSCAN · CLIP · SAM · WebGL</p>
-        <p class="project-card-links">
-          <a href="catalogue_raisonne.html">read &rarr;</a>
-          <a class="project-card-live" href="https://room.loriechen.com" target="_blank" rel="noopener">live build &rarr;</a>
-        </p>
-      </article>
-      <article class="project-card">
-        <a class="project-card-media" href="gem-stacking.html" tabindex="-1" aria-hidden="true">
-          <img src="images-web/graphics/getty/IMG_7515.jpg" alt="Hands holding a color checker beside a camera lens at the Getty Villa" style="object-position: 50% 50%" loading="lazy" decoding="async" />
+        <a class="card" href="gem-stacking.html" data-cats="photo 3d">
+          <img src="images-web/graphics/gem-stacking/a-carved-cameo-profile-photographed-with.jpg" alt="A carved cameo profile photographed with a Phase One camera" loading="lazy" decoding="async" />
+          <span class="card-row"><span class="card-title">gem stacking</span><span class="card-year">2025–26</span></span>
+          <span class="card-desc">Recovering the depth of cameo glass with a museum’s own camera.</span>
         </a>
-        <h3 class="project-card-title"><a href="gem-stacking.html">Gem Stacking</a></h3>
-        <p class="project-card-statement">A new 3D scanning method for historic cameo-glass gems</p>
-        <p class="project-card-tags">Confocal Stereo · Computational Photography · Cultural Heritage</p>
-        <p class="project-card-links">
-          <a href="gem-stacking.html">read &rarr;</a>
-        </p>
-      </article>
-      <article class="project-card">
-        <a class="project-card-media" href="the-long-way-home.html" tabindex="-1" aria-hidden="true">
-          <img src="images/plotting_art/dashcam/clean_slitscan.jpg" alt="Dashcam footage turned into a slit scan" style="object-position: 50% 50%" loading="lazy" decoding="async" />
+        <a class="card" href="comfy-dial.html" data-cats="tools">
+          <img src="images-web/graphics/comfy-dial/screen-recording-of-the-comfy-dial-studi.gif" alt="Screen recording of the comfy-dial studio keyframing a camera move" loading="lazy" decoding="async" />
+          <span class="card-row"><span class="card-title">comfy-dial</span><span class="card-year">2026</span></span>
+          <span class="card-desc">Draw a camera move; a video model shoots it and checks itself.</span>
         </a>
-        <h3 class="project-card-title"><a href="the-long-way-home.html">The Long Way Home</a></h3>
-        <p class="project-card-statement">Landscapes, observed and drawn by machines</p>
-        <p class="project-card-tags">SAM · OpenCV · vsketch · vpype · HP Draftmaster Plotter</p>
-        <p class="project-card-links">
-          <a href="the-long-way-home.html">read &rarr;</a>
-        </p>
-      </article>
-      <article class="project-card">
-        <a class="project-card-media" href="dead-things-in-jars.html" tabindex="-1" aria-hidden="true">
-          <img src="images-web/graphics/dead_things_in_jars/DSC06310.jpg" alt="Specimen jar from the dead things in jars capture" style="object-position: 50% 50%" loading="lazy" decoding="async" />
+        <a class="card" href="catalogue_raisonne.html" data-cats="3d">
+          <img src="images-web/graphics/catalogue-raisonne/the-studio-for-creative-inquiry-as-a-gau.jpg" alt="The studio as a Gaussian splat with an archive panel" loading="lazy" decoding="async" />
+          <span class="card-row"><span class="card-title">catalogue raisonné</span><span class="card-year">2025</span></span>
+          <span class="card-desc">CMU's Studio for Creative Inquiry as a walkable, searchable archive.</span>
         </a>
-        <h3 class="project-card-title"><a href="dead-things-in-jars.html">dead things in jars</a></h3>
-        <p class="project-card-statement">Capturing reflective, transparent specimens in 3D, where photogrammetry fails</p>
-        <p class="project-card-tags">3D Gaussian Splatting · Polycam · Natural History</p>
-        <p class="project-card-links">
-          <a href="dead-things-in-jars.html">read &rarr;</a>
-        </p>
-      </article>
-      <article class="project-card">
-        <a class="project-card-media" tabindex="-1" aria-hidden="true">
-          <span class="project-card-tiles" aria-hidden="true"><span>ComfyUI-VOSR2</span><span>ComfyUI-LocateAnything</span><span>ComfyUI-YOLO</span><span>ComfyCV</span></span>
+        <a class="card" href="synth-splat.html" data-cats="3d tools">
+          <img src="images-web/graphics/synth-splat/a-greenhouse-captured-as-a-gaussian-spla.jpg" alt="A greenhouse captured as a Gaussian splat" loading="lazy" decoding="async" />
+          <span class="card-row"><span class="card-title">synth splat</span><span class="card-year">2026</span></span>
+          <span class="card-desc">A captured world that moves with music.</span>
         </a>
-        <h3 class="project-card-title">comfyui nodes &amp; workshops</h3>
-        <p class="project-card-statement">Custom ComfyUI tools that let artists change what the model does</p>
-        <p class="project-card-tags">ComfyUI · Gemini · custom nodes · p5.js</p>
-        <p class="project-card-links">
-          <a href="https://github.com/ylchen333/ComfyUI-VOSR2" target="_blank" rel="noopener">nodes on github &rarr;</a>
-        </p>
-      </article>
-      <!-- projects:end -->
+        <a class="card" href="dashcam-scrolls.html" data-cats="plot">
+          <img src="images-web/plotting_art/tooling_documentation/uscutter/IMG_8331.jpg" alt="A long multicolor plotted landscape on Yupo pinned to a wall" loading="lazy" decoding="async" />
+          <span class="card-row"><span class="card-title">the looooooooong way home</span><span class="card-year">2026</span></span>
+          <span class="card-desc">Slit scans of long drives, plotted as scrolls on Yupo and canvas.</span>
+        </a>
+        <a class="card" href="splat-fabrication.html" data-cats="3d">
+          <img src="images-web/graphics/3dgs_fabrication/DSC08739.jpg" alt="A white 3D-printed relief of a young woman in profile" loading="lazy" decoding="async" />
+          <span class="card-row"><span class="card-title">splat fabrication</span><span class="card-year">2025</span></span>
+          <span class="card-desc">Cameo portraits 3D printed from Gaussian splats, starting with one that failed.</span>
+        </a>
+        <a class="card" href="blob-flops.html" data-cats="plot">
+          <img src="images-web/plotting_art/reaction_diffusion_contours/AK2A6369.jpg" alt="A small hand-bound book with a pink plotted cover" loading="lazy" decoding="async" />
+          <span class="card-row"><span class="card-title">blob flops</span><span class="card-year">2024</span></span>
+          <span class="card-desc">A hand-bound book of plotted reaction diffusion.</span>
+        </a>
+        <!-- projects:end -->
+      </div>
+    </section>
+
+    <section class="col home-about">
+      <div class="two section-rule">
+        <h2 class="label">About</h2>
+        <div class="text">
+          <p>My practice moves through a research loop: find an emerging technique, ask what it might let creative people do, prototype a workflow, then follow its successes and interesting failures.</p>
+          <p>I’ve done research at the Studio for Creative Inquiry, Adobe Research and CMU’s Robotics Institute. I’m looking for a creative tools or spatial computing team.</p>
+          <p><a class="u" href="about.html">More about me</a> &middot; <a class="u" href="resume_lorie_chen.pdf">r&eacute;sum&eacute; (pdf)</a> &middot; <a class="u" href="mailto:lorichendd@gmail.com">lorichendd@gmail.com</a></p>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2026 Lorie Chen</p>
-    <p>Detroit, MI</p>
+  <footer class="col site-footer">
+    <span>&copy; 2026 Lorie Chen &middot; Detroit, MI</span>
+    <span class="links">
+      <a class="u" href="mailto:lorichendd@gmail.com">email</a>
+      <a class="u" href="https://github.com/ylchen333">github</a>
+      <a class="u" href="https://lovvipop.substack.com">substack</a>
+      <a class="u" href="https://www.instagram.com/lovvipop.zip">instagram</a>
+      <a class="u" href="https://www.linkedin.com/in/lorie-chen-lovvipop">linkedin</a>
+    </span>
   </footer>
 
+  <script src="main.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>comfy-dial — Lorie Chen</title>
+  <meta name="description" content="Draw a camera move; a video model shoots it and checks itself." />
+  <link rel="canonical" href="https://loriechen.com/comfy-dial.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" />
+</head>
+<body>
+  <div class="site-top">
+    <header class="col site-header">
+      <a class="wordmark" href="index.html">Lorie Chen</a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="index.html#work" aria-current="page">work</a>
+        <a href="playlab.html">playlab</a>
+        <a href="about.html">about</a>
+        <a href="mailto:lorichendd@gmail.com">contact</a>
+      </nav>
+    </header>
+  </div>
+
+  <main>
+  <article class="col project">
+    <header>
+      <a class="back u" href="index.html#work">&larr; all work</a>
+      <h1 class="page-title">comfy-dial</h1>
+      <p class="page-sub">Draw a camera move; a video model shoots it and checks itself.</p>
+    </header>
+
+    <figure class="fig">
+      <img src="images-web/graphics/comfy-dial/screen-recording-of-the-comfy-dial-studi.gif" alt="Screen recording of the comfy-dial studio: keyframing a camera move through a 3D set" width="800" height="450" loading="eager" decoding="async" />
+      <figcaption class="caption">The comfy-dial studio: keyframing a camera move through a 3D set. <a class="u" href="https://youtu.be/E9c5F7e-BK4" target="_blank" rel="noopener">Watch the demo ↗</a></figcaption>
+    </figure>
+
+    <div class="prose">
+      <p>Camera movement is one of film’s oldest grammars. A push-in asks you to lean closer. An orbit makes one thing the center of the world. A dolly zoom, the shot from Vertigo, holds the subject still while the floor seems to slide away.</p>
+      <p>Most video generators treat that grammar as a phrase in a prompt and hand back a roll of the dice. You can ask for a dolly zoom; you can’t draw one, and you can’t tell whether you got it.</p>
+    </div>
+
+    <h2 class="subhead">Blocking, not prompting</h2>
+
+    <div class="prose">
+      <p>comfy-dial gives the move back to the person making the shot. You build a simple set in 3D, place a subject and keyframe the camera: push in, orbit, dolly zoom. An open-weights video model (LTX-2.5) then renders several takes.</p>
+      <p>The model never sees the camera numbers. It sees a depth video of your set, rendered along your path, so the shapes you placed decide what it can paint and the path decides how the camera moves. It’s closer to blocking a scene on a stage than to writing a prompt. The prompt is left to say who is there and what they do. The demo opens on a Huangshan set: an ink-robed swordsman on the stairs and, on the same step, a very small dancing baby.</p>
+    </div>
+
+    <h2 class="subhead">Takes and pickups</h2>
+
+    <div class="prose">
+      <p>Review borrows a film set’s vocabulary. A second model (Depth Anything 3) recovers the camera each take actually used, and a verifier scores each third of the clip against the move you drew. Takes sit side by side, ranked like a contact sheet. When one stretch drifts, you don’t throw the take away: only that stretch is reshot, starting a few frames early and pinned to the frames that held, like a pickup shot.</p>
+      <p>In one test, repairing a drifted segment of a dolly zoom brought its rotation error from 3.08° to 2.55°, under the 2.75° gate.</p>
+    </div>
+
+    <h2 class="subhead">How it fails</h2>
+
+    <div class="prose">
+      <p>The failures say a lot about what the model understands. Depth carries shape but not identity, so who the figure is comes from words alone. The camera recovery assumes the world holds still, so a dancing subject blurs the camera it recovers. And repair only works if what came before it held; when it didn’t, the tool refuses rather than pretend.</p>
+    </div>
+
+    <p class="project-links"><a class="u" href="https://youtu.be/E9c5F7e-BK4" target="_blank" rel="noopener">Watch the demo &nearr;</a> &middot; <a class="u" href="https://github.com/ylchen333/comfy-dial" target="_blank" rel="noopener">Code on GitHub &nearr;</a></p>
+
+    <div class="credits">
+      <div><span class="k">Year</span><span class="v">2026</span></div>
+      <div><span class="k">Made for</span><span class="v">Comfy’s open-source Higgsfield challenge</span></div>
+      <div><span class="k">Models</span><span class="v">LTX-2.5, Depth Anything 3 Small/Base, open weights through ComfyUI</span></div>
+      <div><span class="k">Built with</span><span class="v">Vite, React, react-three-fiber, a Python verifier</span></div>
+    </div>
+
+    <nav class="prevnext" aria-label="More projects">
+      <a class="u" href="gem-stacking.html">&larr; gem stacking</a>
+      <a class="u" href="catalogue_raisonne.html">catalogue raisonné &rarr;</a>
+    </nav>
+  </article>
+  </main>
+
+  <footer class="col site-footer">
+    <span>&copy; 2026 Lorie Chen &middot; Detroit, MI</span>
+    <span class="links">
+      <a class="u" href="mailto:lorichendd@gmail.com">email</a>
+      <a class="u" href="https://github.com/ylchen333">github</a>
+      <a class="u" href="https://lovvipop.substack.com">substack</a>
+      <a class="u" href="https://www.instagram.com/lovvipop.zip">instagram</a>
+      <a class="u" href="https://www.linkedin.com/in/lorie-chen-lovvipop">linkedin</a>
+    </span>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>

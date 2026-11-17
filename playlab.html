@@ -3,252 +3,161 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>playlab — lorie's corner</title>
+  <title>playlab — Lorie Chen</title>
+  <meta name="description" content="Smaller experiments and tools a part of my practice that don’t need a full case study. Click one to see its images." />
+  <link rel="canonical" href="https://loriechen.com/playlab.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.ico" />
 </head>
-<body class="playlab-page">
-
-  <header>
-    <nav>
-      <a href="index.html" class="wordmark">Lorie Chen</a>
-      <div class="nav-links">
-        <!-- <a href="index.html">home</a> -->
-        <a href="index.html">work</a>
-        <a href="desk.html">desk</a>
+<body>
+  <div class="site-top">
+    <header class="col site-header">
+      <a class="wordmark" href="index.html">Lorie Chen</a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="index.html#work">work</a>
+        <a href="playlab.html" aria-current="page">playlab</a>
         <a href="about.html">about</a>
-        <a href="playlab.html" class="active">playlab</a>
-        <a href="mailto:lorichendd@gmail.com" class="nav-contact">contact</a>
-      </div>
-    </nav>
-    <div class="hero playlab-hero">
-      <!-- <span class="hero-kicker">playlab</span> -->
-      <div class="playlab-hero-row">
-        <h1>playlab</h1>
-        <p class="tagline">one-off experiments in p5.js, ComfyUI, and plotting &mdash; the sketchbook next to the archive.</p>
-      </div>
-    </div>
-  </header>
+        <a href="mailto:lorichendd@gmail.com">contact</a>
+      </nav>
+    </header>
+  </div>
 
   <main>
+    <section class="col playlab-intro">
+      <h1 class="page-title">playlab</h1>
+      <p class="page-sub">Smaller experiments and tools a part of my practice that don’t need a full case study. Click one to see its images.</p>
+    </section>
 
-    <div class="playlab-filters">
-      <button class="filter-btn active" data-filter="all">all</button>
-      <button class="filter-btn" data-filter="plotting">plotting</button>
-      <button class="filter-btn" data-filter="photography">photography</button>
-      <button class="filter-btn" data-filter="p5.js">p5.js</button>
-      <button class="filter-btn" data-filter="comfyui">comfyui</button>
-      <button class="filter-btn" data-filter="fabrication">fabrication</button>
-    </div>
-
-    <div class="playlab-grid">
-
-      <div class="experiment" data-title="HDR photography" data-tag="photography">
-        <img class="exp-thumb" src="images/artsy_fartsy/computational_photography/competition_entry.jpeg" alt="HDR computational photography experiment" loading="lazy" />
-        <div class="exp-label">
-          <span class="exp-name">HDR photography</span>
-          <span class="exp-tag">photography</span>
-        </div>
-        <div class="exp-gallery">
-          <img loading="lazy" decoding="async" src="images/artsy_fartsy/computational_photography/competition_entry.jpeg" alt="" />
-          <img loading="lazy" decoding="async" src="images/artsy_fartsy/computational_photography/branch_two_fused_rgb.jpeg" alt="" />
-          <img loading="lazy" decoding="async" src="images/artsy_fartsy/computational_photography/flower_leaves_piecewise_s8_r0.05.jpeg" alt="" />
-          <img loading="lazy" decoding="async" src="images/artsy_fartsy/computational_photography/flower_leaves_s2_r0.05.jpeg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/artsy_fartsy/computational_photography/leaves_grad_ambient.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/artsy_fartsy/computational_photography/leaves_grad_fused_mag.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images/artsy_fartsy/computational_photography/leaves_piecewise_s8_r0.05.jpeg" alt="" />
-          <img loading="lazy" decoding="async" src="images/artsy_fartsy/computational_photography/med_herb_fused_rgb.jpeg" alt="" />
+    <section class="col experiments" aria-label="Experiments">
+      <div class="section-head">
+        <div class="filters" role="group" aria-label="Filter experiments">
+          <button class="filter" type="button" data-filter="all" aria-pressed="true">all</button>
+          <button class="filter" type="button" data-filter="plotting" aria-pressed="false">plotting</button>
+          <button class="filter" type="button" data-filter="photography" aria-pressed="false">photography</button>
+          <button class="filter" type="button" data-filter="p5.js" aria-pressed="false">p5.js</button>
+          <button class="filter" type="button" data-filter="print" aria-pressed="false">print</button>
         </div>
       </div>
-
-      <div class="experiment" data-title="reaction diffusion contours" data-tag="plotting">
-        <img class="exp-thumb" src="images-web/plotting_art/reaction_diffusion_contours/AK2A6369.jpg" alt="" loading="lazy" />
-        <div class="exp-label">
-          <a class="exp-name exp-link" href="https://youtu.be/YXxGrEw9Pgw?si=oKWGeJ0pt8-4tGIU" target="_blank" rel="noopener">reaction diffusion contours &nearr;</a>
-
-          <!-- <span class="exp-name">reaction diffusion contours</span> -->
-          <span class="exp-tag">plotting</span>
+      <div class="lab-grid">
+        <div class="lab-item" data-cats="photography" data-title="HDR photography" data-tag="photography" data-images="images-web/artsy_fartsy/computational_photography/competition_entry.jpg|images-web/artsy_fartsy/computational_photography/branch_two_fused_rgb.jpg|images-web/artsy_fartsy/computational_photography/flower_leaves_piecewise_s8_r0.05.jpg|images-web/artsy_fartsy/computational_photography/flower_leaves_s2_r0.05.jpg|images-web/artsy_fartsy/computational_photography/leaves_grad_ambient.jpg|images-web/artsy_fartsy/computational_photography/leaves_grad_fused_mag.jpg|images-web/artsy_fartsy/computational_photography/leaves_piecewise_s8_r0.05.jpg|images-web/artsy_fartsy/computational_photography/med_herb_fused_rgb.jpg">
+          <button class="open" type="button" aria-label="HDR photography: open gallery, 8 images">
+            <img src="images-web/playlab/cards/hdr-photography.jpg" alt="" loading="eager" decoding="async" />
+          </button>
+          <div class="lab-cap"><span class="lab-title">HDR photography</span><span class="lab-meta">2025 &middot; 8 images</span></div>
         </div>
-        <div class="exp-gallery">
-          <img loading="lazy" decoding="async" src="images-web/plotting_art/reaction_diffusion_contours/AK2A6369.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/plotting_art/reaction_diffusion_contours/AK2A6372.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/plotting_art/reaction_diffusion_contours/AK2A6380.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/plotting_art/reaction_diffusion_contours/AK2A6395.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/plotting_art/reaction_diffusion_contours/AK2A6413.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/plotting_art/reaction_diffusion_contours/AK2A6419.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/plotting_art/reaction_diffusion_contours/AK2A6423.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/plotting_art/reaction_diffusion_contours/AK2A6424.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/plotting_art/reaction_diffusion_contours/AK2A6425.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/plotting_art/reaction_diffusion_contours/AK2A6427.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/plotting_art/reaction_diffusion_contours/AK2A6430.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/plotting_art/reaction_diffusion_contours/AK2A6434.jpg" alt="" />
+        <div class="lab-item" data-cats="plotting" data-title="dash cam slit scans" data-tag="plotting" data-images="images-web/plotting_art/dashcam/clean_slitscan.jpg|images-web/plotting_art/dashcam/highway_to_ny_color.jpg|images-web/plotting_art/dashcam/slitscan_left_wide.jpg|images-web/plotting_art/dashcam/drive_back_home_1_color.jpg">
+          <button class="open" type="button" aria-label="dash cam slit scans: open gallery, 4 images">
+            <img src="images-web/playlab/cards/dash-cam-slit-scans.jpg" alt="" loading="eager" decoding="async" />
+          </button>
+          <div class="lab-cap"><span class="lab-title">dash cam slit scans</span><span class="lab-meta">2025 &middot; 4 images</span></div>
         </div>
-      </div>
-
-      <div class="experiment" data-title="dash cam slit scans" data-tag="plotting">
-        <img class="exp-thumb" src="images/plotting_art/dashcam/clean_slitscan.jpg" alt="" loading="lazy" />
-        <div class="exp-label">
-          <span class="exp-name">dash cam slit scans</span>
-          <span class="exp-tag">plotting</span>
+        <div class="lab-item" data-cats="plotting" data-title="plotter typography" data-tag="plotting" data-images="images-web/artsy_fartsy/plotting/IMG_6858.jpg|images-web/artsy_fartsy/plotting/IMG_6859.jpg|images-web/artsy_fartsy/plotting/IMG_6860.jpg|images-web/artsy_fartsy/plotting/IMG_6861.jpg|images-web/artsy_fartsy/plotting/IMG_6862.jpg|images-web/artsy_fartsy/plotting/IMG_6863.jpg|images-web/artsy_fartsy/plotting/IMG_6864.jpg">
+          <button class="open" type="button" aria-label="plotter typography: open gallery, 7 images">
+            <img src="images-web/playlab/cards/plotter-typography.jpg" alt="" loading="eager" decoding="async" />
+          </button>
+          <div class="lab-cap"><span class="lab-title">plotter typography</span><span class="lab-meta">2025 &middot; 7 images</span></div>
         </div>
-        <div class="exp-gallery">
-          <img loading="lazy" decoding="async" src="images/plotting_art/dashcam/clean_slitscan.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/plotting_art/dashcam/highway_to_ny_color.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/plotting_art/dashcam/slitscan_left_wide.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/plotting_art/dashcam/drive_back_home_1_color.jpg" alt="" />
+        <div class="lab-item" data-cats="3dgs" data-title="on-the-fly pittsburgh" data-tag="3D Gaussian Splatting" data-images="images-web/playlab/onthefly_pitts_exploration.gif">
+          <button class="open" type="button" aria-label="on-the-fly pittsburgh: open gallery, 1 image">
+            <img src="images-web/playlab/cards/on-the-fly-pittsburgh.gif" alt="" loading="lazy" decoding="async" />
+          </button>
+          <div class="lab-cap"><span class="lab-title">on-the-fly pittsburgh</span><span class="lab-meta">2025 &middot; 1 image</span></div>
         </div>
-      </div>
-
-      <div class="experiment" data-title="reaction diffusion" data-tag="p5.js">
-        <img class="exp-thumb" src="images-web/playlab/rdc.gif" alt="reaction diffusion simulation" loading="lazy" />
-        <div class="exp-label">
-          <span class="exp-name">reaction diffusion</span>
-          <span class="exp-tag">p5.js</span>
+        <div class="lab-item" data-cats="p5.js" data-title="reaction diffusion" data-tag="p5.js" data-images="images-web/playlab/rdc.gif|images-web/playlab/weird_rdc.gif|images-web/playlab/rdc_test1.gif|images-web/playlab/rdc_test2.gif">
+          <button class="open" type="button" aria-label="reaction diffusion: open gallery, 4 images">
+            <img src="images-web/playlab/cards/reaction-diffusion.gif" alt="" loading="lazy" decoding="async" />
+          </button>
+          <div class="lab-cap"><span class="lab-title">reaction diffusion</span><span class="lab-meta">2024 &middot; 4 images</span></div>
         </div>
-        <div class="exp-gallery">
-          <img loading="lazy" decoding="async" src="images-web/playlab/rdc.gif" alt="" />
-          <img loading="lazy" decoding="async" src="images/playlab/weird_rdc.gif" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/playlab/rdc_test1.gif" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/playlab/rdc_test2.gif" alt="" />
+        <div class="lab-item" data-cats="print" data-title="As an AI language model, I do not have personal opinions or beliefs." data-tag="Midjourney, ChatGPT, the WWW, Lorie Chen" data-images="images-web/playlab/ai-book/ab_01_cover.jpg|images-web/playlab/ai-book/ab_02.jpg|images-web/playlab/ai-book/ab_03.jpg|images-web/playlab/ai-book/ab_04.jpg|images-web/playlab/ai-book/ab_05.jpg|images-web/playlab/ai-book/ab_06_contact.jpg">
+          <button class="open" type="button" aria-label="as an ai language model…: open gallery, 6 images">
+            <img src="images-web/playlab/cards/as-an-ai-language-model.jpg" alt="" loading="lazy" decoding="async" />
+          </button>
+          <div class="lab-cap"><span class="lab-title">as an ai language model…</span><span class="lab-meta">2023 &middot; 6 images</span></div>
         </div>
-      </div>
-
-      <div class="experiment" data-title="plotter typography" data-tag="plotting">
-        <img class="exp-thumb" src="images-web/artsy_fartsy/plotting/IMG_6858.jpg" alt="plotter typography experiment" loading="lazy" />
-        <div class="exp-label">
-          <span class="exp-name">plotter typography</span>
-          <span class="exp-tag">plotting</span>
+        <div class="lab-item" data-cats="games" data-title="welcome to school (unitour)!" data-tag="bitsy" data-images="images-web/playlab/bitsy_game_demo.gif">
+          <button class="open" type="button" aria-label="welcome to school (unitour)!: open gallery, 1 image">
+            <img src="images-web/playlab/cards/welcome-to-school.gif" alt="" loading="lazy" decoding="async" />
+          </button>
+          <div class="lab-cap"><span class="lab-title">welcome to school (unitour)!</span><span class="lab-meta">2023 &middot; 1 image</span></div>
         </div>
-        <div class="exp-gallery">
-          <img loading="lazy" decoding="async" src="images-web/artsy_fartsy/plotting/IMG_6858.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/artsy_fartsy/plotting/IMG_6859.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/artsy_fartsy/plotting/IMG_6860.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/artsy_fartsy/plotting/IMG_6861.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/artsy_fartsy/plotting/IMG_6862.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/artsy_fartsy/plotting/IMG_6863.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/artsy_fartsy/plotting/IMG_6864.jpg" alt="" />
-        </div>
-      </div>
-
-      <div class="experiment" data-title="USCutter MH871-MK2 instructions" data-tag="plotting">
-        <img class="exp-thumb" src="images-web/plotting_art/tooling_documentation/uscutter/IMG_8408.jpg" alt="Multicolor USCutter plot on canvas" loading="lazy" />
-        <div class="exp-label">
-          <a class="exp-name exp-link" href="https://github.com/ylchen333/USCutter_MH871-MK2_Instructions" target="_blank" rel="noopener">USCutter MH871-MK2 instructions &nearr;</a>
-          <span class="exp-tag">plotting &middot; tooling documentation</span>
-        </div>
-        <div class="exp-gallery">
-          <img loading="lazy" decoding="async" src="images-web/plotting_art/tooling_documentation/uscutter/IMG_8408.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/plotting_art/tooling_documentation/uscutter/IMG_8298.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/plotting_art/tooling_documentation/uscutter/IMG_8329.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/plotting_art/tooling_documentation/uscutter/IMG_8330.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/plotting_art/tooling_documentation/uscutter/IMG_8331.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/plotting_art/tooling_documentation/uscutter/IMG_8332.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/plotting_art/tooling_documentation/uscutter/IMG_8364.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/plotting_art/tooling_documentation/uscutter/IMG_8443.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images/plotting_art/tooling_documentation/uscutter/5E77C898-CAEA-4FDF-98DF-18F60EEFD05E.jpeg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/plotting_art/tooling_documentation/uscutter/9FA2AEB9-9770-4EE1-810D-D92BA7F6B496.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images/plotting_art/tooling_documentation/uscutter/EFE27048-87EE-4FCD-83E9-D91B75D2508E.jpeg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/plotting_art/tooling_documentation/uscutter/F5D7DCFA-D6BA-4B12-B2A9-4E1F246C6180.jpg" alt="" />
-        </div>
-      </div>
-
-      <div class="experiment" data-title="welcome to school!" data-tag="bitsy game">
-        <img class="exp-thumb" src="images-web/playlab/bitsy_game_demo.gif" alt="pixel art game experiment" loading="lazy" />
-        <div class="exp-label">
-          <span class="exp-name exp-link" href="https://youtu.be/9TNHMo1Jbok?si=5Vgw1jc_WEDjLc7N" target="_blank" rel="noopener">welcome to school (unitour)!</span>
-          <span class="exp-tag">bitsy</span>
-        </div>
-        <div class="exp-gallery">
-          <img loading="lazy" decoding="async" src="images-web/playlab/bitsy_game_demo.gif" alt="" />
-        </div>
-      </div>
-
-      <div class="experiment" data-title="on-the-fly Pittsburgh" data-tag="comfyui">
-        <img class="exp-thumb" src="images-web/playlab/onthefly_pitts_exploration.gif" alt="Pittsburgh Gaussian splatting experiment" loading="lazy" />
-        <div class="exp-label">
-          <span class="exp-name">on-the-fly Pittsburgh</span>
-          <span class="exp-tag">3D Gaussian Splatting</span>
-        </div>
-        <div class="exp-gallery">
-          <img loading="lazy" decoding="async" src="images-web/playlab/onthefly_pitts_exploration.gif" alt="" />
-          <!-- <img loading="lazy" decoding="async" src="images-web/playlab/fun_render.gif" alt="" /> -->
-        </div>
-      </div>
-
-      <div class="experiment" data-title="splat fabrication" data-tag="fabrication">
-        <img class="exp-thumb" src="images-web/graphics/3dgs_fabrication/DSC08739.jpg" alt="3D-printed relief bust fabricated from a Gaussian splat" loading="lazy" />
-        <div class="exp-label">
-          <span class="exp-name">splat fabrication</span>
-          <span class="exp-tag">fabrication</span>
-        </div>
-        <div class="exp-gallery">
-          <img loading="lazy" decoding="async" src="images-web/graphics/3dgs_fabrication/DSC08739.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/graphics/3dgs_fabrication/DSC08737.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/graphics/3dgs_fabrication/DSC08730.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/graphics/3dgs_fabrication/IMG_9547.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/graphics/3dgs_fabrication/IMG_9545.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/graphics/3dgs_fabrication/IMG_9482.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/graphics/3dgs_fabrication/IMG_9457.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/graphics/3dgs_fabrication/IMG_9273.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/graphics/3dgs_fabrication/IMG_9258.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/graphics/3dgs_fabrication/IMG_9193.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/graphics/3dgs_fabrication/IMG_9350.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/graphics/3dgs_fabrication/IMG_9539.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/graphics/3dgs_fabrication/IMG_9543.jpg" alt="" />
-          <img loading="lazy" decoding="async" src="images-web/graphics/3dgs_fabrication/IMG_9548.jpg" alt="" />
-        </div>
-      </div>
-    </div>
-
-    <section id="gallery" aria-label="artwork">
-      <h2>artsy fartsy</h2>
-      <div class="gallery">
-        <img src="images-web/artsy_fartsy/creative_coding/07CFB554-632A-439D-B8E9-6D20D1D37C33.jpg" alt="Creative coding output" loading="lazy" />
-        <img src="images-web/artsy_fartsy/creative_coding/ezgif-1d9af491a4d3123f.gif" alt="Animated creative coding experiment" loading="lazy" />
-        <img src="images-web/artsy_fartsy/etc_media/IMG_8284.jpg" alt="Mixed-media experiment" loading="lazy" />
-        <img src="images-web/artsy_fartsy/etc_media/IMG_8340.jpg" alt="Mixed-media artwork" loading="lazy" />
-        <img src="images-web/artsy_fartsy/painting/IMG_2604.jpg" alt="Painting" loading="lazy" />
-        <img src="images-web/artsy_fartsy/painting/IMG_9024.jpg" alt="Painting study" loading="lazy" />
-        <img src="images-web/artsy_fartsy/photography/DSC00628.jpg" alt="Photograph" loading="lazy" />
-        <img src="images-web/artsy_fartsy/photography/DSC09568.jpg" alt="Photography study" loading="lazy" />
-        <img src="images-web/artsy_fartsy/plotting/DSC09957.jpg" alt="Plotter artwork" loading="lazy" />
-        <img src="images-web/artsy_fartsy/plotting/IMG_6859.jpg" alt="Plotter experiment" loading="lazy" />
-        <img src="images-web/artsy_fartsy/scholastics_portfolio/IMG_3029.jpg" alt="Scholastics portfolio artwork" loading="lazy" />
-        <img src="images-web/artsy_fartsy/scholastics_portfolio/lc08.jpg" alt="Scholastics portfolio study" loading="lazy" />
-        <img src="images-web/artsy_fartsy/sketchbook/IMG_6812.jpg" alt="Sketchbook page" loading="lazy" />
-        <img src="images-web/artsy_fartsy/sketchbook/IMG_9691.jpg" alt="Sketchbook artwork" loading="lazy" />
-        <img src="images-web/artsy_fartsy/painting/IMG_9105.jpg" alt="Painting study" loading="lazy" />
-        <img src="images-web/artsy_fartsy/photography/DSC04345.jpg" alt="Photograph" loading="lazy" />
-        <img src="images-web/artsy_fartsy/plotting/IMG_9165.jpg" alt="Plotter artwork" loading="lazy" />
-        <img src="images-web/artsy_fartsy/sketchbook/IMG_9693.jpg" alt="Sketchbook page" loading="lazy" />
-        <img src="images-web/artsy_fartsy/painting/IMG_8561.jpg" alt="Painting" loading="lazy" />
-        <img src="images-web/artsy_fartsy/photography/DSC01060.jpg" alt="Photograph" loading="lazy" />
       </div>
     </section>
 
+    <section class="col other-work" aria-label="Other work">
+      <div class="section-head">
+        <h2 class="label">Other work</h2>
+        <span class="page-note">Painting, photography, sketchbooks and plots that feed the rest of the practice.</span>
+      </div>
+      <div class="masonry" data-title="other work" data-tag="painting, photography, sketchbooks, plots" data-images="images-web/artsy_fartsy/painting/IMG_2604.jpg|images-web/artsy_fartsy/painting/IMG_9024.jpg|images-web/artsy_fartsy/painting/IMG_9105.jpg|images-web/artsy_fartsy/painting/IMG_8561.jpg|images-web/artsy_fartsy/painting/IMG_8139_Original.jpg|images-web/artsy_fartsy/painting/IMG_9106.jpg|images-web/artsy_fartsy/scholastics_portfolio/IMG_3029.jpg|images-web/artsy_fartsy/scholastics_portfolio/lc08.jpg|images-web/artsy_fartsy/scholastics_portfolio/lc02.jpg|images-web/artsy_fartsy/scholastics_portfolio/lc03.jpg|images-web/artsy_fartsy/scholastics_portfolio/lc09.jpg|images-web/artsy_fartsy/sketchbook/IMG_6812.jpg|images-web/artsy_fartsy/sketchbook/IMG_9691.jpg|images-web/artsy_fartsy/sketchbook/IMG_9693.jpg|images-web/artsy_fartsy/plotting/DSC09957.jpg|images-web/artsy_fartsy/plotting/IMG_6859.jpg|images-web/artsy_fartsy/plotting/IMG_9165.jpg|images-web/artsy_fartsy/plotting/DSC09946.jpg|images-web/artsy_fartsy/plotting/IMG_3826.jpg|images-web/artsy_fartsy/plotting/DSC09951.jpg|images-web/artsy_fartsy/plotting/IMG_6922.jpg|images-web/artsy_fartsy/plotting/DSC09972.jpg|images-web/artsy_fartsy/plotting/IMG_8281.jpg|images-web/artsy_fartsy/plotting/IMG_6935.jpg|images-web/artsy_fartsy/plotting/IMG_8283.jpg|images-web/artsy_fartsy/plotting/DSC09958.jpg|images-web/artsy_fartsy/plotting/IMG_8493.jpg|images-web/artsy_fartsy/plotting/IMG_9175.jpg|images-web/artsy_fartsy/creative_coding/07CFB554-632A-439D-B8E9-6D20D1D37C33.jpg|images-web/artsy_fartsy/creative_coding/ezgif-1d9af491a4d3123f.gif|images-web/artsy_fartsy/etc_media/IMG_8284.jpg|images-web/artsy_fartsy/etc_media/IMG_8340.jpg|images-web/artsy_fartsy/photography/DSC00628.jpg|images-web/artsy_fartsy/photography/DSC09568.jpg|images-web/artsy_fartsy/photography/DSC04345.jpg|images-web/artsy_fartsy/photography/DSC01060.jpg|images-web/artsy_fartsy/photography/DSC00799.jpg|images-web/artsy_fartsy/photography/DSC02170.jpg|images-web/artsy_fartsy/photography/DSC08177.jpg|images-web/artsy_fartsy/photography/DSCF1251.jpg|images-web/artsy_fartsy/photography/DSCN7242.jpg|images-web/artsy_fartsy/photography/DSC01681.jpg|images-web/artsy_fartsy/photography/DSC08822.jpg|images-web/artsy_fartsy/photography/DSC04276.jpg|images-web/artsy_fartsy/photography/DSCN7950.jpg|images-web/artsy_fartsy/photography/DSC02140.jpg|images-web/artsy_fartsy/photography/DSCF1300.jpg|images-web/artsy_fartsy/photography/DSC08205.jpg|images-web/artsy_fartsy/photography/IMG_9761.jpg|images-web/artsy_fartsy/photography/DSC09641.jpg">
+        <button class="open" type="button" data-index="0" aria-label="Open image 1 of 50: Small paintings pinned in a column on a studio wall"><img src="images-web/artsy_fartsy/painting/IMG_2604.jpg" alt="Small paintings pinned in a column on a studio wall" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="1" aria-label="Open image 2 of 50: Painting of a misty blue and green landscape"><img src="images-web/artsy_fartsy/painting/IMG_9024.jpg" alt="Painting of a misty blue and green landscape" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="2" aria-label="Open image 3 of 50: Painting of blue mountains overlaid with error-screen text"><img src="images-web/artsy_fartsy/painting/IMG_9105.jpg" alt="Painting of blue mountains overlaid with error-screen text" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="3" aria-label="Open image 4 of 50: Small blue painting of an error screen hung on a white wall"><img src="images-web/artsy_fartsy/painting/IMG_8561.jpg" alt="Small blue painting of an error screen hung on a white wall" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="4" aria-label="Open image 5 of 50: Painting of cable cars over a purple ravine with vivid green and yellow foliage"><img src="images-web/artsy_fartsy/painting/IMG_8139_Original.jpg" alt="Painting of cable cars over a purple ravine with vivid green and yellow foliage" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="5" aria-label="Open image 6 of 50: Painting of a blue iceberg and its reflection overlaid with faint lines of text"><img src="images-web/artsy_fartsy/painting/IMG_9106.jpg" alt="Painting of a blue iceberg and its reflection overlaid with faint lines of text" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="6" aria-label="Open image 7 of 50: Painting of a woman in a white shirt holding a glass that spills red"><img src="images-web/artsy_fartsy/scholastics_portfolio/IMG_3029.jpg" alt="Painting of a woman in a white shirt holding a glass that spills red" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="7" aria-label="Open image 8 of 50: Painting of a woman pulling a red cloth across her eyes"><img src="images-web/artsy_fartsy/scholastics_portfolio/lc08.jpg" alt="Painting of a woman pulling a red cloth across her eyes" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="8" aria-label="Open image 9 of 50: Painting of a young person in a purple hoodie with a pink sculpted form on their head"><img src="images-web/artsy_fartsy/scholastics_portfolio/lc02.jpg" alt="Painting of a young person in a purple hoodie with a pink sculpted form on their head" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="9" aria-label="Open image 10 of 50: Painting of a woman with red face paint in a red patterned jacket holding a brush"><img src="images-web/artsy_fartsy/scholastics_portfolio/lc03.jpg" alt="Painting of a woman with red face paint in a red patterned jacket holding a brush" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="10" aria-label="Open image 11 of 50: Painting of a woman with auburn hair biting a yellow fruit against a dark background"><img src="images-web/artsy_fartsy/scholastics_portfolio/lc09.jpg" alt="Painting of a woman with auburn hair biting a yellow fruit against a dark background" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="11" aria-label="Open image 12 of 50: Sketchbook page of pink and green abstract washes"><img src="images-web/artsy_fartsy/sketchbook/IMG_6812.jpg" alt="Sketchbook page of pink and green abstract washes" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="12" aria-label="Open image 13 of 50: Sketchbook spread of a pale yellow and blue watercolor landscape"><img src="images-web/artsy_fartsy/sketchbook/IMG_9691.jpg" alt="Sketchbook spread of a pale yellow and blue watercolor landscape" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="13" aria-label="Open image 14 of 50: Sketchbook page of a yellow sky over teal mountains"><img src="images-web/artsy_fartsy/sketchbook/IMG_9693.jpg" alt="Sketchbook page of a yellow sky over teal mountains" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="14" aria-label="Open image 15 of 50: Plotted grid of blue characters on cream paper"><img src="images-web/artsy_fartsy/plotting/DSC09957.jpg" alt="Plotted grid of blue characters on cream paper" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="15" aria-label="Open image 16 of 50: Plotted vertical card with blue mountain lines and Chinese characters"><img src="images-web/artsy_fartsy/plotting/IMG_6859.jpg" alt="Plotted vertical card with blue mountain lines and Chinese characters" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="16" aria-label="Open image 17 of 50: A pen plotter drawing dense blue vertical lines"><img src="images-web/artsy_fartsy/plotting/IMG_9165.jpg" alt="A pen plotter drawing dense blue vertical lines" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="17" aria-label="Open image 18 of 50: Plotted teal sheet with pale rounded shapes on white paper"><img src="images-web/artsy_fartsy/plotting/DSC09946.jpg" alt="Plotted teal sheet with pale rounded shapes on white paper" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="18" aria-label="Open image 19 of 50: Pink hatched looping shapes plotted on white paper on a cutting mat"><img src="images-web/artsy_fartsy/plotting/IMG_3826.jpg" alt="Pink hatched looping shapes plotted on white paper on a cutting mat" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="19" aria-label="Open image 20 of 50: Sample sheet of blue plotted textures: dots, lines, scribbles and cells"><img src="images-web/artsy_fartsy/plotting/DSC09951.jpg" alt="Sample sheet of blue plotted textures: dots, lines, scribbles and cells" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="20" aria-label="Open image 21 of 50: A hand holding a small plotted card of blue and yellow wavy lines with Chinese characters"><img src="images-web/artsy_fartsy/plotting/IMG_6922.jpg" alt="A hand holding a small plotted card of blue and yellow wavy lines with Chinese characters" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="21" aria-label="Open image 22 of 50: Grey textured plot on black card showing a pale landscape-like shape"><img src="images-web/artsy_fartsy/plotting/DSC09972.jpg" alt="Grey textured plot on black card showing a pale landscape-like shape" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="22" aria-label="Open image 23 of 50: White and iridescent plotted dots forming a looping shape on black paper"><img src="images-web/artsy_fartsy/plotting/IMG_8281.jpg" alt="White and iridescent plotted dots forming a looping shape on black paper" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="23" aria-label="Open image 24 of 50: Small plotted cards in blue, yellow and lilac scattered on a table"><img src="images-web/artsy_fartsy/plotting/IMG_6935.jpg" alt="Small plotted cards in blue, yellow and lilac scattered on a table" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="24" aria-label="Open image 25 of 50: Pink and blue overlapping plotted blobs on white paper"><img src="images-web/artsy_fartsy/plotting/IMG_8283.jpg" alt="Pink and blue overlapping plotted blobs on white paper" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="25" aria-label="Open image 26 of 50: Plotted grid of small pink and blue marks on cream paper"><img src="images-web/artsy_fartsy/plotting/DSC09958.jpg" alt="Plotted grid of small pink and blue marks on cream paper" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="26" aria-label="Open image 27 of 50: Close view of blue, orange and clear plotted swirls on grey paper"><img src="images-web/artsy_fartsy/plotting/IMG_8493.jpg" alt="Close view of blue, orange and clear plotted swirls on grey paper" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="27" aria-label="Open image 28 of 50: Blue plotted hatching forming a cloud-like shape on white paper"><img src="images-web/artsy_fartsy/plotting/IMG_9175.jpg" alt="Blue plotted hatching forming a cloud-like shape on white paper" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="28" aria-label="Open image 29 of 50: Generative drawing of overlapping blue rounded squares"><img src="images-web/artsy_fartsy/creative_coding/07CFB554-632A-439D-B8E9-6D20D1D37C33.jpg" alt="Generative drawing of overlapping blue rounded squares" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="29" aria-label="Open image 30 of 50: Animated creative coding sketch of drifting white points on black"><img src="images-web/artsy_fartsy/creative_coding/ezgif-1d9af491a4d3123f.gif" alt="Animated creative coding sketch of drifting white points on black" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="30" aria-label="Open image 31 of 50: Mixed-media collage of photographs and grey and pink paper strips on a gridded board"><img src="images-web/artsy_fartsy/etc_media/IMG_8284.jpg" alt="Mixed-media collage of photographs and grey and pink paper strips on a gridded board" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="31" aria-label="Open image 32 of 50: Mixed-media piece on torn brown paper with an ink drawing at its center"><img src="images-web/artsy_fartsy/etc_media/IMG_8340.jpg" alt="Mixed-media piece on torn brown paper with an ink drawing at its center" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="32" aria-label="Open image 33 of 50: Photograph of bright moss on a dark rock face"><img src="images-web/artsy_fartsy/photography/DSC00628.jpg" alt="Photograph of bright moss on a dark rock face" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="33" aria-label="Open image 34 of 50: Photograph from above of people lying on a curved white ledge under a palm"><img src="images-web/artsy_fartsy/photography/DSC09568.jpg" alt="Photograph from above of people lying on a curved white ledge under a palm" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="34" aria-label="Open image 35 of 50: Photograph of a dry seed stalk against a deep blue sky"><img src="images-web/artsy_fartsy/photography/DSC04345.jpg" alt="Photograph of a dry seed stalk against a deep blue sky" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="35" aria-label="Open image 36 of 50: Photograph of a red panda in green foliage"><img src="images-web/artsy_fartsy/photography/DSC01060.jpg" alt="Photograph of a red panda in green foliage" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="36" aria-label="Open image 37 of 50: Streetlamp glowing through fog at dusk"><img src="images-web/artsy_fartsy/photography/DSC00799.jpg" alt="Streetlamp glowing through fog at dusk" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="37" aria-label="Open image 38 of 50: Blue poppy blooming among dark rocks"><img src="images-web/artsy_fartsy/photography/DSC02170.jpg" alt="Blue poppy blooming among dark rocks" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="38" aria-label="Open image 39 of 50: Mist rising from a waterfall through a forested canyon"><img src="images-web/artsy_fartsy/photography/DSC08177.jpg" alt="Mist rising from a waterfall through a forested canyon" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="39" aria-label="Open image 40 of 50: Waves crashing against dark coastal rocks"><img src="images-web/artsy_fartsy/photography/DSCF1251.jpg" alt="Waves crashing against dark coastal rocks" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="40" aria-label="Open image 41 of 50: Golden inflatable sculptures in a grand skylit hall"><img src="images-web/artsy_fartsy/photography/DSCN7242.jpg" alt="Golden inflatable sculptures in a grand skylit hall" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="41" aria-label="Open image 42 of 50: Person sitting in a green meadow beneath tall mossy trees"><img src="images-web/artsy_fartsy/photography/DSC01681.jpg" alt="Person sitting in a green meadow beneath tall mossy trees" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="42" aria-label="Open image 43 of 50: Sailboat on calm water with a distant city skyline"><img src="images-web/artsy_fartsy/photography/DSC08822.jpg" alt="Sailboat on calm water with a distant city skyline" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="43" aria-label="Open image 44 of 50: Tree-dotted hill under dark storm clouds"><img src="images-web/artsy_fartsy/photography/DSC04276.jpg" alt="Tree-dotted hill under dark storm clouds" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="44" aria-label="Open image 45 of 50: Snow-capped mountains above a forested lake"><img src="images-web/artsy_fartsy/photography/DSCN7950.jpg" alt="Snow-capped mountains above a forested lake" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="45" aria-label="Open image 46 of 50: Two pink and white patterned cactus-like forms resting on broken shale"><img src="images-web/artsy_fartsy/photography/DSC02140.jpg" alt="Two pink and white patterned cactus-like forms resting on broken shale" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="46" aria-label="Open image 47 of 50: Rocky coast and beach with two small figures walking"><img src="images-web/artsy_fartsy/photography/DSCF1300.jpg" alt="Rocky coast and beach with two small figures walking" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="47" aria-label="Open image 48 of 50: Moss-draped branches against a bright sky"><img src="images-web/artsy_fartsy/photography/DSC08205.jpg" alt="Moss-draped branches against a bright sky" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="48" aria-label="Open image 49 of 50: People sitting on a glass floor inside a turquoise aquarium-like room"><img src="images-web/artsy_fartsy/photography/IMG_9761.jpg" alt="People sitting on a glass floor inside a turquoise aquarium-like room" loading="lazy" decoding="async" /></button>
+        <button class="open" type="button" data-index="49" aria-label="Open image 50 of 50: Street signs on a pole among autumn trees: Passenger Cars Only and 5 Av Museum Mile"><img src="images-web/artsy_fartsy/photography/DSC09641.jpg" alt="Street signs on a pole among autumn trees: Passenger Cars Only and 5 Av Museum Mile" loading="lazy" decoding="async" /></button>
+      </div>
+    </section>
   </main>
 
-  <!-- Lightbox -->
-  <div id="lightbox" class="lightbox">
-    <div class="lb-header">
-      <span class="lb-title"></span>
-      <span class="lb-tag"></span>
-      <button class="lb-close" aria-label="close">&times;</button>
-    </div>
-    <div class="lb-main">
-      <img loading="lazy" decoding="async" class="lb-main-img" src="" alt="" />
-    </div>
-    <div class="lb-thumbs"></div>
-  </div>
-
-  <footer>
-    <p>&copy; 2026 Lorie Chen</p>
-    <p>Detroit, MI</p>
+  <footer class="col site-footer">
+    <span>&copy; 2026 Lorie Chen &middot; Detroit, MI</span>
+    <span class="links">
+      <a class="u" href="mailto:lorichendd@gmail.com">email</a>
+      <a class="u" href="https://github.com/ylchen333">github</a>
+      <a class="u" href="https://lovvipop.substack.com">substack</a>
+      <a class="u" href="https://www.instagram.com/lovvipop.zip">instagram</a>
+      <a class="u" href="https://www.linkedin.com/in/lorie-chen-lovvipop">linkedin</a>
+    </span>
   </footer>
 
-  <script src="main.js"></script>
+  <script src="main.js" defer></script>
 </body>
 </html>

@@ -3,110 +3,121 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gem Stacking — lorie's corner</title>
+  <title>gem stacking — Lorie Chen</title>
+  <meta name="description" content="Recovering the depth of cameo glass with a museum’s own camera." />
+  <link rel="canonical" href="https://loriechen.com/gem-stacking.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.ico" />
 </head>
-<body class="wide">
-
-  <header>
-    <nav>
-      <a href="index.html" class="wordmark">Lorie Chen</a>
-      <div class="nav-links">
-        <!-- <a href="index.html">home</a> -->
-        <a href="index.html" class="active">work</a>
-        <a href="desk.html">desk</a>
-        <a href="about.html">about</a>
+<body>
+  <div class="site-top">
+    <header class="col site-header">
+      <a class="wordmark" href="index.html">Lorie Chen</a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="index.html#work" aria-current="page">work</a>
         <a href="playlab.html">playlab</a>
-        <a href="mailto:lorichendd@gmail.com" class="nav-contact">contact</a>
-      </div>
-    </nav>
-    <div class="hero">
-      <a href="index.html" class="back-link">&larr; work</a>
-      <h1>Gem Stacking</h1>
-      <!-- TODO(Lorie): confirm this matches what the project showed (see site-fixes Task 5) -->
-      <p class="project-statement">A new 3D scanning method for historic cameo-glass gems</p>
-      <p class="tagline">computational photography &middot; cultural heritage &middot; 2025&ndash;2026</p>
-    </div>
-  </header>
+        <a href="about.html">about</a>
+        <a href="mailto:lorichendd@gmail.com">contact</a>
+      </nav>
+    </header>
+  </div>
 
   <main>
+  <article class="col project">
+    <header>
+      <a class="back u" href="index.html#work">&larr; all work</a>
+      <h1 class="page-title">gem stacking</h1>
+      <p class="page-sub">Recovering the depth of cameo glass with a museum’s own camera.</p>
+    </header>
 
-    <div class="project-layout">
-
-      <aside class="project-sidebar">
-        <dl class="project-info">
-          <dt>advised by</dt>
-          <dd>Golan Levin, Ioannis Gkioulekas</dd>
-          <dt>in collaboration with</dt>
-          <dd>Getty Villa Imaging Studios</dd>
-          <dt>links</dt>
-          <dd>
-            <a href="https://lovvipop.substack.com/p/a-week-exploring-the-getty-collection" target="_blank" rel="noopener">substack writeup →</a>
-          </dd>
-        </dl>
-      </aside>
-
-      <div class="project-content">
-        <section class="project-writeup">
-          <h2 class="project-section-label">Context</h2>
-          <p>
-            Cameo glass artifacts are carved, reflective, and translucent &mdash; the exact
-            combination that defeats the standard 3D capture toolkit. Photogrammetry, LiDAR, and
-            structured light all fail here: there's no clean multi-view capture to stitch and no
-            predictable reflectance to exploit. The Getty Museum has these objects in its
-            collection and no reliable way to digitize their surface geometry.
-          </p>
-          <h2 class="project-section-label">Experiment &amp; technical approach</h2>
-          <img class="inline-img right" src="images-web/graphics/getty/IMG_7515.jpg" alt="" loading="lazy" />
-          <p>
-            Rather than ask the museum for new hardware, I built single-view depth extraction on
-            top of Capture One Pro and a Phase One camera &mdash; the exact setup already used for
-            beauty photography of the collection. I wrote the reconstruction pipeline myself and
-            validated it on 10+ real artifacts, producing depth maps that Getty imaging
-            specialists and conservators used directly.
-          </p>
-          <img class="inline-img right" src="images/graphics/getty/Z_vis_masked.png" alt="" loading="lazy" />
-          <p>
-            The idea generalizes past this collection. Any museum with a standard
-            beauty-photography rig &mdash; most of them &mdash; could extract usable 3D depth with
-            zero new capital equipment, opening doors to 3D printing, merchandising, and digital
-            preservation.
-          </p>
-          <div class="project-implication"><h2 class="project-section-label">Implications</h2><p>The useful outcome is a method, not a device: 3D depth recovery folded into an imaging workflow institutions already run every day. I'm a CS+Arts undergrad who builds this way solo &mdash; research into a real tool, on hardware that already exists. I've also shipped a deployed 3DGS heritage-annotation app (<a href="https://room.loriechen.com" target="_blank" rel="noopener">room.loriechen.com</a>) and an audio-reactive visual instrument (<a href="https://synthsplat.loriechen.com" target="_blank" rel="noopener">synthsplat.loriechen.com</a>).</p></div>
-        </section>
-      </div>
-
+    <div class="fig pair side">
+      <figure>
+        <img src="images-web/graphics/gem-stacking/grayscale-depth-map-recovered-from-the-s.jpg" alt="Grayscale depth map recovered from the same cameo" width="900" height="1200" loading="eager" decoding="async" />
+        <figcaption class="caption">Depth recovered from a single view of a cameo.</figcaption>
+      </figure>
+      <figure>
+        <img src="images-web/graphics/gem-stacking/a-carved-cameo-profile-photographed-with.jpg" alt="A carved cameo profile photographed with a Phase One camera" width="900" height="1200" loading="eager" decoding="async" />
+        <figcaption class="caption">The same cameo, as the Getty’s beauty-photography setup sees it.</figcaption>
+      </figure>
     </div>
 
-    <div class="carousel-wrap">
-      <h2>documentation</h2>
-      <div class="carousel">
-        <div class="carousel-track">
-          <img src="images-web/graphics/getty/IMG_7469.jpg" alt="" loading="lazy" />
-          <img src="images-web/graphics/getty/IMG_7515.jpg" alt="" loading="lazy" />
-          <img src="images-web/graphics/getty/IMG_7590.jpg" alt="" loading="lazy" />
-          <img src="images-web/graphics/getty/IMG_7609.jpg" alt="" loading="lazy" />
-          <img src="images-web/graphics/getty/IMG_7616.jpg" alt="" loading="lazy" />
-          <img src="images/graphics/getty/Z_vis_masked.png" alt="" loading="lazy" />
-        </div>
-      </div>
-      <div class="carousel-controls">
-        <button class="carousel-prev" aria-label="previous">&larr;</button>
-        <button class="carousel-next" aria-label="next">&rarr;</button>
-      </div>
+    <div class="prose">
+      <p>Cameo glass is an ancient technique: layers of colored glass are fused together, then carved back so a pale figure stands in relief against a darker ground. The most famous example is the Roman Portland Vase. The pieces I worked with are much smaller, gems you could cover with a fingertip, held in the Getty’s collection.</p>
+      <p>They’re made to be looked at closely, turning in the hand under raking light. The things that make them beautiful (carved relief, glossy surfaces, light passing partway into the glass) are the same things that defeat the standard 3D toolkit. Photogrammetry, LiDAR and structured light all fail here: there’s no clean set of views to stitch and no predictable reflectance to exploit.</p>
     </div>
 
+    <figure class="fig">
+      <div class="pair">
+        <img src="images-web/graphics/gem-stacking/a-tiny-cameo-gem-next-to-a-fingertip-for.jpg" alt="A tiny cameo gem next to a fingertip for scale" loading="lazy" decoding="async" />
+        <img src="images-web/graphics/gem-stacking/a-tray-of-small-gems-in-labeled-bags-wai.jpg" alt="A tray of small gems in labeled bags waiting to be photographed" loading="lazy" decoding="async" />
+      </div>
+      <figcaption class="caption">Small enough to hide under a fingertip, and a tray of them waiting their turn.</figcaption>
+    </figure>
+
+    <h2 class="subhead">Working inside the museum’s eye</h2>
+
+    <div class="prose">
+      <p>Museums already photograph their collections beautifully. At the Getty Villa, objects are shot with a Phase One camera, tethered to Capture One, under carefully controlled light, and those photographs are how most people will ever see them. Instead of bringing new hardware into the collection, I asked whether that same setup could also recover shape.</p>
+    </div>
+
+    <figure class="fig">
+      <div class="pair">
+        <img src="images-web/graphics/gem-stacking/a-cameo-of-a-bearded-man-on-screen-in-ca.jpg" alt="A cameo of a bearded man on screen in Capture One" loading="lazy" decoding="async" />
+        <img src="images-web/graphics/gem-stacking/a-cameo-framed-beside-a-color-chart-seen.jpg" alt="A cameo framed beside a color chart, seen through the camera" loading="lazy" decoding="async" />
+      </div>
+      <figcaption class="caption">Tethered capture in Capture One, and a cameo framed with a color chart.</figcaption>
+    </figure>
+
+    <div class="prose">
+      <p>The method is confocal stereo. From a single, fixed viewpoint, you take a stack of photographs across focus and aperture settings. For each pixel, the focus setting where its appearance stops changing with aperture tells you how far away that point is. There’s no matching across views and no guessing about how the surface reflects light: a focus stack, read as depth. Hence the name.</p>
+    </div>
+
+    <div class="prose">
+      <p>I wrote the reconstruction pipeline myself and tested it on more than ten artifacts. Getty imaging specialists and conservators used the depth maps directly in their close study of the objects.</p>
+    </div>
+
+    <figure class="fig">
+      <img src="images-web/graphics/gem-stacking/color-checker-held-beside-the-camera-at-.jpg" alt="Color checker held beside the camera at the Getty Villa" width="1400" height="1050" loading="lazy" decoding="async" />
+      <figcaption class="caption">Calibrating at the Getty Villa.</figcaption>
+    </figure>
+
+    <h2 class="subhead">A method, not a device</h2>
+
+    <div class="prose">
+      <p>Any museum with a standard beauty-photography rig, which is most of them, could recover usable depth with no new equipment. That opens the door to interactive relighting, 3D printing and digital preservation of objects that were never scannable before.</p>
+      <p>What interests me most is where the depth comes from: not a scanner brought in from outside, but the museum’s own way of looking.</p>
+    </div>
+
+    <p class="project-links"><a class="u" href="https://lovvipop.substack.com" target="_blank" rel="noopener">Read the write-up on Substack &nearr;</a></p>
+
+    <div class="credits">
+      <div><span class="k">Year</span><span class="v">October 2025 – January 2026</span></div>
+      <div><span class="k">Advised by</span><span class="v">Golan Levin, Ioannis Gkioulekas</span></div>
+      <div><span class="k">In collaboration with</span><span class="v">Getty Villa Imaging Studios</span></div>
+      <div><span class="k">Method</span><span class="v">Confocal stereo with a Phase One camera and Capture One Pro</span></div>
+    </div>
+
+    <nav class="prevnext" aria-label="More projects">
+      <a class="u" href="blob-flops.html">&larr; blob flops</a>
+      <a class="u" href="comfy-dial.html">comfy-dial &rarr;</a>
+    </nav>
+  </article>
   </main>
 
-  <footer>
-    <p>&copy; 2026 Lorie Chen</p>
-    <p>Detroit, MI</p>
+  <footer class="col site-footer">
+    <span>&copy; 2026 Lorie Chen &middot; Detroit, MI</span>
+    <span class="links">
+      <a class="u" href="mailto:lorichendd@gmail.com">email</a>
+      <a class="u" href="https://github.com/ylchen333">github</a>
+      <a class="u" href="https://lovvipop.substack.com">substack</a>
+      <a class="u" href="https://www.instagram.com/lovvipop.zip">instagram</a>
+      <a class="u" href="https://www.linkedin.com/in/lorie-chen-lovvipop">linkedin</a>
+    </span>
   </footer>
 
-  <script src="main.js"></script>
+  <script src="main.js" defer></script>
 </body>
 </html>
